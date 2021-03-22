@@ -27,8 +27,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Web\DayTripper.Web\DayTripper.Web.csproj" />
-  </ItemGroup>
-
 </Project>
