@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 using DayTripper.Data.Common.Models;
 
 namespace DayTripper.Data.Models
@@ -13,10 +15,12 @@ namespace DayTripper.Data.Models
 
         public int CityId { get; set; }
 
+        [Required]
         public City City { get; set; }
 
         public int SectorId { get; set; }
 
+        [Required]
         public Sector Sector { get; set; }
 
         public DateTime Leaving { get; set; }

@@ -12,6 +12,8 @@ namespace DayTripper.Data.Models
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
+
+            this.UserTrips = new HashSet<UserTrip>();
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
@@ -26,6 +28,8 @@ namespace DayTripper.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<UserTrip> UserTrips { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
