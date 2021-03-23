@@ -2,7 +2,7 @@
 
 namespace DayTripper.Data.Models
 {
-    public class City : BaseDeletableModel<int>
+    public class Sector : BaseDeletableModel<int>
     {
         public string Name { get; set; }
     }
