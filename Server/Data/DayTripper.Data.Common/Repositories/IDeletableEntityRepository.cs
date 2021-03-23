@@ -1,9 +1,9 @@
-﻿namespace DayTripper.Data.Common.Repositories
+﻿using System.Linq;
+
+using DayTripper.Data.Common.Models;
+
+namespace DayTripper.Data.Common.Repositories
 {
-    using System.Linq;
-
-    using DayTripper.Data.Common.Models;
-
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {

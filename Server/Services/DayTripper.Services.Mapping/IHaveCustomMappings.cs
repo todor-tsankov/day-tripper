@@ -1,7 +1,7 @@
-﻿namespace DayTripper.Services.Mapping
-{
-    using AutoMapper;
+﻿using AutoMapper;
 
+namespace DayTripper.Services.Mapping
+{
     public interface IHaveCustomMappings
     {
         void CreateMappings(IProfileExpression configuration);

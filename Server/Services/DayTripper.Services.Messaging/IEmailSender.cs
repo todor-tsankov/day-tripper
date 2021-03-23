@@ -1,8 +1,8 @@
-﻿namespace DayTripper.Services.Messaging
-{
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
+namespace DayTripper.Services.Messaging
+{
     public interface IEmailSender
     {
         Task SendEmailAsync(

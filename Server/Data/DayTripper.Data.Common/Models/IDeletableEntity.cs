@@ -1,7 +1,7 @@
-﻿namespace DayTripper.Data.Common.Models
-{
-    using System;
+﻿using System;
 
+namespace DayTripper.Data.Common.Models
+{
     public interface IDeletableEntity
     {
         bool IsDeleted { get; set; }
