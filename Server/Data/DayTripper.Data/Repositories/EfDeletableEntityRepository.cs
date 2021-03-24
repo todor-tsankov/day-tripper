@@ -1,13 +1,13 @@
-﻿namespace DayTripper.Data.Repositories
+﻿using System;
+using System.Linq;
+
+using DayTripper.Data.Common.Models;
+using DayTripper.Data.Common.Repositories;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace DayTripper.Data.Repositories
 {
-    using System;
-    using System.Linq;
-
-    using DayTripper.Data.Common.Models;
-    using DayTripper.Data.Common.Repositories;
-
-    using Microsoft.EntityFrameworkCore;
-
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {

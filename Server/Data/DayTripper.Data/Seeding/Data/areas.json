@@ -1,0 +1,2424 @@
+[
+    {
+        "Name": "vitosha",
+        "Crags": [
+            {
+                "Name": "kominite",
+                "Sectors": [
+                    {
+                        "Name": "dolen komin - yuzhno krilo (lower chimney - south side)"
+                    },
+                    {
+                        "Name": "dolen komin - sredno krilo (lower chimney - north side)"
+                    },
+                    {
+                        "Name": "dolen komin - severno krilo"
+                    },
+                    {
+                        "Name": "goren komin - zapadno krilo (upper chimney - west side)"
+                    },
+                    {
+                        "Name": "goren komin - iztochno krilo (upper chimney - east side)"
+                    },
+                    {
+                        "Name": "orlovo gnezdo"
+                    },
+                    {
+                        "Name": "divite skali"
+                    }
+                ]
+            },
+            {
+                "Name": "reznyovete",
+                "Sectors": [
+                    {
+                        "Name": "lyav rezen"
+                    },
+                    {
+                        "Name": "lyav rezen - badile"
+                    },
+                    {
+                        "Name": "sreden rezen"
+                    },
+                    {
+                        "Name": "desen rezen"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha kupena - uchebni skali",
+                "Sectors": [
+                    {
+                        "Name": "nachalen sektor"
+                    },
+                    {
+                        "Name": "sektor 2"
+                    },
+                    {
+                        "Name": "rapel"
+                    },
+                    {
+                        "Name": "krayni skali"
+                    }
+                ]
+            },
+            {
+                "Name": "cherni vrah - reznyovete",
+                "Sectors": [
+                    {
+                        "Name": "viatur"
+                    },
+                    {
+                        "Name": "godzila"
+                    },
+                    {
+                        "Name": "shamarite"
+                    },
+                    {
+                        "Name": "rvd"
+                    },
+                    {
+                        "Name": "kolche 94"
+                    },
+                    {
+                        "Name": "lamyata spaska"
+                    },
+                    {
+                        "Name": "mano chau"
+                    }
+                ]
+            },
+            {
+                "Name": "zlatnite mostove (golden bridjes)",
+                "Sectors": [
+                    {
+                        "Name": "zlatnite mostove - halma"
+                    },
+                    {
+                        "Name": "zlatnite mostove - zad zavedenieto"
+                    }
+                ]
+            },
+            {
+                "Name": "boyanski vodopad (boiana waterfall)",
+                "Sectors": [
+                    {
+                        "Name": "boyanski vodopad"
+                    },
+                    {
+                        "Name": "vdyasno ot vodopada"
+                    }
+                ]
+            },
+            {
+                "Name": "boyana - bouldari",
+                "Sectors": [
+                    {
+                        "Name": "boyanski kamak"
+                    },
+                    {
+                        "Name": "kamakat do aleyata"
+                    }
+                ]
+            },
+            {
+                "Name": "momina skala",
+                "Sectors": []
+            },
+            {
+                "Name": "vladaya - marchaevo (vladaya - marchaevo)",
+                "Sectors": [
+                    {
+                        "Name": "visokata skala"
+                    }
+                ]
+            },
+            {
+                "Name": "dragalevtsi - simeonovo",
+                "Sectors": [
+                    {
+                        "Name": "alekova skala (aleko rock)"
+                    }
+                ]
+            },
+            {
+                "Name": "vitosha - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "na hizha \u0060aleko\u0060"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "rila",
+        "Crags": [
+            {
+                "Name": "hizha ivan vazov",
+                "Sectors": [
+                    {
+                        "Name": "otovitsa - severna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha skakavitsa",
+                "Sectors": [
+                    {
+                        "Name": "golemia vodopad"
+                    },
+                    {
+                        "Name": "tsentralen (kapaka na kofchega)"
+                    },
+                    {
+                        "Name": "kabul - iztochna stena"
+                    },
+                    {
+                        "Name": "visulkite (pendants)"
+                    },
+                    {
+                        "Name": "malkia vodopad"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha sedemte ezera",
+                "Sectors": [
+                    {
+                        "Name": "haramiata - lyavo krilo"
+                    },
+                    {
+                        "Name": "haramiata - sredno krilo (severna stena)"
+                    },
+                    {
+                        "Name": "haramiata - dyasno krilo"
+                    },
+                    {
+                        "Name": "ezeren vrah - severna stena (ezernia led)"
+                    },
+                    {
+                        "Name": "ezeren vrah - iztochna stena"
+                    },
+                    {
+                        "Name": "kota 2517 (nad ez. babreka) - iztochna stena"
+                    },
+                    {
+                        "Name": "malak kabul (chochov vrah) - severoiztochna strana"
+                    },
+                    {
+                        "Name": "panichishkite ezera"
+                    }
+                ]
+            },
+            {
+                "Name": "urdina reka",
+                "Sectors": [
+                    {
+                        "Name": "gorna urdina igla"
+                    },
+                    {
+                        "Name": "sredna urdina igla"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha malyovitsa (maliovitsa hut)",
+                "Sectors": [
+                    {
+                        "Name": "okolo hizha malyovitsa"
+                    },
+                    {
+                        "Name": "ledena kula (ice tower)"
+                    },
+                    {
+                        "Name": "chernata skala - lyava igla"
+                    },
+                    {
+                        "Name": "chernata skala - srednata igla"
+                    },
+                    {
+                        "Name": "chernata skala - dyasna igla"
+                    },
+                    {
+                        "Name": "leda na parva terasa"
+                    },
+                    {
+                        "Name": "bouldari na parva terasa"
+                    },
+                    {
+                        "Name": "vlyavo ot zaeshkia uley"
+                    },
+                    {
+                        "Name": "zaeshka pateka - gorna chast"
+                    },
+                    {
+                        "Name": "kolibata"
+                    },
+                    {
+                        "Name": "kuklata - lyava chast (malkata kukla)"
+                    },
+                    {
+                        "Name": "kuklata - iztochna stena (the doll)"
+                    },
+                    {
+                        "Name": "kuklata - dyasna chast"
+                    },
+                    {
+                        "Name": "via ferata"
+                    },
+                    {
+                        "Name": "uchebni skali do hizhata"
+                    },
+                    {
+                        "Name": "zhaltite skali"
+                    },
+                    {
+                        "Name": "kalburska strazha"
+                    },
+                    {
+                        "Name": "dolen sektor"
+                    },
+                    {
+                        "Name": "kalburska igla (kalburska needle)"
+                    },
+                    {
+                        "Name": "sreshtu cheshmata"
+                    },
+                    {
+                        "Name": "uchebni skali do shkolata"
+                    }
+                ]
+            },
+            {
+                "Name": "vtora terasa",
+                "Sectors": [
+                    {
+                        "Name": "bouldari na vtora terasa"
+                    },
+                    {
+                        "Name": "kamilski igli"
+                    },
+                    {
+                        "Name": "golyam petel - severozapadna stena (petlite - south-west face)"
+                    },
+                    {
+                        "Name": "bezimenen vrah - severna stena (nameless peak)"
+                    },
+                    {
+                        "Name": "sivite skali"
+                    },
+                    {
+                        "Name": "chervenata plocha"
+                    },
+                    {
+                        "Name": "iglite na malka malyovitsa"
+                    }
+                ]
+            },
+            {
+                "Name": "zaslon strashno ezero",
+                "Sectors": [
+                    {
+                        "Name": "lopushki vrah - iztochna stena"
+                    },
+                    {
+                        "Name": "bouldari okolo strashnoto ezero"
+                    },
+                    {
+                        "Name": "iglata do malkia kupen (the needle near by little kupen)"
+                    },
+                    {
+                        "Name": "malak kupen - severna stena"
+                    },
+                    {
+                        "Name": "sreden kupen - severna stena"
+                    },
+                    {
+                        "Name": "lovnitsa - iztochna stena (peak lovnitza-eastern face)"
+                    },
+                    {
+                        "Name": "lovnitsa - severna stena (peak lovnitza-north face)"
+                    },
+                    {
+                        "Name": "kamilata - severna stena lyava chast"
+                    },
+                    {
+                        "Name": "kamilata - severna stena dyasna chast"
+                    },
+                    {
+                        "Name": "paletsa - severna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "zaslon bak (orlovets)",
+                "Sectors": [
+                    {
+                        "Name": "kamilata - yuzhna stena"
+                    },
+                    {
+                        "Name": "zliat zab - yugoiztochna stena"
+                    },
+                    {
+                        "Name": "zliat zab - severna stena"
+                    },
+                    {
+                        "Name": "zliat zab - yugozapadna stena"
+                    },
+                    {
+                        "Name": "dolna dyavolska igla - iztochna stena"
+                    },
+                    {
+                        "Name": "cherna dyavolska igla - iztochna stena"
+                    },
+                    {
+                        "Name": "krayna dyavolska igla - iztochna stena"
+                    },
+                    {
+                        "Name": "chervena dyavolska igla - iztochna stena"
+                    },
+                    {
+                        "Name": "sredna dyavolska igla - iztochna stena"
+                    },
+                    {
+                        "Name": "gorna dyavolska igla - iztochna stena"
+                    },
+                    {
+                        "Name": "gorna dyavolska igla - severna stena"
+                    },
+                    {
+                        "Name": "dvuglav - zapadna strana"
+                    },
+                    {
+                        "Name": "dvuglav - yuzhna stena (peak dvuglav-south face)"
+                    },
+                    {
+                        "Name": "dvuglav - yugoiztochna stena (peak dvuglav-south-eastern face)"
+                    },
+                    {
+                        "Name": "dvuglav - iztochna (chernata) stena (peak dvuglav-eastern face)"
+                    },
+                    {
+                        "Name": "iglata iztochno ot dvuglav (the needle eastern to dvuglav)"
+                    },
+                    {
+                        "Name": "iglata - severozapadna strana"
+                    },
+                    {
+                        "Name": "iglata - zapadna stena (the needle - west face)"
+                    },
+                    {
+                        "Name": "portala - zapadna stena"
+                    },
+                    {
+                        "Name": "portala - yuzhna stena"
+                    },
+                    {
+                        "Name": "portala - severoiztochna strana"
+                    },
+                    {
+                        "Name": "iglata na monaha - zapadna stena"
+                    },
+                    {
+                        "Name": "shiletsa"
+                    },
+                    {
+                        "Name": "bkp"
+                    },
+                    {
+                        "Name": "orlovets - iztochna stena"
+                    },
+                    {
+                        "Name": "orlovets - severozapadna stena (north-west face)"
+                    },
+                    {
+                        "Name": "orlovets - yuzhna stena (south face)"
+                    }
+                ]
+            },
+            {
+                "Name": "malyovitsa i elenino ezero",
+                "Sectors": [
+                    {
+                        "Name": "eleni vrah - zapadna stena (western face)"
+                    },
+                    {
+                        "Name": "eleni vrah - yuzhna stena"
+                    },
+                    {
+                        "Name": "eleni vrah - yugoiztochna stena (south-eastern face)"
+                    },
+                    {
+                        "Name": "eleni vrah - iztochna stena (eastern face)"
+                    },
+                    {
+                        "Name": "malyovitsa ot iztok"
+                    },
+                    {
+                        "Name": "malyovitsa - severoiztochna stena (triagalnika) (maliovitza - north-east face)"
+                    },
+                    {
+                        "Name": "malyovitsa - severozapadna stena (peak maliovitza-north-west face)"
+                    },
+                    {
+                        "Name": "orleto - severna stena"
+                    },
+                    {
+                        "Name": "orleto - yuzhna stena"
+                    },
+                    {
+                        "Name": "malka malyovitsa - severna stena"
+                    },
+                    {
+                        "Name": "ushite - yugozapadna stena - lyava chast"
+                    },
+                    {
+                        "Name": "ushite - yugozapadna stena - dyasna chast"
+                    },
+                    {
+                        "Name": "dodov vrah - yuzhna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "kirilova polyana",
+                "Sectors": [
+                    {
+                        "Name": "mikro vets"
+                    },
+                    {
+                        "Name": "gorata"
+                    },
+                    {
+                        "Name": "kirilova polyana - dzhentalmenite"
+                    },
+                    {
+                        "Name": "kirilova polyana - tsigankata"
+                    },
+                    {
+                        "Name": "kamennata reka"
+                    },
+                    {
+                        "Name": "nishata"
+                    },
+                    {
+                        "Name": "mosta"
+                    },
+                    {
+                        "Name": "zdravets"
+                    },
+                    {
+                        "Name": "camp 4"
+                    },
+                    {
+                        "Name": "tunelite - koraba mayka"
+                    },
+                    {
+                        "Name": "tunelite - achko"
+                    },
+                    {
+                        "Name": "tunelite - tsirka"
+                    },
+                    {
+                        "Name": "tunelite - krachmarski boy"
+                    },
+                    {
+                        "Name": "tunelite - los mangalitos"
+                    },
+                    {
+                        "Name": "tunelite - muzikalna stalbitsa"
+                    },
+                    {
+                        "Name": "tunelite - star wars"
+                    },
+                    {
+                        "Name": "tunelite"
+                    },
+                    {
+                        "Name": "stenata"
+                    },
+                    {
+                        "Name": "neopredelen"
+                    },
+                    {
+                        "Name": "mechata skala"
+                    },
+                    {
+                        "Name": "bastiona"
+                    },
+                    {
+                        "Name": "voden chal"
+                    }
+                ]
+            },
+            {
+                "Name": "beli iskar",
+                "Sectors": [
+                    {
+                        "Name": "orlovi skali"
+                    },
+                    {
+                        "Name": "beli iskar - bouldari"
+                    },
+                    {
+                        "Name": "golyam skakavets - severna stena"
+                    },
+                    {
+                        "Name": "malak skakavets - iztochna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "levi iskar - mala tsarkva",
+                "Sectors": [
+                    {
+                        "Name": "gospodinkini skali"
+                    }
+                ]
+            },
+            {
+                "Name": "borovets",
+                "Sectors": [
+                    {
+                        "Name": "borovets - vodohvashtaneto"
+                    },
+                    {
+                        "Name": "borovets - skalata na imanyara"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha musala",
+                "Sectors": [
+                    {
+                        "Name": "musalenska igla"
+                    },
+                    {
+                        "Name": "trionite"
+                    },
+                    {
+                        "Name": "malka musala"
+                    },
+                    {
+                        "Name": "irechek - severna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha zavrachitsa",
+                "Sectors": [
+                    {
+                        "Name": "chernata skla (tsarnoto skale)"
+                    },
+                    {
+                        "Name": "mustachal - severna stena"
+                    },
+                    {
+                        "Name": "chengenechal - zapadna stena"
+                    },
+                    {
+                        "Name": "malak mancho (little mancho)"
+                    },
+                    {
+                        "Name": "iglata na mancho (manchos needle)"
+                    },
+                    {
+                        "Name": "ibar - iztochna stena"
+                    },
+                    {
+                        "Name": "iglata na ibar"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha granchar",
+                "Sectors": [
+                    {
+                        "Name": "kovach - iztochna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha ribni ezera",
+                "Sectors": []
+            },
+            {
+                "Name": "kostenets",
+                "Sectors": [
+                    {
+                        "Name": "nad rekata"
+                    },
+                    {
+                        "Name": "nad patya"
+                    },
+                    {
+                        "Name": "sokolovets"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pirin",
+        "Crags": [
+            {
+                "Name": "bansko",
+                "Sectors": [
+                    {
+                        "Name": "peshterite"
+                    }
+                ]
+            },
+            {
+                "Name": "vrah pirin (peak pirin)",
+                "Sectors": [
+                    {
+                        "Name": "vrah pirin (peak pirin)"
+                    },
+                    {
+                        "Name": "iglite na pleshki vrah (peak plechki)"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha yavorov (hut iavorov)",
+                "Sectors": [
+                    {
+                        "Name": "dautov vrah (daudovs peak)"
+                    },
+                    {
+                        "Name": "parvo stapalo (first step)"
+                    },
+                    {
+                        "Name": "vtoro stapalo (second step)"
+                    },
+                    {
+                        "Name": "treto stapalo (3th step)"
+                    },
+                    {
+                        "Name": "chetvarto stapalo (4th step)"
+                    },
+                    {
+                        "Name": "peto stapalo (5th step)"
+                    },
+                    {
+                        "Name": "shesto stapalo (6th step)"
+                    },
+                    {
+                        "Name": "sedmo stapalo (7th step)"
+                    },
+                    {
+                        "Name": "kamenititsa - severozapadna stena"
+                    },
+                    {
+                        "Name": "razlozhki suhodol - severozapadna stena"
+                    },
+                    {
+                        "Name": "bayavi dupki - severna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha vihren",
+                "Sectors": [
+                    {
+                        "Name": "koncheto"
+                    },
+                    {
+                        "Name": "koteshki chal"
+                    },
+                    {
+                        "Name": "chernomogilski chal"
+                    },
+                    {
+                        "Name": "vihren - severna stena"
+                    },
+                    {
+                        "Name": "vihren - yuzhna strana"
+                    },
+                    {
+                        "Name": "hvoynati vrah (chvoinati peak)"
+                    },
+                    {
+                        "Name": "spanopolski chukar"
+                    },
+                    {
+                        "Name": "banderishki chukar"
+                    },
+                    {
+                        "Name": "bashliyski chukar (atmegdan)"
+                    },
+                    {
+                        "Name": "vasilashki chukar"
+                    },
+                    {
+                        "Name": "todorin vrah - zapadna strana"
+                    },
+                    {
+                        "Name": "do hizha vihren"
+                    },
+                    {
+                        "Name": "sektor todorka"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha sinanitsa",
+                "Sectors": [
+                    {
+                        "Name": "georgiytsa"
+                    },
+                    {
+                        "Name": "momin vrah (maiden peak)"
+                    },
+                    {
+                        "Name": "sinanitsa"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha demyanitsa",
+                "Sectors": [
+                    {
+                        "Name": "dzhangal (peak djengal)"
+                    },
+                    {
+                        "Name": "strazhite (peak watchmans)"
+                    }
+                ]
+            },
+            {
+                "Name": "zaslon tevno ezero (tevno lake)",
+                "Sectors": [
+                    {
+                        "Name": "kamenitsa (peak kamenitza)"
+                    }
+                ]
+            },
+            {
+                "Name": "hizha begovitsa",
+                "Sectors": []
+            }
+        ]
+    },
+    {
+        "Name": "sredna stara planina",
+        "Crags": [
+            {
+                "Name": "kozya stena",
+                "Sectors": [
+                    {
+                        "Name": "kozya stena - severozapadna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "ambaritsa",
+                "Sectors": [
+                    {
+                        "Name": "levski (ambaritsa)"
+                    },
+                    {
+                        "Name": "golyam kupen - severna strana"
+                    },
+                    {
+                        "Name": "golyam krastets - severna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "rayskite skali",
+                "Sectors": [
+                    {
+                        "Name": "vlyavo ot rayskoto praskalo"
+                    },
+                    {
+                        "Name": "vdyasno ot rayskoto praskalo"
+                    },
+                    {
+                        "Name": "rayskite skali - iztochno krilo"
+                    },
+                    {
+                        "Name": "paradzhika ot yug"
+                    }
+                ]
+            },
+            {
+                "Name": "severen dzhendem",
+                "Sectors": [
+                    {
+                        "Name": "mihova planina"
+                    },
+                    {
+                        "Name": "tsentralen rab"
+                    },
+                    {
+                        "Name": "blago"
+                    },
+                    {
+                        "Name": "varna"
+                    },
+                    {
+                        "Name": "vodopadite (waterfalls)"
+                    },
+                    {
+                        "Name": "vodnite dupki"
+                    },
+                    {
+                        "Name": "sarakaya - severna strana"
+                    }
+                ]
+            },
+            {
+                "Name": "severen dzhendem - iztochna chast",
+                "Sectors": [
+                    {
+                        "Name": "maragidik - severna strana"
+                    },
+                    {
+                        "Name": "vidimsko praskalo"
+                    },
+                    {
+                        "Name": "paradzhik - severna stena"
+                    }
+                ]
+            },
+            {
+                "Name": "triglav",
+                "Sectors": [
+                    {
+                        "Name": "malka kozya stena - iztochna stena"
+                    },
+                    {
+                        "Name": "kademliysko praskalo"
+                    },
+                    {
+                        "Name": "babsko praskalo"
+                    },
+                    {
+                        "Name": "mazalat - severna stena"
+                    },
+                    {
+                        "Name": "triglav - severna stena"
+                    },
+                    {
+                        "Name": "malak kademlia - severna strana"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "vratsa",
+        "Crags": [
+            {
+                "Name": "stegite",
+                "Sectors": [
+                    {
+                        "Name": "vodopadat"
+                    },
+                    {
+                        "Name": "stegite 2"
+                    },
+                    {
+                        "Name": "stegite 1"
+                    }
+                ]
+            },
+            {
+                "Name": "malkata dupka (the little cave)",
+                "Sectors": [
+                    {
+                        "Name": "gorna chast"
+                    },
+                    {
+                        "Name": "sredna chast (small hole)"
+                    },
+                    {
+                        "Name": "dyasna chast"
+                    }
+                ]
+            },
+            {
+                "Name": "golyamata dupka (the big cave)",
+                "Sectors": [
+                    {
+                        "Name": "lyava chast (big hole - left side)"
+                    },
+                    {
+                        "Name": "dyasna chast"
+                    }
+                ]
+            },
+            {
+                "Name": "zgorigradski rayon (zorigrad region)",
+                "Sectors": [
+                    {
+                        "Name": "zgorigradska stena (zgorigrad wall)"
+                    }
+                ]
+            },
+            {
+                "Name": "prohodat vrattsata (vratsata gorge)",
+                "Sectors": [
+                    {
+                        "Name": "reznyovete"
+                    },
+                    {
+                        "Name": "meduza"
+                    },
+                    {
+                        "Name": "bezengi"
+                    },
+                    {
+                        "Name": "plochata na bezengi (the bezengi slab)"
+                    },
+                    {
+                        "Name": "mezhdu zapaden i tsentralen rab (between west and cetral ridges)"
+                    },
+                    {
+                        "Name": "golyamata vrattsa (big vrattsa)"
+                    },
+                    {
+                        "Name": "malkata vrattsa (little vrattsa)"
+                    },
+                    {
+                        "Name": "iztochna strana na tsentralen rab (east face of central ridge)"
+                    },
+                    {
+                        "Name": "alpiyski dom"
+                    }
+                ]
+            },
+            {
+                "Name": "tsentralna stena (central wall)",
+                "Sectors": [
+                    {
+                        "Name": "zapadna chast (west part)"
+                    },
+                    {
+                        "Name": "tsentralna chast (central part)"
+                    },
+                    {
+                        "Name": "ogledalata (the mirrors)"
+                    },
+                    {
+                        "Name": "iztochna chast (east part)"
+                    },
+                    {
+                        "Name": "hergiani"
+                    }
+                ]
+            },
+            {
+                "Name": "dolen tsentralen rayon (down central region)",
+                "Sectors": [
+                    {
+                        "Name": "veslets"
+                    },
+                    {
+                        "Name": "urvich"
+                    },
+                    {
+                        "Name": "ivan vazov"
+                    },
+                    {
+                        "Name": "kosmonavti (astronauts)"
+                    },
+                    {
+                        "Name": "zabat (the tooth)"
+                    },
+                    {
+                        "Name": "chayka"
+                    },
+                    {
+                        "Name": "dupkite (the holes)"
+                    },
+                    {
+                        "Name": "aleko"
+                    },
+                    {
+                        "Name": "aleko goren (aleko upper)"
+                    },
+                    {
+                        "Name": "aleko 2"
+                    },
+                    {
+                        "Name": "spartak"
+                    }
+                ]
+            },
+            {
+                "Name": "iztochen rayon (east region)",
+                "Sectors": [
+                    {
+                        "Name": "goren iztochen (upper east)"
+                    },
+                    {
+                        "Name": "petimata ot hindukush (the five from the hidukush)"
+                    },
+                    {
+                        "Name": "vif"
+                    },
+                    {
+                        "Name": "rabat nad grada (ridge above the town)"
+                    },
+                    {
+                        "Name": "dolen iztochen (down eastern)"
+                    },
+                    {
+                        "Name": "iztochna stena (eastern wall)"
+                    },
+                    {
+                        "Name": "kemera"
+                    }
+                ]
+            },
+            {
+                "Name": "grazhdanska zashtita",
+                "Sectors": [
+                    {
+                        "Name": "igla nad grazhdanska zashtita (the pinnacle above grazhdanska zashtita)"
+                    },
+                    {
+                        "Name": "koridorite (the corridors)"
+                    }
+                ]
+            },
+            {
+                "Name": "pavolche",
+                "Sectors": [
+                    {
+                        "Name": "sector hell"
+                    },
+                    {
+                        "Name": "nishata"
+                    }
+                ]
+            },
+            {
+                "Name": "shopkata",
+                "Sectors": []
+            },
+            {
+                "Name": "manastirski dol",
+                "Sectors": []
+            },
+            {
+                "Name": "medkovets",
+                "Sectors": []
+            },
+            {
+                "Name": "voevodin dol (skaklya)",
+                "Sectors": [
+                    {
+                        "Name": "skaklya"
+                    }
+                ]
+            },
+            {
+                "Name": "borov kamak",
+                "Sectors": [
+                    {
+                        "Name": "borov kamak"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "lakatnik",
+        "Crags": [
+            {
+                "Name": "gubislav",
+                "Sectors": [
+                    {
+                        "Name": "gubislav - nadpisite"
+                    },
+                    {
+                        "Name": "gubislav - plochite"
+                    },
+                    {
+                        "Name": "gubislav - golyamata nisha"
+                    },
+                    {
+                        "Name": "gubislav - iztochen"
+                    }
+                ]
+            },
+            {
+                "Name": "vrazhite dupki",
+                "Sectors": [
+                    {
+                        "Name": "idealen za onsayt"
+                    },
+                    {
+                        "Name": "prikazkata"
+                    },
+                    {
+                        "Name": "nostradamus"
+                    },
+                    {
+                        "Name": "nirvana"
+                    },
+                    {
+                        "Name": "yavkata"
+                    },
+                    {
+                        "Name": "veseliat gringo (dzhakpot)"
+                    },
+                    {
+                        "Name": "petak 13-ti"
+                    },
+                    {
+                        "Name": "altius"
+                    },
+                    {
+                        "Name": "bachvata"
+                    },
+                    {
+                        "Name": "izmerenie h"
+                    },
+                    {
+                        "Name": "peshterata"
+                    },
+                    {
+                        "Name": "vnimanie (easy)"
+                    },
+                    {
+                        "Name": "botor"
+                    },
+                    {
+                        "Name": "ottsepeniat kamak"
+                    },
+                    {
+                        "Name": "chin-chin"
+                    },
+                    {
+                        "Name": "choko i boko"
+                    },
+                    {
+                        "Name": "king size"
+                    },
+                    {
+                        "Name": "traversat na chorapkite"
+                    },
+                    {
+                        "Name": "vagner"
+                    },
+                    {
+                        "Name": "vsyaka nedelya"
+                    },
+                    {
+                        "Name": "peshterata"
+                    }
+                ]
+            },
+            {
+                "Name": "petrenski dol",
+                "Sectors": [
+                    {
+                        "Name": "siniat vir"
+                    },
+                    {
+                        "Name": "iglata na kaloyan"
+                    }
+                ]
+            },
+            {
+                "Name": "vodenitsata",
+                "Sectors": [
+                    {
+                        "Name": "vodenitsata - lyavo"
+                    },
+                    {
+                        "Name": "vodenitsata"
+                    }
+                ]
+            },
+            {
+                "Name": "alpiyska polyana (alpine meadow)",
+                "Sectors": [
+                    {
+                        "Name": "alpiyska polyana - bouldari"
+                    },
+                    {
+                        "Name": "alpiyska polyana (alpine meadow)"
+                    },
+                    {
+                        "Name": "chernata stena (the black wall)"
+                    },
+                    {
+                        "Name": "lokomotiv (locomotive)"
+                    }
+                ]
+            },
+            {
+                "Name": "krasta (the cross)",
+                "Sectors": [
+                    {
+                        "Name": "krasta (the cross)"
+                    },
+                    {
+                        "Name": "septemvri (september)"
+                    }
+                ]
+            },
+            {
+                "Name": "opletnya",
+                "Sectors": [
+                    {
+                        "Name": "opletnya tsentralen sektor"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "bozhenitsa",
+        "Crags": [
+            {
+                "Name": "bozhenitsa - pod polyanata (under the meadow)",
+                "Sectors": [
+                    {
+                        "Name": "peshterata (lisichkata)"
+                    },
+                    {
+                        "Name": "lyavo krilo (ptp)"
+                    },
+                    {
+                        "Name": "nishata sas skarite (dzhurasik park)"
+                    },
+                    {
+                        "Name": "plochata"
+                    },
+                    {
+                        "Name": "srednata nisha - mokroto"
+                    },
+                    {
+                        "Name": "dolnata zemya"
+                    },
+                    {
+                        "Name": "dyasnata nisha"
+                    }
+                ]
+            },
+            {
+                "Name": "bozhenitsa - bouldari",
+                "Sectors": [
+                    {
+                        "Name": "krepostta - bouldari (the fortress)"
+                    },
+                    {
+                        "Name": "pod polyanata - bouldari"
+                    }
+                ]
+            },
+            {
+                "Name": "bozhenitsa - krepostta (the fortress)",
+                "Sectors": [
+                    {
+                        "Name": "krepostta (the fortress)"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "karlukovski prolom",
+        "Crags": [
+            {
+                "Name": "karlukovo - prohodna",
+                "Sectors": [
+                    {
+                        "Name": "pop folk (iztochen vhod - lyava strana)"
+                    },
+                    {
+                        "Name": "hip hop (iztochen vhod - dyasna strana)"
+                    },
+                    {
+                        "Name": "black metal (vhodna chast - dyasna strana)"
+                    },
+                    {
+                        "Name": "nepobedim (sredna chast - dyasna strana)"
+                    },
+                    {
+                        "Name": "kak shte gi stignem (sredna chast - lyava strana)"
+                    },
+                    {
+                        "Name": "el choro (zapaden vhod - lyava strana)"
+                    },
+                    {
+                        "Name": "sever (zapaden vhod - dyasna strana)"
+                    },
+                    {
+                        "Name": "podarak"
+                    }
+                ]
+            },
+            {
+                "Name": "karlukovo - karierata",
+                "Sectors": [
+                    {
+                        "Name": "karierata"
+                    }
+                ]
+            },
+            {
+                "Name": "kunino",
+                "Sectors": [
+                    {
+                        "Name": "malkoto kashe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "teteven",
+        "Crags": [
+            {
+                "Name": "sinyoto kolelo",
+                "Sectors": [
+                    {
+                        "Name": "sinyoto kolelo"
+                    }
+                ]
+            },
+            {
+                "Name": "ribaritsa",
+                "Sectors": [
+                    {
+                        "Name": "sektorat s chervata (the sector with tufas)"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "sofia i okolnosti",
+        "Crags": [
+            {
+                "Name": "beledie han (beledie inn)",
+                "Sectors": [
+                    {
+                        "Name": "lyulyaka (lyav sektor)"
+                    },
+                    {
+                        "Name": "halkata (prozoretsa) (the ring)"
+                    },
+                    {
+                        "Name": "haydushkata peshtera (haidouk cave)"
+                    },
+                    {
+                        "Name": "bachvata (the butt)"
+                    },
+                    {
+                        "Name": "terziyskata peshtera (zaslona)"
+                    },
+                    {
+                        "Name": "desen sektor"
+                    }
+                ]
+            },
+            {
+                "Name": "gurgulyat - petlyuka",
+                "Sectors": [
+                    {
+                        "Name": "malkiat petlyuk"
+                    },
+                    {
+                        "Name": "dolniat petlyuk"
+                    },
+                    {
+                        "Name": "golemiat petlyuk"
+                    }
+                ]
+            },
+            {
+                "Name": "vrabcha",
+                "Sectors": [
+                    {
+                        "Name": "vrabcha skritiat"
+                    },
+                    {
+                        "Name": "vrabcha kulata"
+                    },
+                    {
+                        "Name": "vrabcha plochata"
+                    },
+                    {
+                        "Name": "vrabcha gorniat"
+                    },
+                    {
+                        "Name": "vrabcha terasata"
+                    },
+                    {
+                        "Name": "vrabcha kanarata"
+                    },
+                    {
+                        "Name": "vrabcha kanyona"
+                    },
+                    {
+                        "Name": "vrabcha nadvesite"
+                    }
+                ]
+            },
+            {
+                "Name": "transkoto zhdrelo - erma",
+                "Sectors": [
+                    {
+                        "Name": "transko zhdrelo - lyav masiv"
+                    },
+                    {
+                        "Name": "transko zhdrelo - desen masiv"
+                    }
+                ]
+            },
+            {
+                "Name": "poganovsko zhdrelo",
+                "Sectors": [
+                    {
+                        "Name": "poganovsko zhdrelo"
+                    }
+                ]
+            },
+            {
+                "Name": "kalotina",
+                "Sectors": [
+                    {
+                        "Name": "kalotina - zaba"
+                    },
+                    {
+                        "Name": "kalotina - sektor 2"
+                    }
+                ]
+            },
+            {
+                "Name": "komshtitsa",
+                "Sectors": [
+                    {
+                        "Name": "proshtapulnik"
+                    },
+                    {
+                        "Name": "malkata plocha"
+                    },
+                    {
+                        "Name": "televizorat"
+                    },
+                    {
+                        "Name": "golyamata plocha"
+                    },
+                    {
+                        "Name": "bay damyan"
+                    },
+                    {
+                        "Name": "mis godech"
+                    }
+                ]
+            },
+            {
+                "Name": "gintsi",
+                "Sectors": [
+                    {
+                        "Name": "diagonalat"
+                    },
+                    {
+                        "Name": "maniak"
+                    },
+                    {
+                        "Name": "tsentralen"
+                    },
+                    {
+                        "Name": "nadvesenata tsepka 1"
+                    },
+                    {
+                        "Name": "nadvesenata tsepka 2"
+                    },
+                    {
+                        "Name": "plochite"
+                    },
+                    {
+                        "Name": "litseto"
+                    },
+                    {
+                        "Name": "alfa"
+                    },
+                    {
+                        "Name": "krastat"
+                    },
+                    {
+                        "Name": "nad kashtite"
+                    }
+                ]
+            },
+            {
+                "Name": "breze",
+                "Sectors": [
+                    {
+                        "Name": "nov - daleche vlyavo ot nishata"
+                    },
+                    {
+                        "Name": "poet s kitara"
+                    },
+                    {
+                        "Name": "nishata"
+                    },
+                    {
+                        "Name": "plochata"
+                    },
+                    {
+                        "Name": "nad chuchurite"
+                    },
+                    {
+                        "Name": "nov - kam dobravitsa"
+                    }
+                ]
+            },
+            {
+                "Name": "dobravishka skaklya",
+                "Sectors": [
+                    {
+                        "Name": "vlyavo ot vodopada"
+                    },
+                    {
+                        "Name": "tavanite"
+                    },
+                    {
+                        "Name": "vdyasno ot vodopada"
+                    }
+                ]
+            },
+            {
+                "Name": "bov - skaklya",
+                "Sectors": [
+                    {
+                        "Name": "skaklya"
+                    },
+                    {
+                        "Name": "skaklya - dolen venets"
+                    }
+                ]
+            },
+            {
+                "Name": "bov - visokia kamak",
+                "Sectors": [
+                    {
+                        "Name": "triagalnika"
+                    }
+                ]
+            },
+            {
+                "Name": "ritlite",
+                "Sectors": []
+            },
+            {
+                "Name": "hizha murgana",
+                "Sectors": [
+                    {
+                        "Name": "prikazka"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "veliko tarnovo i okolnosti",
+        "Crags": [
+            {
+                "Name": "sveta troitsa (st. trinity)",
+                "Sectors": [
+                    {
+                        "Name": "sveta troitsa - a"
+                    },
+                    {
+                        "Name": "sveta troitsa - b"
+                    },
+                    {
+                        "Name": "sveta troitsa - c (peshterata)"
+                    },
+                    {
+                        "Name": "sveta troitsa - d"
+                    },
+                    {
+                        "Name": "sveta troitsa - e"
+                    },
+                    {
+                        "Name": "sveta troitsa - f"
+                    },
+                    {
+                        "Name": "sveta troitsa - g"
+                    }
+                ]
+            },
+            {
+                "Name": "usteto zapad (s kashtichkata)",
+                "Sectors": [
+                    {
+                        "Name": "usteto zapad - a"
+                    },
+                    {
+                        "Name": "usteto zapad - b"
+                    }
+                ]
+            },
+            {
+                "Name": "usteto iztok",
+                "Sectors": [
+                    {
+                        "Name": "usteto iztok - a"
+                    },
+                    {
+                        "Name": "usteto iztok - b"
+                    }
+                ]
+            },
+            {
+                "Name": "arbanasi",
+                "Sectors": [
+                    {
+                        "Name": "arbansi"
+                    }
+                ]
+            },
+            {
+                "Name": "dryanovski manastir",
+                "Sectors": [
+                    {
+                        "Name": "mona lisa"
+                    },
+                    {
+                        "Name": "nishata"
+                    },
+                    {
+                        "Name": "nad vira"
+                    },
+                    {
+                        "Name": "do rekata (stalbata)"
+                    },
+                    {
+                        "Name": "boruna"
+                    }
+                ]
+            },
+            {
+                "Name": "gabrovo - ustieto",
+                "Sectors": [
+                    {
+                        "Name": "ustieto lyavo (star sektor)"
+                    },
+                    {
+                        "Name": "ustieto dyasno (nov sektor)"
+                    }
+                ]
+            },
+            {
+                "Name": "vitata stena",
+                "Sectors": [
+                    {
+                        "Name": "vitata stena"
+                    }
+                ]
+            },
+            {
+                "Name": "veliko tarnovo - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "v universiteta"
+                    },
+                    {
+                        "Name": "v dvorets na kulturata i sporta \u0060vasil levski\u0060"
+                    },
+                    {
+                        "Name": "v stroitelnia tehnikum \u0060a. popov\u0060"
+                    }
+                ]
+            },
+            {
+                "Name": "kilifarevo - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "sportna zala"
+                    }
+                ]
+            },
+            {
+                "Name": "elena - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "v sportnia salon na sou \u0060ivan momchilov\u0060"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "plovdiv i okolnosti",
+        "Crags": [
+            {
+                "Name": "plovdiv tepetata",
+                "Sectors": [
+                    {
+                        "Name": "ponedelnik pazara"
+                    },
+                    {
+                        "Name": "zad teatara"
+                    },
+                    {
+                        "Name": "alyosha"
+                    }
+                ]
+            },
+            {
+                "Name": "bryanovshtitsa",
+                "Sectors": [
+                    {
+                        "Name": "iglata"
+                    },
+                    {
+                        "Name": "bryanovshtitsa - lyavo"
+                    },
+                    {
+                        "Name": "bryanovshtitsa - zaslona"
+                    },
+                    {
+                        "Name": "tsepkite"
+                    }
+                ]
+            },
+            {
+                "Name": "tamrash",
+                "Sectors": [
+                    {
+                        "Name": "vinkelite"
+                    },
+                    {
+                        "Name": "zapad"
+                    },
+                    {
+                        "Name": "plochite"
+                    }
+                ]
+            },
+            {
+                "Name": "slaveevi skali",
+                "Sectors": [
+                    {
+                        "Name": "slaveevi skali"
+                    }
+                ]
+            },
+            {
+                "Name": "karlovo stara reka",
+                "Sectors": [
+                    {
+                        "Name": "vazrazhdane"
+                    },
+                    {
+                        "Name": "vlyavo ot sipeya"
+                    },
+                    {
+                        "Name": "plochata s prodanov"
+                    },
+                    {
+                        "Name": "pod zapaden masiv"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "ruse i okolnosti",
+        "Crags": [
+            {
+                "Name": "ruse kulata",
+                "Sectors": [
+                    {
+                        "Name": "kvartal kulata"
+                    }
+                ]
+            },
+            {
+                "Name": "basarbovo",
+                "Sectors": [
+                    {
+                        "Name": "vlyavo ot tseha"
+                    },
+                    {
+                        "Name": "hizha alpinist"
+                    },
+                    {
+                        "Name": "peshterite"
+                    }
+                ]
+            },
+            {
+                "Name": "koshov",
+                "Sectors": [
+                    {
+                        "Name": "koshov sever"
+                    },
+                    {
+                        "Name": "koshov sever - predi mosta"
+                    },
+                    {
+                        "Name": "milkovata kashta"
+                    },
+                    {
+                        "Name": "koshov yug - sled mosta"
+                    },
+                    {
+                        "Name": "koshov yug"
+                    }
+                ]
+            },
+            {
+                "Name": "tabachka",
+                "Sectors": [
+                    {
+                        "Name": "predi seloto sreshtu mosta"
+                    },
+                    {
+                        "Name": "predi seloto do rekata"
+                    },
+                    {
+                        "Name": "sled seloto a (goren sloy)"
+                    },
+                    {
+                        "Name": "sled seloto b (lyav)"
+                    },
+                    {
+                        "Name": "sled seloto c (sreden)"
+                    },
+                    {
+                        "Name": "sled seloto d (boy na ohlyuvi)"
+                    },
+                    {
+                        "Name": "sled seloto e (tornado)"
+                    }
+                ]
+            },
+            {
+                "Name": "shirokovo",
+                "Sectors": [
+                    {
+                        "Name": "sektor a"
+                    },
+                    {
+                        "Name": "sektor b"
+                    }
+                ]
+            },
+            {
+                "Name": "pepelina",
+                "Sectors": [
+                    {
+                        "Name": "pepelina nishata"
+                    },
+                    {
+                        "Name": "pepelina tsentralen"
+                    }
+                ]
+            },
+            {
+                "Name": "ruse - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "ru angel kanchev"
+                    },
+                    {
+                        "Name": "ou hristo smirnenski"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "pleven i okolnosti",
+        "Crags": [
+            {
+                "Name": "kaylaka",
+                "Sectors": [
+                    {
+                        "Name": "parashutnata kula"
+                    },
+                    {
+                        "Name": "hotel kaylaka"
+                    },
+                    {
+                        "Name": "okolo kaminata"
+                    },
+                    {
+                        "Name": "vinarska izba"
+                    },
+                    {
+                        "Name": "mezhdu dvata yazovira"
+                    }
+                ]
+            },
+            {
+                "Name": "pleven - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "v sportnata zala na meditsinskia universitet"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "lovech i okolnosti",
+        "Crags": [
+            {
+                "Name": "lednitsata",
+                "Sectors": [
+                    {
+                        "Name": "lednitsata"
+                    }
+                ]
+            },
+            {
+                "Name": "lovech bouldar rayon",
+                "Sectors": [
+                    {
+                        "Name": "bouldar obekt 1"
+                    },
+                    {
+                        "Name": "bouldar obekt 2"
+                    },
+                    {
+                        "Name": "bouldar obekt 3"
+                    }
+                ]
+            },
+            {
+                "Name": "lovech chervenite skali",
+                "Sectors": [
+                    {
+                        "Name": "chervenite skali - goren sloy"
+                    },
+                    {
+                        "Name": "chervenite skali - dolen sloy"
+                    },
+                    {
+                        "Name": "chervenite skali - dolen sloy dyasno"
+                    }
+                ]
+            },
+            {
+                "Name": "bezhanovo",
+                "Sectors": [
+                    {
+                        "Name": "bezhanovo - nadvesite"
+                    }
+                ]
+            },
+            {
+                "Name": "krushuna",
+                "Sectors": [
+                    {
+                        "Name": "krushuna"
+                    }
+                ]
+            },
+            {
+                "Name": "devetashka peshtera",
+                "Sectors": []
+            }
+        ]
+    },
+    {
+        "Name": "shumen i okolnosti",
+        "Crags": [
+            {
+                "Name": "divdyadovo",
+                "Sectors": [
+                    {
+                        "Name": "divdyadovo"
+                    }
+                ]
+            },
+            {
+                "Name": "dyavolskoto prohodche",
+                "Sectors": []
+            },
+            {
+                "Name": "madarski skali",
+                "Sectors": []
+            }
+        ]
+    },
+    {
+        "Name": "varna i okolnosti",
+        "Crags": [
+            {
+                "Name": "chudnite skali",
+                "Sectors": [
+                    {
+                        "Name": "goren lyav sektor"
+                    },
+                    {
+                        "Name": "tsentralen sektor"
+                    }
+                ]
+            },
+            {
+                "Name": "manastira",
+                "Sectors": [
+                    {
+                        "Name": "manastira - zapadna chast"
+                    }
+                ]
+            },
+            {
+                "Name": "provadia",
+                "Sectors": [
+                    {
+                        "Name": "provadia - mahalata"
+                    },
+                    {
+                        "Name": "provadia - dupkite"
+                    }
+                ]
+            },
+            {
+                "Name": "karapelit",
+                "Sectors": [
+                    {
+                        "Name": "karapelit zapaden sektor"
+                    },
+                    {
+                        "Name": "karapelit iztochen sektor"
+                    }
+                ]
+            },
+            {
+                "Name": "varna - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "v sportna zala \u0060cherno more\u0060"
+                    },
+                    {
+                        "Name": "boldar zala \u0022garazha\u0022"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "sliven i okolnosti",
+        "Crags": [
+            {
+                "Name": "dolapite",
+                "Sectors": [
+                    {
+                        "Name": "nachinaesht"
+                    },
+                    {
+                        "Name": "sever"
+                    }
+                ]
+            },
+            {
+                "Name": "mochurite",
+                "Sectors": [
+                    {
+                        "Name": "kominite -  mochurite"
+                    },
+                    {
+                        "Name": "orlovo gnezdo"
+                    },
+                    {
+                        "Name": "iglata"
+                    },
+                    {
+                        "Name": "portala"
+                    }
+                ]
+            },
+            {
+                "Name": "karandila",
+                "Sectors": [
+                    {
+                        "Name": "golyama chatalka"
+                    },
+                    {
+                        "Name": "ritlite"
+                    },
+                    {
+                        "Name": "malka chatalka"
+                    },
+                    {
+                        "Name": "lomskata skala"
+                    },
+                    {
+                        "Name": "zhabata"
+                    },
+                    {
+                        "Name": "pioner"
+                    },
+                    {
+                        "Name": "ushite"
+                    },
+                    {
+                        "Name": "kaleto"
+                    },
+                    {
+                        "Name": "iglite"
+                    },
+                    {
+                        "Name": "zloto dere /zlia dol/"
+                    }
+                ]
+            },
+            {
+                "Name": "karandila - iztochni skali",
+                "Sectors": [
+                    {
+                        "Name": "goren iztochen"
+                    },
+                    {
+                        "Name": "dolen iztochen"
+                    }
+                ]
+            },
+            {
+                "Name": "dalboki dol",
+                "Sectors": [
+                    {
+                        "Name": "zapaden sektor"
+                    },
+                    {
+                        "Name": "iztochen sektor"
+                    }
+                ]
+            },
+            {
+                "Name": "sliven - izkustveni steni",
+                "Sectors": [
+                    {
+                        "Name": "stenata ot festivala"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "stara zagora i okolnosti",
+        "Crags": [
+            {
+                "Name": "milkini skali",
+                "Sectors": [
+                    {
+                        "Name": "milkini skali ot yug"
+                    }
+                ]
+            },
+            {
+                "Name": "eninsko zhdrelo",
+                "Sectors": [
+                    {
+                        "Name": "eninsko zhdrelo - plochata"
+                    }
+                ]
+            },
+            {
+                "Name": "maglizhki skali",
+                "Sectors": []
+            }
+        ]
+    },
+    {
+        "Name": "kamen bryag i tyulenovo (stony beach)",
+        "Crags": [
+            {
+                "Name": "kamen bryag - yaylata",
+                "Sectors": [
+                    {
+                        "Name": "sektor a (plazha)"
+                    },
+                    {
+                        "Name": "sektor b (a sega nakade)"
+                    },
+                    {
+                        "Name": "sektor c (kris kros)"
+                    },
+                    {
+                        "Name": "sektor d (jump)"
+                    },
+                    {
+                        "Name": "sektor e - bouldari (sector e - boulders)"
+                    },
+                    {
+                        "Name": "sektor f - dolnata zemya - turove"
+                    }
+                ]
+            },
+            {
+                "Name": "tyulenovo",
+                "Sectors": [
+                    {
+                        "Name": "sektor a (plazha)"
+                    },
+                    {
+                        "Name": "sektor a1 (2002)"
+                    },
+                    {
+                        "Name": "sektor b (skalnia most)"
+                    },
+                    {
+                        "Name": "sektor c (utopia, psycho)"
+                    },
+                    {
+                        "Name": "sektor c1 (zemlemoria)"
+                    },
+                    {
+                        "Name": "sektor d (hiena cave)"
+                    },
+                    {
+                        "Name": "sektor e (tyulenovata peshtera)"
+                    },
+                    {
+                        "Name": "sektor f (funcky jump)"
+                    },
+                    {
+                        "Name": "sektor f1 (famozo)"
+                    },
+                    {
+                        "Name": "sektor g (rezervata na talasamite)"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "koprivshtitsa",
+        "Crags": [
+            {
+                "Name": "koprivshtitsa",
+                "Sectors": [
+                    {
+                        "Name": "dyulfera"
+                    },
+                    {
+                        "Name": "revolyutsia"
+                    },
+                    {
+                        "Name": "arenata"
+                    },
+                    {
+                        "Name": "genotsid"
+                    },
+                    {
+                        "Name": "klasika"
+                    },
+                    {
+                        "Name": "mechkite"
+                    },
+                    {
+                        "Name": "karakondzhul"
+                    }
+                ]
+            },
+            {
+                "Name": "strelcha",
+                "Sectors": [
+                    {
+                        "Name": "herpes zloster"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "smolyan i okolnosti",
+        "Crags": [
+            {
+                "Name": "nevyastata - turluka",
+                "Sectors": [
+                    {
+                        "Name": "turluka"
+                    },
+                    {
+                        "Name": "stena za izkustveno katerene"
+                    }
+                ]
+            },
+            {
+                "Name": "sredok",
+                "Sectors": [
+                    {
+                        "Name": "ledenata skala"
+                    }
+                ]
+            },
+            {
+                "Name": "trigrad",
+                "Sectors": []
+            }
+        ]
+    },
+    {
+        "Name": "belogradchik (belogradchik sandstone area)",
+        "Crags": [
+            {
+                "Name": "belogradchik dabravka",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik chiflik",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik izvos 1",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik izvos 2",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik sabubin kamak",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik borovitsa",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik falkovets",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik gyurkich",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik sever",
+                "Sectors": []
+            },
+            {
+                "Name": "belogradchik gardata",
+                "Sectors": []
+            }
+        ]
+    },
+    {
+        "Name": "blagoevgrad i okolnosti",
+        "Crags": [
+            {
+                "Name": "blagoevgrad - bachinovo",
+                "Sectors": [
+                    {
+                        "Name": "blagoevgradski kamak (blagoevgrad stone)"
+                    }
+                ]
+            }
+        ]
+    }
+]

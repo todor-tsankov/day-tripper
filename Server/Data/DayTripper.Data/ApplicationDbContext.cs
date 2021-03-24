@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using DayTripper.Data.Common.Models;
 using DayTripper.Data.Models;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,20 @@ namespace DayTripper.Data
             : base(options)
         {
         }
+
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Area> Areas { get; set; }
+
+        public DbSet<Crag> Crags { get; set; }
+
+        public DbSet<Sector> Sectors { get; set; }
+
+        public DbSet<Trip> Trips { get; set; }
+
+        public DbSet<UserTrip> UserTrips { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

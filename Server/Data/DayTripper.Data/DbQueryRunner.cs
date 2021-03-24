@@ -1,12 +1,12 @@
-﻿namespace DayTripper.Data
+﻿using System;
+using System.Threading.Tasks;
+
+using DayTripper.Data.Common;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace DayTripper.Data
 {
-    using System;
-    using System.Threading.Tasks;
-
-    using DayTripper.Data.Common;
-
-    using Microsoft.EntityFrameworkCore;
-
     public class DbQueryRunner : IDbQueryRunner
     {
         public DbQueryRunner(ApplicationDbContext context)

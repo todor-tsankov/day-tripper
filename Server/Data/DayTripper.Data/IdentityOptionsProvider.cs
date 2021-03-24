@@ -1,7 +1,7 @@
-﻿namespace DayTripper.Data
-{
-    using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
+namespace DayTripper.Data
+{
     public static class IdentityOptionsProvider
     {
         public static void GetIdentityOptions(IdentityOptions options)

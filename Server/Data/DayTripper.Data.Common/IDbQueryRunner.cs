@@ -1,8 +1,8 @@
-﻿namespace DayTripper.Data.Common
-{
-    using System;
-    using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
+namespace DayTripper.Data.Common
+{
     public interface IDbQueryRunner : IDisposable
     {
         Task RunQueryAsync(string query, params object[] parameters);

@@ -1,11 +1,11 @@
-﻿namespace DayTripper.Data
+﻿using System.Linq;
+
+using DayTripper.Data.Common.Models;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace DayTripper.Data
 {
-    using System.Linq;
-
-    using DayTripper.Data.Common.Models;
-
-    using Microsoft.EntityFrameworkCore;
-
     internal static class EntityIndexesConfiguration
     {
         public static void Configure(ModelBuilder modelBuilder)

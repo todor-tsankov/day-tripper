@@ -1,15 +1,15 @@
-﻿namespace DayTripper.Data.Seeding
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+
+using DayTripper.Common;
+using DayTripper.Data.Models;
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace DayTripper.Data.Seeding
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using DayTripper.Common;
-    using DayTripper.Data.Models;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
-
     internal class RolesSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
