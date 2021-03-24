@@ -45,14 +45,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Seeding\Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Seeding\Data\areas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Seeding\Data\bg.json">
+    <None Update="Seeding\Data\cities.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -4,6 +4,7 @@ using DayTripper.Data.Common.Repositories;
 using DayTripper.Data.Models;
 using DayTripper.Data.Repositories;
 using DayTripper.Data.Seeding;
+using DayTripper.Services.Data;
 using DayTripper.Services.Mapping;
 using DayTripper.Services.Messaging;
 using DayTripper.Web.ViewModels;
@@ -56,6 +57,13 @@ namespace DayTripper.Web
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             services.AddTransient<IEmailSender>(_ => new NullMessageSender());
+
+            // Data services
+            services.AddTransient<IAreasService, AreasService>();
+            services.AddTransient<ICitiesService, CitiesService>();
+            services.AddTransient<ICragsService, CragsService>();
+            services.AddTransient<ISectorsService, SectorsService>();
+            services.AddTransient<ITripsService, TripsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
