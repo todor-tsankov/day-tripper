@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+
+using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.Areas;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
 {
@@ -6,13 +10,17 @@ namespace DayTripper.Web.Controllers
     [Route("[controller]")]
     public class AreasController : ControllerBase
     {
-        public AreasController()
+        private readonly IAreasService areasService;
+
+        public AreasController(IAreasService areasService)
         {
+            this.areasService = areasService;
         }
 
         [HttpGet]
-        public void Get()
+        public IEnumerable<AreaViewModel> Get()
         {
+            return this.areasService.GetMany<AreaViewModel>();
         }
     }
 }

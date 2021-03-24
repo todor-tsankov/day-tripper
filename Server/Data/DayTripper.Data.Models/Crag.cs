@@ -13,9 +13,13 @@ namespace DayTripper.Data.Models
         }
 
         [Required]
-        [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public int AreaId { get; set; }
+
+        [Required]
+        public Area Area { get; set; }
 
         public virtual ICollection<Sector> Sectors { get; set; }
     }

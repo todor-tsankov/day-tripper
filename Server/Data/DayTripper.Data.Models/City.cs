@@ -7,7 +7,6 @@ namespace DayTripper.Data.Models
     public class City : BaseDeletableModel<int>
     {
         [Required]
-        [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
     }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.Cities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -11,14 +13,17 @@ namespace DayTripper.Web.Controllers
     [Route("[controller]")]
     public class CitiesController : ControllerBase
     {
-        public CitiesController()
+        private readonly ICitiesService citiesService;
+
+        public CitiesController(ICitiesService citiesService)
         {
+            this.citiesService = citiesService;
         }
 
         [HttpGet]
-        public int[] Get()
+        public IEnumerable<CityViewModel> Get()
         {
-            return new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            return this.citiesService.GetMany<CityViewModel>();
         }
     }
 }

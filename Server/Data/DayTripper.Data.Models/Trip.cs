@@ -18,9 +18,13 @@ namespace DayTripper.Data.Models
         [Required]
         public City City { get; set; }
 
-        public int SectorId { get; set; }
+        public int AreaId { get; set; }
 
         [Required]
+        public Area Area { get; set; }
+
+        public int? SectorId { get; set; }
+
         public Sector Sector { get; set; }
 
         public DateTime Leaving { get; set; }

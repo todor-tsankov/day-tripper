@@ -13,7 +13,6 @@ namespace DayTripper.Data.Models
         }
 
         [Required]
-        [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
 
