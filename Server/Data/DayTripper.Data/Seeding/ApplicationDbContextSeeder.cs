@@ -26,6 +26,8 @@ namespace DayTripper.Data.Seeding
             var seeders = new List<ISeeder>
                           {
                               new RolesSeeder(),
+                              new AreasSeeder(),
+                              new CitiesSeeder(),
                           };
 
             foreach (var seeder in seeders)

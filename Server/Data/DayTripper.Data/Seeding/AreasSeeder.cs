@@ -7,14 +7,14 @@ using DayTripper.Data.Models;
 
 namespace DayTripper.Data.Seeding
 {
-    public class CitiesSeeder : ISeeder
+    public class AreasSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            var citiesJson = await File.ReadAllTextAsync("./Data/cities.json");
-            var cities = JsonSerializer.Deserialize<City>(citiesJson);
+            var areasJson = await File.ReadAllTextAsync("./Data/areas.json");
+            var areas = JsonSerializer.Deserialize<Area>(areasJson);
 
-            dbContext.Cities.AddRange(cities);
+            dbContext.Areas.AddRange(areas);
         }
     }
 }
