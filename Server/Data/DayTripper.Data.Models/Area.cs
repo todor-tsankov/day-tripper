@@ -14,7 +14,7 @@ namespace DayTripper.Data.Models
 
         [Required]
         [MinLength(2)]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public virtual ICollection<Crag> Crags { get; set; }

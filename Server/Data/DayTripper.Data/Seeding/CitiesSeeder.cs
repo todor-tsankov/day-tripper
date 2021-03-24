@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -11,10 +13,16 @@ namespace DayTripper.Data.Seeding
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
-            var citiesJson = await File.ReadAllTextAsync("./Data/cities.json");
-            var cities = JsonSerializer.Deserialize<City>(citiesJson);
+            if (dbContext.Cities.Any())
+            {
+                return;
+            }
 
-            dbContext.Cities.AddRange(cities);
+            var citiesJson = await File.ReadAllTextAsync("./Seeding/Data/cities.json");
+            var cities = JsonSerializer.Deserialize<List<City>>(citiesJson);
+
+            await dbContext.Cities.AddRangeAsync(cities);
+            await dbContext.SaveChangesAsync();
         }
     }
 }
