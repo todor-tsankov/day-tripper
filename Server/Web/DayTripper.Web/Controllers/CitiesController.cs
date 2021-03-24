@@ -11,8 +11,12 @@ namespace DayTripper.Web.Controllers
     [Route("[controller]")]
     public class CitiesController : ControllerBase
     {
+        public CitiesController()
+        {
+        }
+
         [HttpGet]
-        public IEnumerable<int> Get()
+        public int[] Get()
         {
             return new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         }
