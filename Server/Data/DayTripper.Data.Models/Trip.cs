@@ -13,6 +13,12 @@ namespace DayTripper.Data.Models
             this.UserTrips = new HashSet<UserTrip>();
         }
 
+        [Required]
+        public string ApplicationUserId { get; set; }
+
+        [Required]
+        public ApplicationUser ApplicationUser { get; set; }
+
         public int CityId { get; set; }
 
         [Required]

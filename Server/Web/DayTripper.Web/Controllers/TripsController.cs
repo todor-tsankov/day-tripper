@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.Trips;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DayTripper.Web.Controllers
 {
@@ -6,18 +9,33 @@ namespace DayTripper.Web.Controllers
     [Route("[controller]")]
     public class TripsController : ControllerBase
     {
-        public TripsController()
+        private readonly ITripsService tripsService;
+
+        public TripsController(ITripsService tripsService)
         {
+            this.tripsService = tripsService;
         }
 
         [HttpGet]
-        public void Get()
+        public TripViewModel Get(int id)
         {
+            // Chck if id exists
+            return this.tripsService.GetSingle<TripViewModel>(x => x.Id == id);
         }
 
         [HttpPost]
-        public void Post()
+        public async Task<IActionResult> Post(TripInputModel tripInput)
         {
+            if (!this.ModelState.IsValid || tripInput.Leaving < tripInput.Returning)
+            {
+                return this.BadRequest();
+            }
+
+            // CHECK if all input Ids exists
+            // TODO add creator id to input
+            await this.tripsService.AddAsync(tripInput);
+
+            return this.Ok();
         }
 
         [HttpPut]
@@ -26,8 +44,14 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpDelete]
-        public void Delete()
+        public async Task<IActionResult> Delete(int id)
         {
+            await this.tripsService.DeleteAsync(x => x.Id == id);
+
+            // TODO check if current user is creator
+            // TODO check if exists such id
+
+            return this.Ok();
         }
     }
 }
