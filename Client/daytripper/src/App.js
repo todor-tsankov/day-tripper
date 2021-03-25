@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import PageHeader from './components/PageHeader/PageHeader';
+import Calendar from './components/Calendar/Calendar.js';
 import PageFooter from './components/PageFooter/PageFooter.js';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" />
                     <Route path="/home" />
-                    <Route path="/calendar" />
+                    <Route path="/calendar" component={Calendar}/>
                 </Switch>
                 <PageFooter />
             </Router>
