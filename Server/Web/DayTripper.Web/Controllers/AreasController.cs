@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
+using DayTripper.Data.Models;
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.Areas;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +22,61 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<AreaViewModel> Get()
+        public IEnumerable<AreaViewModel> Get(int? areaId)
         {
-            return this.areasService.GetMany<AreaViewModel>();
+            Expression<Func<Area, bool>> filter = areaId != null ? filter = x => x.Id == areaId : null;
+
+            return this.areasService.GetMany<AreaViewModel>(filter);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(AreaInputModel areaInput)
+        {
+            var existsByName = this.areasService.Exists(x => x.Name == areaInput.Name);
+
+            if (!this.ModelState.IsValid || existsByName)
+            {
+                return this.Forbid("Invalid input!");
+            }
+
+            await this.areasService.AddAsync(areaInput);
+            return this.Ok("Successfully added area!");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(AreaEditModel areaEdit)
+        {
+            var exists = this.areasService.Exists(x => x.Id == areaEdit.AreaId);
+            var existsByName = this.areasService.Exists(x => x.Id != areaEdit.AreaId && x.Name == areaEdit.Name);
+
+            if (!this.ModelState.IsValid || existsByName)
+            {
+                return this.Forbid("Invalid input!");
+            }
+
+            if (!exists)
+            {
+                return this.NotFound("No such area!");
+            }
+
+            await this.areasService.EditAsync(areaEdit);
+
+            return this.Ok("Successfully edited area!");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int areaId)
+        {
+            var exists = this.areasService.Exists(x => x.Id == areaId);
+
+            if (!exists)
+            {
+                return this.NotFound();
+            }
+
+            await this.areasService.DeleteAsync(x => x.Id == areaId);
+
+            return this.Ok("Successfully deleted area!");
         }
     }
 }
