@@ -22,11 +22,11 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<AreaViewModel> Get(int? areaId)
+        public IActionResult Get(int? areaId)
         {
             Expression<Func<Area, bool>> filter = areaId != null ? filter = x => x.Id == areaId : null;
 
-            return this.areasService.GetMany<AreaViewModel>(filter);
+            return this.Ok(this.areasService.GetMany<AreaViewModel>(filter));
         }
 
         [HttpPost]

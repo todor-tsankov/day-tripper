@@ -25,8 +25,7 @@ namespace DayTripper.Services.Data
         {
             var original = this.areasRepository
                 .All()
-                .Where(x => x.Id == areaEdit.AreaId)
-                .First();
+                .First(x => x.Id == areaEdit.AreaId);
 
             original.Name = areaEdit.Name;
             await this.areasRepository.SaveChangesAsync();

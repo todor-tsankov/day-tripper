@@ -25,8 +25,7 @@ namespace DayTripper.Services.Data
         {
             var original = this.cragsRepository
                 .All()
-                .Where(x => x.Id == cragEdit.CragId)
-                .First();
+                .First(x => x.Id == cragEdit.CragId);
 
             original.Name = cragEdit.Name;
             original.AreaId = cragEdit.AreaId;

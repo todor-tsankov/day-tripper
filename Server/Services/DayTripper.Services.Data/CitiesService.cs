@@ -25,8 +25,7 @@ namespace DayTripper.Services.Data
         {
             var original = this.citiesRepository
                 .All()
-                .Where(x => x.Id == cityEdit.CityId)
-                .First();
+                .First(x => x.Id == cityEdit.CityId);
 
             original.Name = cityEdit.Name;
             await this.citiesRepository.SaveChangesAsync();

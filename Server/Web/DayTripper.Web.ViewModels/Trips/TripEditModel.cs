@@ -1,14 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+
 using DayTripper.Web.ViewModels.ValidationAttributes;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace DayTripper.Web.ViewModels.Trips
 {
-    public class TripInputModel
+    public class TripEditModel
     {
-        [BindNever]
-        public string ApplicationUserId { get; set; }
+        public int TripId { get; set; }
 
         public int CityId { get; set; }
 

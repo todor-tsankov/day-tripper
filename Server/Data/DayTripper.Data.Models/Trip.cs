@@ -24,10 +24,10 @@ namespace DayTripper.Data.Models
         [Required]
         public City City { get; set; }
 
-        public int AreaId { get; set; }
+        public int CragId { get; set; }
 
         [Required]
-        public Area Area { get; set; }
+        public Crag Crag { get; set; }
 
         public int? SectorId { get; set; }
 

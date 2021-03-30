@@ -25,8 +25,7 @@ namespace DayTripper.Services.Data
         {
             var original = this.sectorsRepository
                 .All()
-                .Where(x => x.Id == sectorEdit.SectorId)
-                .First();
+                .First(x => x.Id == sectorEdit.SectorId);
 
             original.Name = sectorEdit.Name;
             original.CragId = sectorEdit.CragId;

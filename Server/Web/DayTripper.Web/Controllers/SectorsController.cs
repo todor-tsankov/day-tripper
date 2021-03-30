@@ -23,11 +23,11 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<SectorViewModel> Get(int? cragId)
+        public IActionResult Get(int? cragId)
         {
             Expression<Func<Sector, bool>> filter = cragId != null ? x => x.CragId == cragId : null;
 
-            return this.sectorsService.GetMany<SectorViewModel>(filter);
+            return this.Ok(this.sectorsService.GetMany<SectorViewModel>(filter));
         }
 
         [HttpPost]

@@ -24,11 +24,11 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<CragViewModel> Get(int? areaId)
+        public IActionResult Get(int? areaId)
         {
             Expression<Func<Crag, bool>> filter = areaId != null ? x => x.AreaId == areaId : null;
 
-            return this.cragsService.GetMany<CragViewModel>(filter);
+            return this.Ok(this.cragsService.GetMany<CragViewModel>(filter));
         }
 
         [HttpPost]

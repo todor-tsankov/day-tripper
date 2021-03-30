@@ -22,11 +22,11 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<CityViewModel> Get(int? cityId)
+        public IActionResult Get(int? cityId)
         {
             Expression<Func<City, bool>> filter = cityId != null ? filter = x => x.Id == cityId : null;
 
-            return this.citiesService.GetMany<CityViewModel>(filter);
+            return this.Ok(this.citiesService.GetMany<CityViewModel>(filter));
         }
 
         [HttpPost]
