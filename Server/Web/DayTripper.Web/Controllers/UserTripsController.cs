@@ -22,7 +22,7 @@ namespace DayTripper.Web.Controllers
         [HttpGet]
         public IActionResult Get(int tripId)
         {
-            var existsUserTrip = this.userTripsService.Exists(x => x.Id == userTripId);
+            var existsUserTrip = this.userTripsService.Exists(x => x.Id == tripId);
 
             if (!existsUserTrip)
             {
@@ -45,7 +45,7 @@ namespace DayTripper.Web.Controllers
             // Add user userTripInput.ApplicationUserId = this.user;
             await this.userTripsService.AddAsync(userTripInput);
 
-            return this.Ok();
+            return this.Ok("Successfully joined the trip!");
         }
 
         [HttpDelete]

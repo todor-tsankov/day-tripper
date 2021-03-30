@@ -28,9 +28,9 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public TripViewModel Get(int tripId)
+        public TripDetailsViewModel Get(int tripId)
         {
-            return this.tripsService.GetSingle<TripViewModel>(x => x.Id == tripId);
+            return this.tripsService.GetSingle<TripDetailsViewModel>(x => x.Id == tripId);
         }
 
         [HttpPost]

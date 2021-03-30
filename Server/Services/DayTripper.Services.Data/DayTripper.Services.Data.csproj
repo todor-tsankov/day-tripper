@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\DayTripper.Data.Common\DayTripper.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\DayTripper.Data.Models\DayTripper.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\DayTripper.Web.ViewModels\DayTripper.Web.ViewModels.csproj" />
     <ProjectReference Include="..\DayTripper.Services.Mapping\DayTripper.Services.Mapping.csproj" />
   </ItemGroup>
 

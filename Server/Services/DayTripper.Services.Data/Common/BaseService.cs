@@ -117,6 +117,53 @@ namespace DayTripper.Services.Data.Common
             return mapped;
         }
 
+        public IEnumerable<T> GetManyExtended<T>(
+            Expression<Func<TModel, bool>>[] predicates = null,
+            Expression<Func<TModel, object>> orderBySelector = null,
+            bool asc = true,
+            int? skip = null,
+            int? take = null)
+        {
+            var entities = this.entityRepository
+                .AllAsNoTracking();
+
+            if (predicates != null)
+            {
+                foreach (var predicate in predicates)
+                {
+                    entities = entities.Where(predicate);
+                }
+            }
+
+            if (orderBySelector != null)
+            {
+                if (asc)
+                {
+                    entities = entities.OrderBy(orderBySelector);
+                }
+                else
+                {
+                    entities = entities.OrderByDescending(orderBySelector);
+                }
+            }
+
+            if (skip != null)
+            {
+                entities = entities.Skip((int)skip);
+            }
+
+            if (take != null)
+            {
+                entities = entities.Take((int)take);
+            }
+
+            var mapped = entities
+                .To<T>()
+                .ToList();
+
+            return mapped;
+        }
+
         public async Task DeleteAsync(Expression<Func<TModel, bool>> predicate)
         {
             this.NullCheck(predicate, nameof(predicate));

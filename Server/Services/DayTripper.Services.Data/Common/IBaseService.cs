@@ -23,6 +23,13 @@ namespace DayTripper.Services.Data.Common
            int? skip = null,
            int? take = null);
 
+        IEnumerable<T> GetManyExtended<T>(
+            Expression<Func<TModel, bool>>[] predicates = null,
+            Expression<Func<TModel, object>> orderBySelector = null,
+            bool asc = true,
+            int? skip = null,
+            int? take = null);
+
         Task AddAsync(object inputModel);
 
         Task DeleteAsync(Expression<Func<TModel, bool>> predicate);
