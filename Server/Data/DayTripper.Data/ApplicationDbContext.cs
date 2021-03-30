@@ -34,6 +34,8 @@ namespace DayTripper.Data
 
         public DbSet<Trip> Trips { get; set; }
 
+        public DbSet<Follow> Follows { get; set; }
+
         public DbSet<UserTrip> UserTrips { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
@@ -79,11 +81,31 @@ namespace DayTripper.Data
 
             // Disable cascade delete
             var foreignKeys = entityTypes
-                .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Cascade));
+                .SelectMany(e => e.GetForeignKeys());
             foreach (var foreignKey in foreignKeys)
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<Follow>()
+                .HasOne(x => x.Followed)
+                .WithMany(x => x.Followed)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Follow>()
+                .HasOne(x => x.Follower)
+                .WithMany(x => x.Followers)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<ApplicationUser>()
+                .HasMany(x => x.Followed)
+                .WithOne(x => x.Followed)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<ApplicationUser>()
+                .HasMany(x => x.Followers)
+                .WithOne(x => x.Follower)
+                .OnDelete(DeleteBehavior.NoAction);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)

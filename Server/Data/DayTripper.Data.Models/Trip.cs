@@ -41,6 +41,9 @@ namespace DayTripper.Data.Models
 
         public int? Seats { get; set; }
 
+        [MaxLength(10000)]
+        public string Comment { get; set; }
+
         public ICollection<UserTrip> UserTrips { get; set; }
     }
 }

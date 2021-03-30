@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DayTripper.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210325124949_AddAuthorOnTrip")]
-    partial class AddAuthorOnTrip
+    [Migration("20210330151128_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,8 +87,22 @@ namespace DayTripper.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("EmailNotifications")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FacebookNotifications")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -118,6 +132,9 @@ namespace DayTripper.Data.Migrations
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SmsNotifications")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -239,6 +256,42 @@ namespace DayTripper.Data.Migrations
                     b.ToTable("Crags");
                 });
 
+            modelBuilder.Entity("DayTripper.Data.Models.Follow", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FollowedId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FollowerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FollowedId");
+
+                    b.HasIndex("FollowerId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Follows");
+                });
+
             modelBuilder.Entity("DayTripper.Data.Models.Sector", b =>
                 {
                     b.Property<int>("Id")
@@ -291,6 +344,10 @@ namespace DayTripper.Data.Migrations
 
                     b.Property<int>("CityId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -486,6 +543,23 @@ namespace DayTripper.Data.Migrations
                     b.Navigation("Area");
                 });
 
+            modelBuilder.Entity("DayTripper.Data.Models.Follow", b =>
+                {
+                    b.HasOne("DayTripper.Data.Models.ApplicationUser", "Followed")
+                        .WithMany("Followed")
+                        .HasForeignKey("FollowedId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("DayTripper.Data.Models.ApplicationUser", "Follower")
+                        .WithMany("Followers")
+                        .HasForeignKey("FollowerId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.Navigation("Followed");
+
+                    b.Navigation("Follower");
+                });
+
             modelBuilder.Entity("DayTripper.Data.Models.Sector", b =>
                 {
                     b.HasOne("DayTripper.Data.Models.Crag", "Crag")
@@ -519,7 +593,8 @@ namespace DayTripper.Data.Migrations
 
                     b.HasOne("DayTripper.Data.Models.Sector", "Sector")
                         .WithMany()
-                        .HasForeignKey("SectorId");
+                        .HasForeignKey("SectorId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ApplicationUser");
 
@@ -603,6 +678,10 @@ namespace DayTripper.Data.Migrations
             modelBuilder.Entity("DayTripper.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
+
+                    b.Navigation("Followed");
+
+                    b.Navigation("Followers");
 
                     b.Navigation("Logins");
 
