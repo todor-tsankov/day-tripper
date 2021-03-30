@@ -64,6 +64,7 @@ namespace DayTripper.Web
             services.AddTransient<ICragsService, CragsService>();
             services.AddTransient<ISectorsService, SectorsService>();
             services.AddTransient<ITripsService, TripsService>();
+            services.AddTransient<IUserTripsService, UserTripsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

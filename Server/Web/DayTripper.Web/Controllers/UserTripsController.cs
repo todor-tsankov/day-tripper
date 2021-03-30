@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 
+using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.UserTrips;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -8,35 +10,57 @@ namespace DayTripper.Web.Controllers
     [Route("[controller]")]
     public class UserTripsController : ControllerBase
     {
-        public UserTripsController()
+        private readonly IUserTripsService userTripsService;
+        private readonly ITripsService tripsService;
+
+        public UserTripsController(IUserTripsService userTripsService, ITripsService tripsService)
         {
+            this.userTripsService = userTripsService;
+            this.tripsService = tripsService;
         }
 
         [HttpGet]
-        public void Get()
+        public IActionResult Get(int tripId)
         {
+            var existsUserTrip = this.userTripsService.Exists(x => x.Id == userTripId);
+
+            if (!existsUserTrip)
+            {
+                return this.NotFound("No such user trip!");
+            }
+
+            return this.Ok(this.userTripsService.GetMany<UserTripViewModel>(x => x.TripId == tripId));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post()
+        public async Task<IActionResult> Post(UserTripInputModel userTripInput)
         {
-            if (!this.ModelState.IsValid)
+            var existsTrip = this.tripsService.Exists(x => x.Id == userTripInput.TripId);
+
+            if (!existsTrip)
             {
-                return this.BadRequest();
+                return this.NotFound("No such trip!");
             }
 
-            return this.Ok();
-        }
+            // Add user userTripInput.ApplicationUserId = this.user;
+            await this.userTripsService.AddAsync(userTripInput);
 
-        [HttpPut]
-        public void Put()
-        {
+            return this.Ok();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int userTripId)
         {
-            return this.Ok();
+            var existsUserTrip = this.userTripsService.Exists(x => x.Id == userTripId);
+
+            if (!existsUserTrip)
+            {
+                return this.NotFound("No such user trip!");
+            }
+
+            await this.userTripsService.DeleteAsync(x => x.Id == userTripId);
+
+            return this.Ok("Successfully deleted user trip!");
         }
     }
 }
