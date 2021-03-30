@@ -4,7 +4,6 @@ namespace DayTripper.Web.ViewModels.Cities
 {
     public class CityEditModel
     {
-        [Required]
         public int CityId { get; set; }
 
         [Required]

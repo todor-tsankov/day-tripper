@@ -71,7 +71,7 @@ namespace DayTripper.Web.Controllers
 
             if (!exists)
             {
-                return this.NotFound();
+                return this.NotFound("No such area!");
             }
 
             await this.areasService.DeleteAsync(x => x.Id == areaId);

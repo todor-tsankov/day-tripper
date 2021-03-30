@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DayTripper.Web.ViewModels.Areas
+namespace DayTripper.Web.ViewModels.Crags
 {
-    public class AreaEditModel
+    public class CragEditModel
     {
-        public int AreaId { get; set; }
+        public int CragId { get; set; }
 
         [Required]
         [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public int AreaId { get; set; }
     }
 }

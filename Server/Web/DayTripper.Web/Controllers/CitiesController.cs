@@ -71,7 +71,7 @@ namespace DayTripper.Web.Controllers
 
             if (!exists)
             {
-                return this.NotFound();
+                return this.NotFound("No such city!");
             }
 
             await this.citiesService.DeleteAsync(x => x.Id == cityId);
