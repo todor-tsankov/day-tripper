@@ -283,7 +283,7 @@ namespace DayTripper.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false),
-                    AreaId = table.Column<int>(type: "int", nullable: false),
+                    CragId = table.Column<int>(type: "int", nullable: false),
                     SectorId = table.Column<int>(type: "int", nullable: true),
                     Leaving = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Returning = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -299,12 +299,6 @@ namespace DayTripper.Data.Migrations
                 {
                     table.PrimaryKey("PK_Trips", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Trips_Areas_AreaId",
-                        column: x => x.AreaId,
-                        principalTable: "Areas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Trips_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
@@ -314,6 +308,12 @@ namespace DayTripper.Data.Migrations
                         name: "FK_Trips_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Trips_Crags_CragId",
+                        column: x => x.CragId,
+                        principalTable: "Crags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -454,14 +454,14 @@ namespace DayTripper.Data.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trips_AreaId",
-                table: "Trips",
-                column: "AreaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Trips_CityId",
                 table: "Trips",
                 column: "CityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trips_CragId",
+                table: "Trips",
+                column: "CragId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trips_IsDeleted",

@@ -8,6 +8,7 @@ using DayTripper.Services.Data;
 using DayTripper.Services.Mapping;
 using DayTripper.Services.Messaging;
 using DayTripper.Web.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -45,6 +46,9 @@ namespace DayTripper.Web
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddAuthentication()
+                .AddIdentityServerJwt();
+
             // Auto mapper
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
             services.AddSingleton(AutoMapperConfig.MapperInstance);
@@ -56,6 +60,7 @@ namespace DayTripper.Web
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            // Senders
             services.AddTransient<IEmailSender>(_ => new NullMessageSender());
 
             // Data services
@@ -65,6 +70,7 @@ namespace DayTripper.Web
             services.AddTransient<ISectorsService, SectorsService>();
             services.AddTransient<ITripsService, TripsService>();
             services.AddTransient<IUserTripsService, UserTripsService>();
+            services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
