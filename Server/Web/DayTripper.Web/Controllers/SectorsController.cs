@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+
+using DayTripper.Common;
 using DayTripper.Data.Models;
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.Sectors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -31,6 +34,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Post(SectorInputModel sectorInput)
         {
             var existsByName = this.sectorsService.Exists(x => x.Name == sectorInput.Name);
@@ -46,6 +50,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Put(SectorEditModel sectorEdit)
         {
             var exists = this.sectorsService.Exists(x => x.Id == sectorEdit.SectorId);
@@ -68,6 +73,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Delete(int cityId)
         {
             var exists = this.sectorsService.Exists(x => x.Id == cityId);

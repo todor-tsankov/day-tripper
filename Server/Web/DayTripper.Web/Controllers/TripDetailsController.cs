@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.Trips;
@@ -54,7 +55,7 @@ namespace DayTripper.Web.Controllers
                 return this.Forbid("Invalid input!");
             }
 
-            // Add creator as current user -> tripInput.ApplicationUserId = this.user;
+            tripInput.ApplicationUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await this.tripsService.AddAsync(tripInput);
 
             return this.Ok("Successfully created trip");
@@ -63,7 +64,8 @@ namespace DayTripper.Web.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(TripEditModel tripEdit)
         {
-            var existsTrip = this.tripsService.Exists(x => x.Id == tripEdit.TripId);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var existsTrip = this.tripsService.Exists(x => x.Id == tripEdit.TripId && x.ApplicationUserId == userId);
 
             if (!existsTrip)
             {

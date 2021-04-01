@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
+using DayTripper.Common;
 using DayTripper.Data.Models;
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.Cities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -30,6 +32,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Post(CityInputModel cityInput)
         {
             var existsByName = this.citiesService.Exists(x => x.Name == cityInput.Name);
@@ -44,6 +47,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Put(CityEditModel cityEdit)
         {
             var exists = this.citiesService.Exists(x => x.Id == cityEdit.CityId);
@@ -65,6 +69,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Delete(int cityId)
         {
             var exists = this.citiesService.Exists(x => x.Id == cityId);

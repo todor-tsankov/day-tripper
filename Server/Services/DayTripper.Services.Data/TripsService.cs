@@ -1,10 +1,11 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using System.Threading.Tasks;
+
+using AutoMapper;
 using DayTripper.Data.Common.Repositories;
 using DayTripper.Data.Models;
 using DayTripper.Services.Data.Common;
 using DayTripper.Web.ViewModels.Trips;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DayTripper.Services.Data
 {

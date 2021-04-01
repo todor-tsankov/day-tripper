@@ -24,25 +24,5 @@ namespace DayTripper.Services.Data
             this.usersRepository = usersRepository;
             this.mapper = mapper;
         }
-
-        public Task Edit(EditInputModel editInput)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Login(LoginInputModel loginInput)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Logout()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Register(RegisterInputModel registerInput)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

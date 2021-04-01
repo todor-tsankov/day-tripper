@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
+using DayTripper.Common;
 using DayTripper.Data.Models;
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.Areas;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -30,6 +32,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Post(AreaInputModel areaInput)
         {
             var existsByName = this.areasService.Exists(x => x.Name == areaInput.Name);
@@ -44,6 +47,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Put(AreaEditModel areaEdit)
         {
             var exists = this.areasService.Exists(x => x.Id == areaEdit.AreaId);
@@ -65,6 +69,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Delete(int areaId)
         {
             var exists = this.areasService.Exists(x => x.Id == areaId);

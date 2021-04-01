@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
 
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.UserTrips;
@@ -42,7 +43,7 @@ namespace DayTripper.Web.Controllers
                 return this.NotFound("No such trip!");
             }
 
-            // Add user userTripInput.ApplicationUserId = this.user;
+            userTripInput.ApplicationUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             await this.userTripsService.AddAsync(userTripInput);
 
             return this.Ok("Successfully joined the trip!");
