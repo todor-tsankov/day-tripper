@@ -1,4 +1,6 @@
-﻿using DayTripper.Data;
+﻿using System.Text;
+
+using DayTripper.Data;
 using DayTripper.Data.Common;
 using DayTripper.Data.Common.Repositories;
 using DayTripper.Data.Models;
@@ -8,16 +10,15 @@ using DayTripper.Services.Data;
 using DayTripper.Services.Mapping;
 using DayTripper.Services.Messaging;
 using DayTripper.Web.ViewModels;
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace DayTripper.Web
@@ -44,16 +45,34 @@ namespace DayTripper.Web
                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
+            // Adding Authentication
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = this.configuration["JWT:ValidAudience"],
+                    ValidIssuer = this.configuration["JWT:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.configuration["JWT:Secret"])),
+                };
+            });
+
+            services.AddSingleton(this.configuration);
 
             // Auto mapper
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).Assembly);
             services.AddSingleton(AutoMapperConfig.MapperInstance);
-
-            services.AddSingleton(this.configuration);
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
