@@ -1,8 +1,11 @@
 import { Calendar as AntCalendar } from 'antd';
+import styles from './Calendar.module.css';
 
 function Calendar(props){
     return (
-        <AntCalendar style={{padding: '50px'}}/>
+        <div className={styles.container}> 
+            <AntCalendar style={{padding: '30px'}}/>
+        </div>
     );
 }
 

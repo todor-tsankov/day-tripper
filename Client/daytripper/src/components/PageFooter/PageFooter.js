@@ -1,9 +1,9 @@
-import {Layout} from 'antd';
+import { Layout } from 'antd';
 
-const {Footer} = Layout;
+const { Footer } = Layout;
 
-function PageFooter(props){
-    return(
+function PageFooter(props) {
+    return (
         <Footer style={{ textAlign: 'center' }}>Todor Tsankov ©{new Date().getFullYear()}</Footer>
     );
 }
