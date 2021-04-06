@@ -20,12 +20,12 @@ namespace DayTripper.Web.Controllers
     public class LoginController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IConfiguration configuration;
 
         public LoginController(
             UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager,
+            RoleManager<ApplicationRole> roleManager,
             IConfiguration configuration)
         {
             this.userManager = userManager;

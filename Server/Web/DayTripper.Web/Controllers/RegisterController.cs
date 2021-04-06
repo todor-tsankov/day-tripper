@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 
 using DayTripper.Data.Models;
@@ -16,12 +17,12 @@ namespace DayTripper.Web.Controllers
     public class RegisterController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IConfiguration configuration;
 
         public RegisterController(
             UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager,
+            RoleManager<ApplicationRole> roleManager,
             IConfiguration configuration)
         {
             this.userManager = userManager;
@@ -54,7 +55,22 @@ namespace DayTripper.Web.Controllers
             var result = await this.userManager.CreateAsync(user, registerInput.Password);
             if (!result.Succeeded)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
+                var sb = new StringBuilder();
+                var enumerator = result.Errors.GetEnumerator();
+
+                var hasNext = true;
+
+                while (hasNext)
+                {
+                    if (enumerator.Current != null)
+                    {
+                        sb.AppendLine(enumerator.Current.Description);
+                    }
+
+                    hasNext = enumerator.MoveNext();
+                }
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = sb.ToString() });
             }
 
             return this.Ok(new Response { Status = "Success", Message = "User created successfully!" });

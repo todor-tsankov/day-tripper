@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.UserTrips;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -34,6 +35,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post(UserTripInputModel userTripInput)
         {
             var existsTrip = this.tripsService.Exists(x => x.Id == userTripInput.TripId);
@@ -50,6 +52,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> Delete(int userTripId)
         {
             var existsUserTrip = this.userTripsService.Exists(x => x.Id == userTripId);
