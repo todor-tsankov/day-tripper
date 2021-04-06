@@ -22,6 +22,7 @@ async function request(url, options) {
 function getOptions(method = 'get', body) {
     const options = {
         method,
+        mode: 'no-cors',
         headers: {}
     };
 

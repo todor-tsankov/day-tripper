@@ -1,4 +1,4 @@
-export const host = 'http://localhost:3030';
+export const host = 'http://localhost:5000';
 
 const endpoints = {
     login: host + '/login',

@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { UserOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox, Row, Col, Space } from 'antd';
 
-import { loginService } from '../../services/loginService.js';
+import { register } from '../../services/registerService.js';
 
 function Register() {
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (data) => {
+        console.log(await register(data));
     };
 
     return (
@@ -24,8 +24,9 @@ function Register() {
                         name="email"
                         rules={[
                             {
+                                type: 'email',
                                 required: true,
-                                message: 'Please enter your Email!',
+                                message: 'The input is not valid E-mail!',
                             },
                         ]}
                     >
@@ -37,6 +38,11 @@ function Register() {
                             {
                                 required: true,
                                 message: 'Please enter your First Name!',
+                                transform: x => x?.trim(),
+                            },
+                            {
+                                max: 50,
+                                message: 'First Name can\'t be more than 50 characters',
                             },
                         ]}
                     >
@@ -48,20 +54,17 @@ function Register() {
                             {
                                 required: true,
                                 message: 'Please enter your Last Name!',
+                                transform: x => x?.trim(),
+                            },
+                            {
+                                max: 50,
+                                message: 'Last Name can\'t be more than 50 characters',
                             },
                         ]}
                     >
                         <Input placeholder="Last Name" />
                     </Form.Item>
-                    <Form.Item
-                        name="phoneNumber"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please enter your Phone Number!',
-                            },
-                        ]}
-                    >
+                    <Form.Item name="phoneNumber">
                         <Input
                             prefix={<PhoneOutlined className="site-form-item-icon" />}
                             placeholder="Phone Number"
@@ -69,11 +72,16 @@ function Register() {
                     </Form.Item>
                     <Form.Item
                         name="password"
+                        hasFeedback
                         rules={[
                             {
                                 required: true,
                                 message: 'Please input your Password!',
                             },
+                            {
+                                min: 6,
+                                message: 'Password can\'t be less than 6 characters',
+                            }
                         ]}
                     >
                         <Input
@@ -84,11 +92,21 @@ function Register() {
                     </Form.Item>
                     <Form.Item
                         name="repeatPassword"
+                        dependencies={['password']}
+                        hasFeedback
                         rules={[
                             {
                                 required: true,
                                 message: 'Please input your Password!',
                             },
+                            ({ getFieldValue }) => ({
+                                validator(_, value) {
+                                    if (!value || getFieldValue('password') === value) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                },
+                            }),
                         ]}
                     >
                         <Input
@@ -99,13 +117,13 @@ function Register() {
                     </Form.Item>
                     <Row>
                         <Form.Item label={'Notifications:'}>
-                            <Form.Item name="facebookNotifications" valuePropName="checked" noStyle>
+                            <Form.Item name="facebookNotifications" noStyle initialValue="checked">
                                 <Checkbox>Facebook</Checkbox>
                             </Form.Item>
-                            <Form.Item name="emailNotifications" valuePropName="checked" noStyle>
+                            <Form.Item name="emailNotifications" noStyle initialValue="checked">
                                 <Checkbox>Email</Checkbox>
                             </Form.Item>
-                            <Form.Item name="smsNotifications" valuePropName="checked" noStyle>
+                            <Form.Item name="smsNotifications" noStyle initialValue="checked">
                                 <Checkbox>Sms</Checkbox>
                             </Form.Item>
                         </Form.Item>
