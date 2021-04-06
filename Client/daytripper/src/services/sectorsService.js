@@ -5,14 +5,14 @@ export async function getSectors(cragId) {
     return await get(endpoints.sectors + cragId ? '?cragId=' + cragId : '');
 }
 
-export async function postSector(name, cragId) {
-    return await post(endpoints.crags, { name, cragId });
+export async function postSector(name, cragId, token) {
+    return await post(endpoints.crags, { name, cragId }, token);
 }
 
-export async function putSector(sectorId, name, cragId) {
-    return await put(endpoints.crags, { sectorId, name, cragId });
+export async function putSector(sectorId, name, cragId, token) {
+    return await put(endpoints.crags, { sectorId, name, cragId }, token);
 }
 
-export async function deleteSector(sectorId) {
-    return await del(endpoints.sectors, { sectorId });
+export async function deleteSector(sectorId, token) {
+    return await del(endpoints.sectors, { sectorId }, token);
 }

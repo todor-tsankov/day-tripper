@@ -5,14 +5,14 @@ export async function getCrags(areaId) {
     return await get(endpoints.crags + areaId ? '?areaId=' + areaId : '');
 }
 
-export async function postCrag(name, areaId) {
-    return await post(endpoints.crags, { name, areaId });
+export async function postCrag(name, areaId, token) {
+    return await post(endpoints.crags, { name, areaId }, token);
 }
 
-export async function putCrag(cragId, name, areaId) {
-    return await put(endpoints.crags, { cragId, name, areaId });
+export async function putCrag(cragId, name, areaId, token) {
+    return await put(endpoints.crags, { cragId, name, areaId }, token);
 }
 
-export async function deleteCrag(cragId) {
-    return await del(endpoints.crags, { cragId });
+export async function deleteCrag(cragId, token) {
+    return await del(endpoints.crags, { cragId }, token);
 }

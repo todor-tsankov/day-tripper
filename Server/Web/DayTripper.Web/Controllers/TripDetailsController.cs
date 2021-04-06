@@ -102,8 +102,8 @@ namespace DayTripper.Web.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(int tripId)
         {
-            // TODO check if current user is creator
-            var exists = this.tripsService.Exists(x => x.Id == tripId);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var exists = this.tripsService.Exists(x => x.Id == tripId && x.ApplicationUserId == userId);
 
             if (!exists)
             {

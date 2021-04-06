@@ -5,10 +5,10 @@ export async function getUserTrips(tripId) {
     return await get(endpoints.userTrips);
 }
 
-export async function joinTrip(tripId) {
-    return await post(endpoints.userTrips, { tripId });
+export async function joinTrip(tripId, token) {
+    return await post(endpoints.userTrips, { tripId }, token);
 }
 
-export async function leaveTrip(tripId) {
-    return await del(endpoints.userTrips, { tripId });
+export async function leaveTrip(tripId, token) {
+    return await del(endpoints.userTrips, { tripId }, token);
 }

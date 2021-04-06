@@ -19,7 +19,7 @@ async function request(url, options) {
     }
 }
 
-function getOptions(method = 'get', body) {
+function getOptions(method = 'get', body, token) {
     const options = {
         method,
         mode: 'no-cors',
@@ -31,21 +31,25 @@ function getOptions(method = 'get', body) {
         options.body = JSON.stringify(body);
     }
 
+    if(token){
+        options.Authorization = 'Bearer ' +  token;
+    }
+
     return options;
 }
 
-export async function get(url) {
-    return await request(url, getOptions());
+export async function get(url, data, token) {
+    return await request(url, getOptions('get', data, token));
 }
 
-export async function post(url, data) {
-    return await request(url, getOptions('post', data));
+export async function post(url, data, token) {
+    return await request(url, getOptions('post', data, token));
 }
 
-export async function put(url, data) {
-    return await request(url, getOptions('put', data));
+export async function put(url, data, token) {
+    return await request(url, getOptions('put', data, token));
 }
 
-export async function del(url) {
-    return await request(url, getOptions('delete'));
+export async function del(url, data, token) {
+    return await request(url, getOptions('delete', data, token));
 }
