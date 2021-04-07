@@ -1,5 +1,6 @@
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
+import { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import { Layout, Row, Col } from 'antd';
 
 import styles from './App.module.css';
@@ -15,10 +16,12 @@ import Add from './components/Add/Add.js';
 import UserContext from './context/UserContext.js';
 
 function App() {
+    const [user, setUser] = useState();
+
     return (
         <Router>
             <Layout>
-                <UserContext.Provider>
+                <UserContext.Provider value={[user, setUser]}>
                     <PageHeader />
                     <Layout.Content>
                         <Switch>
@@ -41,6 +44,6 @@ function App() {
             </Layout>
         </Router>
     );
-}
+    }
 
-export default App;
+    export default App;

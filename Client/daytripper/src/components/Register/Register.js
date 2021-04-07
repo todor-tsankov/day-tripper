@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
+
 import { UserOutlined, LockOutlined, PhoneOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox, Row, Col, Space } from 'antd';
 
 import { register } from '../../services/registerService.js';
 
-function Register() {
+function Register({ history }) {
+    
+
     const onFinish = async (data) => {
-        console.log(await register(data));
+        console.log(data);
+        await register(data);
+        history.push('/login');
     };
 
     return (
@@ -16,7 +21,9 @@ function Register() {
                     name="normal_register"
                     className="register-form"
                     initialValues={{
-                        remember: true,
+                        facebookNotifications: true,
+                        emailNotifications: true,
+                        smsNotifications: true,
                     }}
                     onFinish={onFinish}
                 >
@@ -67,7 +74,7 @@ function Register() {
                     <Form.Item name="phoneNumber">
                         <Input
                             prefix={<PhoneOutlined className="site-form-item-icon" />}
-                            placeholder="Phone Number"
+                            placeholder="Phone Number (optional)"
                         />
                     </Form.Item>
                     <Form.Item
@@ -91,7 +98,7 @@ function Register() {
                         />
                     </Form.Item>
                     <Form.Item
-                        name="repeatPassword"
+                        name="confirmPassword"
                         dependencies={['password']}
                         hasFeedback
                         rules={[
@@ -117,13 +124,13 @@ function Register() {
                     </Form.Item>
                     <Row>
                         <Form.Item label={'Notifications:'}>
-                            <Form.Item name="facebookNotifications" noStyle initialValue="checked">
+                            <Form.Item name="facebookNotifications" valuePropName="checked" noStyle>
                                 <Checkbox>Facebook</Checkbox>
                             </Form.Item>
-                            <Form.Item name="emailNotifications" noStyle initialValue="checked">
+                            <Form.Item name="emailNotifications" valuePropName="checked" noStyle>
                                 <Checkbox>Email</Checkbox>
                             </Form.Item>
-                            <Form.Item name="smsNotifications" noStyle initialValue="checked">
+                            <Form.Item name="smsNotifications" valuePropName="checked" noStyle>
                                 <Checkbox>Sms</Checkbox>
                             </Form.Item>
                         </Form.Item>

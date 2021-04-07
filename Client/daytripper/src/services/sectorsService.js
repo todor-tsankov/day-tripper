@@ -2,7 +2,7 @@ import endpoints from '../api/endpoints.js';
 import { get, post, put, del } from '../api/api.js';
 
 export async function getSectors(cragId) {
-    return await get(endpoints.sectors + cragId ? '?cragId=' + cragId : '');
+    return await get(endpoints.sectors + (cragId ? '?cragId=' + cragId : ''));
 }
 
 export async function postSector(name, cragId, token) {

@@ -1,4 +1,5 @@
-export const host = 'http://localhost:5000';
+//export const host = 'https://localhost:44397';
+export const host = 'https://localhost:5001';
 
 const endpoints = {
     login: host + '/login',
@@ -10,7 +11,7 @@ const endpoints = {
     cities: host + '/cities',
     areas: host + '/areas',
     crags: host + '/crags',
-    sectors: host + '/secotrs',
+    sectors: host + '/sectors',
 };
 
 export default endpoints;

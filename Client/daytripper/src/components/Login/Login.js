@@ -1,13 +1,26 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox, Row, Col, Space } from 'antd';
 
-import { loginService } from '../../services/loginService.js';
+import UserContext from '../../context/UserContext.js';
+import { login } from '../../services/loginService.js';
 
-function Login(props) {
+function Login({ history }) {
+    const [user, setUser] = useContext(UserContext);
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (values) => {
+        const result = await login(values.email, values.password, values.rememberMe);
+
+        console.log(result);
+
+        setUser({
+            token: result.token,
+            expiration: result.expiration,
+        });
+
+        history.push('/');
     };
 
     return (

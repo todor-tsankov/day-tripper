@@ -22,7 +22,7 @@ async function request(url, options) {
 function getOptions(method = 'get', body, token) {
     const options = {
         method,
-        mode: 'no-cors',
+       // mode: 'no-cors',
         headers: {}
     };
 
@@ -32,7 +32,7 @@ function getOptions(method = 'get', body, token) {
     }
 
     if(token){
-        options.Authorization = 'Bearer ' +  token;
+        options.headers['Authorization'] = 'Bearer ' +  token;
     }
 
     return options;
@@ -43,7 +43,8 @@ export async function get(url, data, token) {
 }
 
 export async function post(url, data, token) {
-    return await request(url, getOptions('post', data, token));
+    const options = getOptions('post', data, token);
+    return await request(url, options);
 }
 
 export async function put(url, data, token) {
