@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Layout, Row, Col } from 'antd';
 
-import styles from './App.module.css';
-
 import PageHeader from './components/PageHeader/PageHeader';
 import PageFooter from './components/PageFooter/PageFooter.js';
 
@@ -12,7 +10,7 @@ import Calendar from './components/Calendar/Calendar.js';
 import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Add from './components/Add/Add.js';
-
+import Search from './components/Search/Search.js';
 import UserContext from './context/UserContext.js';
 
 function App() {
@@ -32,7 +30,7 @@ function App() {
                                     <Route path="/calendar" component={Calendar} />
                                     <Route path="/login" component={Login} />
                                     <Route path="/register" component={Register} />
-                                    <Route path="/search" component={Calendar} />
+                                    <Route path="/search" component={Search} />
                                     <Route path="/profile" component={Calendar} />
                                     <Route path="/add" component={Add} />
                                 </Col>
@@ -44,6 +42,6 @@ function App() {
             </Layout>
         </Router>
     );
-    }
+}
 
-    export default App;
+export default App;

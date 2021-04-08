@@ -52,9 +52,9 @@ namespace DayTripper.Web.Controllers
                 || !existsCity
                 || !existsCrag
                 || !existsSector
-                || tripInput.Leaving < tripInput.Returning)
+                || tripInput.Leaving > tripInput.Returning)
             {
-                return this.Forbid("Invalid input!");
+                return this.BadRequest("Invalid input!");
             }
 
             tripInput.ApplicationUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -90,7 +90,7 @@ namespace DayTripper.Web.Controllers
                 || !existsSector
                 || tripEdit.Leaving < tripEdit.Returning)
             {
-                return this.Forbid("Invalid input!");
+                return this.BadRequest("Invalid input!");
             }
 
             await this.tripsService.EditAsync(tripEdit);

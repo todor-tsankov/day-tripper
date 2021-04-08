@@ -1,11 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+
+using DayTripper.Data.Models;
+using DayTripper.Services.Mapping;
 using DayTripper.Web.ViewModels.ValidationAttributes;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace DayTripper.Web.ViewModels.Trips
 {
-    public class TripInputModel
+    public class TripInputModel : IMapTo<Trip>
     {
         [BindNever]
         public string ApplicationUserId { get; set; }

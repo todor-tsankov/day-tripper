@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { Form, Select, InputNumber, Button, Switch, DatePicker } from 'antd';
+import { Form, Select, InputNumber, Button, Input, Switch, DatePicker } from 'antd';
 
 import UserContext from '../../context/UserContext.js';
 import { getAreas } from '../../services/areasService.js';
@@ -27,8 +27,13 @@ function Add() {
         getAreas().then(x => setAreas(x));
     }, []);
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
+        values.leaving = values.times[0]._d;
+        values.returning = values.times[1]._d;
+        values.times = undefined;
         console.log(values);
+        
+        await postTrip(values, user.token);
     };
 
     const onAreasSelected = async (value,) => {
@@ -148,7 +153,7 @@ function Add() {
                 name="withCar"
                 label="I have a car"
             >
-                <Switch valuePropName="checked" defaultChecked={true} onChange={onWithCarChange} noStyle/>
+                <Switch valuePropName="checked" defaultChecked={true} onChange={onWithCarChange} />
             </Form.Item>
             <Form.Item
                 name="seats"
@@ -172,6 +177,21 @@ function Add() {
                 <DatePicker.RangePicker
                     showTime={{ format: 'HH:mm' }}
                     format="YYYY-MM-DD HH:mm"
+                />
+            </Form.Item>
+            <Form.Item
+                name="comment"
+                label="Comment"
+                rules={[{
+                    max: 10000
+                }]}
+            >
+                <Input.TextArea
+                    showCount
+                    allowClear
+                    maxLength={10000}
+                    placeholder="Your comment goes here..."
+                    autoSize={{ minRows: 3, maxRows: 50 }}
                 />
             </Form.Item>
             <Form.Item {...tailLayout}>
