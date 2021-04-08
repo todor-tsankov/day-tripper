@@ -21,7 +21,7 @@ namespace DayTripper.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get(TripSearchInputModel search)
+        public IActionResult Get([FromQuery]TripSearchInputModel search)
         {
             var filters = this.GetFilters(search.CityId, search.CragId, search.Date, search.Seats);
             var orderBy = this.GetOrderBy(search.OrderBy);
@@ -47,7 +47,7 @@ namespace DayTripper.Web.Controllers
 
             if (date != null)
             {
-                result.Add(x => x.Leaving.Date == date);
+                result.Add(x => x.Leaving.Date == date.Value.Date);
             }
 
             if (seats != null)
