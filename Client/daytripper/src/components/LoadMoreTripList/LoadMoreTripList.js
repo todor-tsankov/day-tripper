@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { List, Avatar, Button, Skeleton } from 'antd';
+import { List, Avatar, Space, Button, Skeleton } from 'antd';
+import { UserOutlined, ArrowRightOutlined, HomeOutlined, FieldTimeOutlined } from '@ant-design/icons';
 
 function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
     const loadMore =
@@ -12,7 +13,7 @@ function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
                     lineHeight: '32px',
                 }}
             >
-                <Button onClick={onLoadMore}>loading more</Button>
+                <Button onClick={onLoadMore}>Load More</Button>
             </div>
         ) : null;
 
@@ -25,19 +26,26 @@ function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
             dataSource={list}
             renderItem={item => (
                 <List.Item
-                    actions={[<Link to={'/details/' + item.id}>more</Link>]}
+                    actions={[<Link to={'/details/' + item.id}>More</Link>]}
                 >
                     <Skeleton avatar title={false} loading={item.loading} active>
                         <List.Item.Meta
                             avatar={
-                                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                <UserOutlined />
+                                //<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                             }
-                            title={<div>{item.applicationUserFirstName + ' ' + item.applicationUserLastName}</div>}
-                            description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                            title={<h3>{item.applicationUserFirstName + ' ' + item.applicationUserLastName}</h3>}
+                            description={
+                                <Space wrap>
+                                    <div><FieldTimeOutlined /> {item.leaving.replace('T', ' ').slice(0, 16)}</div>
+                                    <div><FieldTimeOutlined /> {item.returning.replace('T', ' ').slice(0, 16)}</div>
+                                    <div><HomeOutlined /> {item.cityName}</div>
+                                    <ArrowRightOutlined />{item.cragAreaName}|{item.cragName}|{item.sectorName}
+                                </Space>
+                            }
                         />
-                        <div>content</div>
-                    </Skeleton>
-                </List.Item>
+                    </Skeleton >
+                </List.Item >
             )}
         />);
 }

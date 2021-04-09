@@ -15,6 +15,8 @@ namespace DayTripper.Web.ViewModels.Trips
 
         public string CityName { get; set; }
 
+        public string CragAreaName { get; set; }
+
         public string CragName { get; set; }
 
         public string SectorName { get; set; }

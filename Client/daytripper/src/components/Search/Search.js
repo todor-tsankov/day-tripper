@@ -6,7 +6,7 @@ import { getTrips } from '../../services/tripsService.js';
 import SearchForm from '../SearchForm/SearchForm.js';
 
 function Search(props) {
-    const take = 1;
+    const take = 10;
     const [skip, setSkip] = useState(0);
 
     const [trips, setTrips] = useState([]);

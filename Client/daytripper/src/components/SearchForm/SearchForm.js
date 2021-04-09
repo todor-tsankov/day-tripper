@@ -15,7 +15,7 @@ function SearchForm({ onFormFieldsChange }) {
 
     const layout = {
         labelCol: { span: 4 },
-        wrapperCol: { span: 12 },
+        wrapperCol: { span: 16 },
     };
 
     return (
