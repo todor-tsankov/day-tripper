@@ -64,6 +64,7 @@ namespace DayTripper.Web.Controllers
 
                 return this.Ok(new
                 {
+                    userId = user.Id,
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo,
                 });

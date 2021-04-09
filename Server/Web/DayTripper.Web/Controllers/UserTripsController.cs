@@ -24,9 +24,9 @@ namespace DayTripper.Web.Controllers
         [HttpGet]
         public IActionResult Get(int tripId)
         {
-            var existsUserTrip = this.userTripsService.Exists(x => x.Id == tripId);
+            var existsTrip = this.tripsService.Exists(x => x.Id == tripId);
 
-            if (!existsUserTrip)
+            if (!existsTrip)
             {
                 return this.NotFound("No such user trip!");
             }

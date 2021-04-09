@@ -120,6 +120,7 @@ namespace DayTripper.Web
             services.AddTransient<ISectorsService, SectorsService>();
             services.AddTransient<ITripsService, TripsService>();
             services.AddTransient<IUserTripsService, UserTripsService>();
+            services.AddTransient<IFollowsService, FollowsService>();
             services.AddTransient<IApplicationUsersService, ApplicationUsersService>();
         }
 

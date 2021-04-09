@@ -9,9 +9,15 @@ namespace DayTripper.Web.ViewModels.Trips
     {
         public string ApplicationUserId { get; set; }
 
+        public string ApplicationUserFirstName { get; set; }
+
+        public string ApplicationUserLastName { get; set; }
+
         public string CityName { get; set; }
 
-        public string AreaName { get; set; }
+        public string CragAreaName { get; set; }
+
+        public string CragName { get; set; }
 
         public string SectorName { get; set; }
 
