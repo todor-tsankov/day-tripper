@@ -56,9 +56,9 @@ namespace DayTripper.Web.Controllers
 
         [HttpDelete]
         [Authorize]
-        public async Task<IActionResult> Delete(string userId)
+        public async Task<IActionResult> Delete(FollowDeleteModel followInput)
         {
-            var user = await this.userManager.FindByIdAsync(userId);
+            var user = await this.userManager.FindByIdAsync(followInput.UserId);
 
             if (user == null)
             {
@@ -66,7 +66,7 @@ namespace DayTripper.Web.Controllers
             }
 
             var currentId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.followsService.DeleteAsync(x => x.FollowedId == userId && x.FollowerId == currentId);
+            await this.followsService.DeleteAsync(x => x.FollowedId == followInput.UserId && x.FollowerId == currentId);
 
             return this.Ok("Successfully deleted follow!");
         }

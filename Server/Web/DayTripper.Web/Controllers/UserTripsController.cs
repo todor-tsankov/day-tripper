@@ -28,7 +28,7 @@ namespace DayTripper.Web.Controllers
 
             if (!existsTrip)
             {
-                return this.NotFound("No such user trip!");
+                return this.NotFound("No such trip!");
             }
 
             return this.Ok(this.userTripsService.GetMany<UserTripViewModel>(x => x.TripId == tripId));
@@ -53,16 +53,17 @@ namespace DayTripper.Web.Controllers
 
         [HttpDelete]
         [Authorize]
-        public async Task<IActionResult> Delete(int userTripId)
+        public async Task<IActionResult> Delete(UserTripDeleteModel userTripInput)
         {
-            var existsUserTrip = this.userTripsService.Exists(x => x.Id == userTripId);
+            var currentId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var existsUserTrip = this.userTripsService.Exists(x => x.TripId == userTripInput.TripId && x.ApplicationUserId == currentId);
 
             if (!existsUserTrip)
             {
                 return this.NotFound("No such user trip!");
             }
 
-            await this.userTripsService.DeleteAsync(x => x.Id == userTripId);
+            await this.userTripsService.DeleteAsync(x => x.TripId == userTripInput.TripId && x.ApplicationUserId == currentId);
 
             return this.Ok("Successfully deleted user trip!");
         }
