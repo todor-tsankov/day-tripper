@@ -2,17 +2,17 @@ import { Table } from 'antd';
 
 function UsersInTripTable({ users }) {
     const columns = [
-        { title: 'First Name', dataIndex: 'ApplicationUserFirstName', key: 'ApplicationUserFirstName'},
-        { title: 'Last Name', dataIndex: 'ApplicationUserLastName', key: 'ApplicationUserLastName' },
+        { title: 'First Name', dataIndex: 'applicationUserFirstName', key: 'applicationUserFirstName'},
+        { title: 'Last Name', dataIndex: 'applicationUserLastName', key: 'applicationUserLastName' },
     ];
 
-    users = users.map(x => {
-        x.key = x.Id;
+    const mappedUsers = users.map(x => {
+        x.key = x.id;
         return x;
     });
 
     return (
-        <Table columns={columns} dataSource={users} />
+        <Table columns={columns} dataSource={mappedUsers} />
     );
 }
 

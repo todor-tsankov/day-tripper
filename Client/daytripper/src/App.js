@@ -26,7 +26,7 @@ function App() {
                     <Layout.Content>
                         <Switch>
                             <Row> 
-                                <Col xs={{ span: 24, offset: 0 }} lg={{ span: 20, offset: 2 }}>
+                                <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
                                     <Route exact path="/" />
                                     <Route path="/home" />
                                     <Route path="/calendar" component={Calendar} />

@@ -16,6 +16,7 @@ function Login({ history }) {
         console.log(result);
 
         setUser({
+            userId: result.userId,
             token: result.token,
             expiration: result.expiration,
         });
