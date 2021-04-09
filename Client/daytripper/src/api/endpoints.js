@@ -12,6 +12,7 @@ const endpoints = {
     areas: host + '/areas',
     crags: host + '/crags',
     sectors: host + '/sectors',
+    follows: host + '/follows',
 };
 
 export default endpoints;

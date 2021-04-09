@@ -22,6 +22,9 @@ function Search(props) {
         setInitLoading(true);
 
         getTrips(filters).then(x => {
+            if(x.length !== take){
+                setEnd(true);
+            }
             setTrips(x);
             setList(x);
             setInitLoading(false);

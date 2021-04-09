@@ -34,11 +34,11 @@ function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
                                 <UserOutlined />
                                 //<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                             }
-                            title={<h3>{item.applicationUserFirstName + ' ' + item.applicationUserLastName}</h3>}
+                            title={item.applicationUserFirstName + ' ' + item.applicationUserLastName}
                             description={
                                 <Space wrap>
-                                    <div><FieldTimeOutlined /> {item.leaving.replace('T', ' ').slice(0, 16)}</div>
-                                    <div><FieldTimeOutlined /> {item.returning.replace('T', ' ').slice(0, 16)}</div>
+                                    <div><FieldTimeOutlined /> {item.leaving?.replace('T', ' ').slice(0, 16)}</div>
+                                    <div><FieldTimeOutlined /> {item.returning?.replace('T', ' ').slice(0, 16)}</div>
                                     <div><HomeOutlined /> {item.cityName}</div>
                                     <ArrowRightOutlined />{item.cragAreaName}|{item.cragName}|{item.sectorName}
                                 </Space>

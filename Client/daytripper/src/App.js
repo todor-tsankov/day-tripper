@@ -11,6 +11,8 @@ import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Add from './components/Add/Add.js';
 import Search from './components/Search/Search.js';
+import Details from './components/Details/Details.js';
+
 import UserContext from './context/UserContext.js';
 
 function App() {
@@ -23,8 +25,8 @@ function App() {
                     <PageHeader />
                     <Layout.Content>
                         <Switch>
-                            <Row>
-                                <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
+                            <Row> 
+                                <Col xs={{ span: 24, offset: 0 }} lg={{ span: 20, offset: 2 }}>
                                     <Route exact path="/" />
                                     <Route path="/home" />
                                     <Route path="/calendar" component={Calendar} />
@@ -33,6 +35,7 @@ function App() {
                                     <Route path="/search" component={Search} />
                                     <Route path="/profile" component={Calendar} />
                                     <Route path="/add" component={Add} />
+                                    <Route path="/details/:tripId" component={Details} />
                                 </Col>
                             </Row>
                         </Switch>
