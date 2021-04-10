@@ -4,7 +4,9 @@ const { Footer } = Layout;
 
 function PageFooter(props) {
     return (
-        <Footer style={{ textAlign: 'center' }}>Todor Tsankov ©{new Date().getFullYear()}</Footer>
+        <Footer style={{ textAlign: 'center' }}>
+            Todor Tsankov ©{new Date().getFullYear()}
+        </Footer>
     );
 }
 

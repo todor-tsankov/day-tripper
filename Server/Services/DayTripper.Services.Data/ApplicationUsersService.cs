@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 
 using AutoMapper;
 using DayTripper.Data.Common.Repositories;
@@ -23,6 +24,21 @@ namespace DayTripper.Services.Data
         {
             this.usersRepository = usersRepository;
             this.mapper = mapper;
+        }
+
+        public async Task EditAsync(EditInputModel editInput)
+        {
+            var user = this.usersRepository
+                .All()
+                .First(x => x.Id == editInput.Id);
+
+            user.FirstName = editInput.FirstName;
+            user.LastName = editInput.LastName;
+            user.SmsNotifications = editInput.SmsNotifications;
+            user.EmailNotifications = editInput.EmailNotifications;
+            user.FacebookNotifications = editInput.FacebookNotifications;
+
+            await this.usersRepository.SaveChangesAsync();
         }
     }
 }

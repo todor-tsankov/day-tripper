@@ -67,8 +67,6 @@ function Edit({ history, match }) {
     return (
         <Form {...layout}
             style={{ padding: 50 }}
-            name="normal_add"
-            className="add-form"
             onFinish={onFinish}
             initialValues={{
                 cityId: tripDetails.cityId,
@@ -91,7 +89,7 @@ function Edit({ history, match }) {
 
             <Form.Item {...tailLayout}>
                 <Space>
-                    <Button loading={sending} type="primary" htmlType="submit" className="login-form-button">Save</Button>
+                    <Button loading={sending} type="primary" htmlType="submit">Save</Button>
                     <Button danger loading={deleting} onClick={onDelete}>Delete</Button>
                 </Space>
             </Form.Item>

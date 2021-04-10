@@ -1,17 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+
 namespace DayTripper.Web.ViewModels.Users
 {
     public class EditInputModel
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [StringLength(100, MinimumLength = 6)]
-        public string Password { get; set; }
+        [BindNever]
+        public string Id { get; set; }
 
         [Required]
         [MinLength(1)]
@@ -28,7 +24,5 @@ namespace DayTripper.Web.ViewModels.Users
         public bool EmailNotifications { get; set; }
 
         public bool FacebookNotifications { get; set; }
-
-        public string PhoneNumber { get; set; }
     }
 }

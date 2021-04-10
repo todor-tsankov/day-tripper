@@ -38,11 +38,11 @@ function Details({ history, match }) {
     }, [tripId, user.Id, refreshUsers]);
 
     const onJoinLeaveTripClick = async () => {
-        setIsInTrip();
-
         if (isInTrip === true) {
+            setIsInTrip();
             await leaveTrip(tripId, user.token);
         } else if (isInTrip === false) {
+            setIsInTrip();
             await joinTrip(tripId, user.token);
         }
 
@@ -50,12 +50,11 @@ function Details({ history, match }) {
     };
 
     const onFollowUnfollowClick = async () => {
-        setIsFollower();
-
         if (isFollower === true) {
+            setIsFollower();
             await deleteFollow(tripInfo.applicationUserId, user.token);
-           
         } else if (isFollower === false) {
+            setIsFollower();
             await postFollow(tripInfo.applicationUserId, user.token);
         }
 

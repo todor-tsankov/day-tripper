@@ -13,6 +13,7 @@ import Add from './components/Add/Add.js';
 import Edit from './components/Edit/Edit.js';
 import Search from './components/Search/Search.js';
 import Details from './components/Details/Details.js';
+import Profile from './components/Profile/Profile.js';
 
 import UserContext from './context/UserContext.js';
 
@@ -21,12 +22,12 @@ function App() {
 
     return (
         <Router>
-            <Layout>
+            <Layout style={{minHeight:'100vh'}}>
                 <UserContext.Provider value={[user, setUser]}>
                     <PageHeader />
                     <Layout.Content>
                         <Switch>
-                            <Row> 
+                            <Row>
                                 <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
                                     <Route exact path="/" />
                                     <Route path="/home" />
@@ -34,9 +35,9 @@ function App() {
                                     <Route path="/login" component={Login} />
                                     <Route path="/register" component={Register} />
                                     <Route path="/search" component={Search} />
-                                    <Route path="/profile" component={Calendar} />
+                                    <Route path="/profile" component={Profile} />
                                     <Route path="/add" component={Add} />
-                                    <Route path="/edit/:tripId" component={Edit}/>
+                                    <Route path="/edit/:tripId" component={Edit} />
                                     <Route path="/details/:tripId" component={Details} />
                                 </Col>
                             </Row>

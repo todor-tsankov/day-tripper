@@ -8,5 +8,6 @@ namespace DayTripper.Services.Data
 {
     public interface IApplicationUsersService : IBaseService<ApplicationUser>
     {
+        Task EditAsync(EditInputModel editInput);
     }
 }
