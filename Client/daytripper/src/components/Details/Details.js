@@ -8,6 +8,7 @@ import { getUserTrips, joinTrip, leaveTrip } from '../../services/userTripsServi
 import { getIsFollower, postFollow, deleteFollow } from '../../services/followsService.js';
 
 import TripInfo from '../TripInfo/TripInfo.js';
+import CommentCard from '../CommentCard/CommentCard.js';
 import UsersInTripTable from '../UsersInTripTable/UsersInTripTable.js';
 
 function Details({ history, match }) {
@@ -87,6 +88,9 @@ function Details({ history, match }) {
                 </Col>
                 <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ padding: 10 }}>
                     <UsersInTripTable users={users} />
+                </Col>
+                <Col xs={{ span: 24 }} style={{ padding: 10 }}>
+                    <CommentCard comment={tripInfo?.comment} loading={tripInfo === undefined} />
                 </Col>
             </Row >
         </>
