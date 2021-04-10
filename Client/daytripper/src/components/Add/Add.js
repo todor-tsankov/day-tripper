@@ -1,52 +1,30 @@
-import { useContext, useState, useEffect } from 'react';
-import { Form, Select, InputNumber, Button, Input, Switch, DatePicker } from 'antd';
+import { useContext } from 'react';
+import { Form, Button } from 'antd';
+
+import CitiesSelect from '../FormItems/CitiesSelect/CitiesSelect.js';
+import AreasCragsSectors from '../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
+import SeatsWithCarInput from '../FormItems/SeatsWithCarInput/SeatsWithCarInput.js';
+import FromToInput from '../FormItems/FromToInput/FromToInput.js';
+import CommentInput from '../FormItems/CommentInput/CommentInput.js';
 
 import UserContext from '../../context/UserContext.js';
-import { getAreas } from '../../services/areasService.js';
-import { getCrags } from '../../services/cragsService.js';
-import { getSectors } from '../../services/sectorsService.js';
-import { getCities } from '../../services/citiesService.js';
 import { postTrip } from '../../services/detailsService.js';
 
 function Add() {
     const [user] = useContext(UserContext);
 
-    const [cities, setCities] = useState([]);
-    const [areas, setAreas] = useState([]);
-
-    const [crags, setCrags] = useState([]);
-    const [disabledCrags, setDsiabledCrags] = useState(true);
-
-    const [sectors, setSectors] = useState([]);
-    const [disabledSectors, setDsiabledSectors] = useState(true);
-
-    const [seatsDisabled, setSeatsDisabled] = useState(false);
-
-    useEffect(() => {
-        getCities().then(x => setCities(x));
-        getAreas().then(x => setAreas(x));
-    }, []);
-
     const onFinish = async (values) => {
         values.leaving = values.times[0]._d;
         values.returning = values.times[1]._d;
         values.times = undefined;
+
+        if(!values.withCar){
+            values.seats = undefined;
+        }
+
         console.log(values);
-        
         await postTrip(values, user.token);
     };
-
-    const onAreasSelected = async (value,) => {
-        setCrags(await getCrags(value));
-        setDsiabledCrags(false);
-    };
-
-    const onCragsSelected = async (value) => {
-        setSectors(await getSectors(value));
-        setDsiabledSectors(false);
-    };
-
-    const onWithCarChange = (value) => setSeatsDisabled(!value);
 
     const layout = {
         labelCol: { span: 4 },
@@ -67,133 +45,12 @@ function Add() {
                 withCar: true,
             }}
         >
-            <Form.Item
-                name='cityId'
-                label='From City'
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please select a City!',
-                    }]}
-            >
-                <Select
-                    showSearch
-                    loading={cities.length === 0}
-                    placeholder="Select City"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                >
-                    {cities.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
-                </Select>
-            </Form.Item>
-            <Form.Item
-                name='areaId'
-                label='To Area'
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please select Area!',
-                    },
-                ]}>
-                <Select
-                    showSearch
-                    loading={areas.length === 0}
-                    placeholder="Select Area"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                    onSelect={onAreasSelected}
-                >
-                    {areas.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
-                </Select>
-            </Form.Item>
-            <Form.Item
-                name='cragId'
-                label='To Crag'
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please select Crag!',
-                    },
-                ]}>
-                <Select
-                    showSearch
-                    disabled={disabledCrags}
-                    defaultActiveFirstOption={false}
-                    placeholder="Select Crag"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                    onSelect={onCragsSelected}
-                >
-                    {crags.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
-                </Select>
-            </Form.Item>
-            <Form.Item
-                name='sectorId'
-                label='To Sector'
-            >
-                <Select
-                    showSearch
-                    disabled={disabledSectors}
-                    placeholder="Select Sector (optional)"
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                    }
-                >
-                    {sectors.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
-                </Select>
-            </Form.Item>
-            <Form.Item
-                name="withCar"
-                label="I have a car"
-            >
-                <Switch valuePropName="checked" defaultChecked={true} onChange={onWithCarChange} />
-            </Form.Item>
-            <Form.Item
-                name="seats"
-                label="Seats avaible:"
-                rules={[{
-                    required: !seatsDisabled,
-                    message: 'Number of avaible seats is required!'
-                }]}
-            >
-                <InputNumber
-                    disabled={seatsDisabled}
-                    min={1}
-                    max={10}
-                />
-            </Form.Item>
-            <Form.Item
-                name="times"
-                label="Time"
-                rules={[{ required: true }]}
-            >
-                <DatePicker.RangePicker
-                    showTime={{ format: 'HH:mm' }}
-                    format="YYYY-MM-DD HH:mm"
-                />
-            </Form.Item>
-            <Form.Item
-                name="comment"
-                label="Comment"
-                rules={[{
-                    max: 10000
-                }]}
-            >
-                <Input.TextArea
-                    showCount
-                    allowClear
-                    maxLength={10000}
-                    placeholder="Your comment goes here..."
-                    autoSize={{ minRows: 3, maxRows: 50 }}
-                />
-            </Form.Item>
+            <CitiesSelect />
+            <AreasCragsSectors />
+            <SeatsWithCarInput />
+            <FromToInput/>
+            <CommentInput />
+            
             <Form.Item {...tailLayout}>
                 <Button type="primary" htmlType="submit" className="login-form-button">Add Trip</Button>
             </Form.Item>
