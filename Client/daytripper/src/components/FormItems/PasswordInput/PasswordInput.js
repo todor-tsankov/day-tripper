@@ -10,6 +10,10 @@ function PasswordInput() {
                     required: true,
                     message: 'Please enter your Password!',
                 },
+                {
+                    min: 6,
+                    message: 'Password can\'t be less than 6 characters',
+                }
             ]}
         >
             <Input

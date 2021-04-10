@@ -7,8 +7,9 @@ function EmailInput() {
             name="email"
             rules={[
                 {
+                    type: 'email',
                     required: true,
-                    message: 'Please enter your Email!',
+                    message: 'The input is not valid E-mail!',
                 },
             ]}
         >
