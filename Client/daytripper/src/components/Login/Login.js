@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Form, Input, Button, Checkbox, Row, Col, Space } from 'antd';
 
+import EmailInput from '../FormItems/EmailInput/EmailInput.js';
+import PasswordInput from '../FormItems/PasswordInput/PasswordInput.js';
+import RememberMeCheckbox from '../FormItems/RememberMeCheckbox/RememberMeCheckbox.js';
+
 import UserContext from '../../context/UserContext.js';
 import { login } from '../../services/loginService.js';
 
@@ -35,37 +39,10 @@ function Login({ history }) {
                     }}
                     onFinish={onFinish}
                 >
-                    <Form.Item
-                        name="email"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please enter your Email!',
-                            },
-                        ]}
-                    >
-                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-                    </Form.Item>
-                    <Form.Item
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please enter your Password!',
-                            },
-                        ]}
-                    >
-                        <Input
-                            prefix={<LockOutlined className="site-form-item-icon" />}
-                            type="password"
-                            placeholder="Password"
-                        />
-                    </Form.Item>
-                    <Form.Item>
-                        <Form.Item name="remember" valuePropName="checked" noStyle>
-                            <Checkbox>Remember me</Checkbox>
-                        </Form.Item>
-                    </Form.Item>
+
+                    <EmailInput />
+                    <PasswordInput />
+                    <RememberMeCheckbox />
 
                     <Form.Item>
                         <Space size={'small'}>
