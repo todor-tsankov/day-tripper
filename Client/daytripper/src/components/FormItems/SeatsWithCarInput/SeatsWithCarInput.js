@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Form, Switch, InputNumber } from 'antd';
 
-function SeatsWithCarInput() {
-    const [seatsDisabled, setSeatsDisabled] = useState(false);
+function SeatsWithCarInput({withCar}) {
+    const [seatsDisabled, setSeatsDisabled] = useState(!withCar);
     const onWithCarChange = (value) => setSeatsDisabled(!value);
 
     return (
@@ -11,7 +11,7 @@ function SeatsWithCarInput() {
                 name="withCar"
                 label="I have a car"
             >
-                <Switch valuePropName="checked" defaultChecked={true} onChange={onWithCarChange} />
+                <Switch onChange={onWithCarChange} />
             </Form.Item>
             <Form.Item
                 name="seats"

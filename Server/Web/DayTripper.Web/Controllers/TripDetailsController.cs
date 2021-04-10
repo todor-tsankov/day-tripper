@@ -88,7 +88,7 @@ namespace DayTripper.Web.Controllers
                 || !existsCity
                 || !existsCrag
                 || !existsSector
-                || tripEdit.Leaving < tripEdit.Returning)
+                || tripEdit.Leaving > tripEdit.Returning)
             {
                 return this.BadRequest("Invalid input!");
             }
@@ -100,17 +100,17 @@ namespace DayTripper.Web.Controllers
 
         [HttpDelete]
         [Authorize]
-        public async Task<IActionResult> Delete(int tripId)
+        public async Task<IActionResult> Delete(TripDeleteModel tripInput)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var exists = this.tripsService.Exists(x => x.Id == tripId && x.ApplicationUserId == userId);
+            var exists = this.tripsService.Exists(x => x.Id == tripInput.TripId && x.ApplicationUserId == userId);
 
             if (!exists)
             {
                 return this.NotFound("No such trip!");
             }
 
-            await this.tripsService.DeleteAsync(x => x.Id == tripId);
+            await this.tripsService.DeleteAsync(x => x.Id == tripInput.TripId);
 
             return this.Ok("Successfully deleted trip!");
         }

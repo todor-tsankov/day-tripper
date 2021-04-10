@@ -10,6 +10,7 @@ import Calendar from './components/Calendar/Calendar.js';
 import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
 import Add from './components/Add/Add.js';
+import Edit from './components/Edit/Edit.js';
 import Search from './components/Search/Search.js';
 import Details from './components/Details/Details.js';
 
@@ -35,6 +36,7 @@ function App() {
                                     <Route path="/search" component={Search} />
                                     <Route path="/profile" component={Calendar} />
                                     <Route path="/add" component={Add} />
+                                    <Route path="/edit/:tripId" component={Edit}/>
                                     <Route path="/details/:tripId" component={Details} />
                                 </Col>
                             </Row>

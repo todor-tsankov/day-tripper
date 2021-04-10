@@ -5,8 +5,7 @@ import { getAreas } from '../../../services/areasService.js';
 import { getCrags } from '../../../services/cragsService.js';
 import { getSectors } from '../../../services/sectorsService.js';
 
-function AreasCragsSectors() {
-
+function AreasCragsSectors({ areaId, cragId }) {
     const [areas, setAreas] = useState([]);
 
     const [crags, setCrags] = useState([]);
@@ -19,8 +18,13 @@ function AreasCragsSectors() {
         getAreas().then(x => setAreas(x));
     }, []);
 
+    useEffect(() => {
+        if (areaId && cragId) {
+            onAreasSelected(areaId).then(x => onCragsSelected(cragId));
+        }
+    }, [areaId, cragId]);
 
-    const onAreasSelected = async (value,) => {
+    const onAreasSelected = async (value) => {
         setCrags(await getCrags(value));
         setDsiabledCrags(false);
     };

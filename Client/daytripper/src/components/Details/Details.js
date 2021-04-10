@@ -10,7 +10,7 @@ import { getIsFollower, postFollow, deleteFollow } from '../../services/followsS
 import TripInfo from '../TripInfo/TripInfo.js';
 import UsersInTripTable from '../UsersInTripTable/UsersInTripTable.js';
 
-function Details({ match }) {
+function Details({ history, match }) {
     const tripId = match.params.tripId;
 
     const [user] = useContext(UserContext);
@@ -61,12 +61,16 @@ function Details({ match }) {
         setRefreshInfo(x => !x);
     };
 
+    const onEidtTripClick = (e) => {
+        history.push('/edit/' + tripId);
+    };
+
     return (
         <>
             <Row style={{ paddingTop: 30 }} justify="center">
                 <Space>
                     {user?.userId === tripInfo?.applicationUserId
-                        ? (<Button type="primary">Edit Trip</Button>)
+                        ? (<Button type="primary" onClick={onEidtTripClick}>Edit Trip</Button>)
                         : (
                             <>
                                 <Button onClick={onJoinLeaveTripClick} loading={isInTrip === undefined} type="primary">{isInTrip ? 'Leave Trip' : 'Join Trip'}</Button>

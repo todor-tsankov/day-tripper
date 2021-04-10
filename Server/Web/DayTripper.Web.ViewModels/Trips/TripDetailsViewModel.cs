@@ -13,11 +13,19 @@ namespace DayTripper.Web.ViewModels.Trips
 
         public string ApplicationUserLastName { get; set; }
 
+        public int CityId { get; set; }
+
         public string CityName { get; set; }
+
+        public int CragAreaId { get; set; }
 
         public string CragAreaName { get; set; }
 
+        public int CragId { get; set; }
+
         public string CragName { get; set; }
+
+        public int? SectorId { get; set; }
 
         public string SectorName { get; set; }
 
