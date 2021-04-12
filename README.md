@@ -25,7 +25,6 @@
 | /details/:tripId | see the full information about the trip, join or follow the creator |
 
 
-
 ## :waxing_crescent_moon: Back-End ( Server)
 
 - ASP.NET Core
@@ -40,7 +39,7 @@
 | /cities      | yes  | admin | admin | admin  |
 | /crags       | yes  | admin | admin | admin  |
 | /sectors     | yes  | admin | admin | admin  |
-| /follows     | auth | auth  |       | admin  |
+| /follows     | auth | auth  |       | auth   |
 | /calendar    | yes  |       |       |        |
 | /login       |      | yes   |       |        |
 | /register    |      | yes   |       |        |
