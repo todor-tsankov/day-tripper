@@ -4,7 +4,7 @@ import { Form, Select, InputNumber, Switch, DatePicker } from 'antd';
 import { getCrags } from '../../services/cragsService.js';
 import { getCities } from '../../services/citiesService.js';
 
-function SearchForm({ onFormFieldsChange }) {
+function SearchForm({ onFormFieldsChange, date }) {
     const [cities, setCities] = useState([]);
     const [crags, setCrags] = useState([]);
 
@@ -24,6 +24,9 @@ function SearchForm({ onFormFieldsChange }) {
             name="normal_add"
             className="add-form"
             onFieldsChange={onFormFieldsChange}
+            initialValues={{
+                date: date
+            }}
         >
             <Form.Item name='cityId' label='From City'>
                 <Select

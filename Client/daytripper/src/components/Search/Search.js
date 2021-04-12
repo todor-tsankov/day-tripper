@@ -1,11 +1,15 @@
+import moment from 'moment';
 import { useState, useEffect } from 'react';
 
+import SearchForm from '../SearchForm/SearchForm.js';
 import LoadMoreTripList from '../LoadMoreTripList/LoadMoreTripList.js';
 
 import { getTrips } from '../../services/tripsService.js';
-import SearchForm from '../SearchForm/SearchForm.js';
 
-function Search(props) {
+function Search({match}) {
+    const dateString = decodeURIComponent(match.params.date);
+    const date = dateString ? moment(dateString) : undefined;
+
     const take = 10;
     const [skip, setSkip] = useState(0);
 
@@ -14,7 +18,7 @@ function Search(props) {
 
     const [loading, setLoading] = useState(false);
     const [initLoading, setInitLoading] = useState(true);
-    const [filters, setFilters] = useState({ take: take });
+    const [filters, setFilters] = useState({ take: take, date: dateString });
 
     const [end, setEnd] = useState(false);
 
@@ -40,10 +44,9 @@ function Search(props) {
             return a;
         }, {});
 
-        data.date = data.date?._d;
-
         data.skip = 0;
         data.take = take;
+        data.date = data.date?.utc().format();
 
         setFilters(data);
     };
@@ -57,7 +60,6 @@ function Search(props) {
         newFilters.skip = skip + take;
         newFilters.take = take;
 
-        console.log(newFilters);
         const newTrips = await getTrips(newFilters);
 
         setList(trips.concat(newTrips));
@@ -73,7 +75,7 @@ function Search(props) {
 
     return (
         <>
-            <SearchForm onFormFieldsChange={onFormFieldsChange} />
+            <SearchForm onFormFieldsChange={onFormFieldsChange} date={date}/>
             <LoadMoreTripList list={list} loading={loading} initLoading={initLoading} onLoadMore={onLoadMore} end={end} />
         </>
     );

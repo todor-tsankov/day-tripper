@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using AutoMapper;
@@ -19,6 +21,18 @@ namespace DayTripper.Services.Data
         {
             this.tripsRepository = tripsRepository;
             this.mapper = mapper;
+        }
+
+        public IDictionary<int, int> GetMonthlyTripsPerDay(int year, int month)
+        {
+            var result = this.tripsRepository
+                .AllAsNoTracking()
+                .Where(x => x.Leaving.Year == year && x.Leaving.Month == month)
+                .AsEnumerable()
+                .GroupBy(x => x.Leaving.Date.Day)
+                .ToDictionary(x => x.Key, x => x.Count());
+
+            return result;
         }
 
         public async Task EditAsync(TripEditModel tripEdit)

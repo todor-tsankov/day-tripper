@@ -13,6 +13,7 @@ const endpoints = {
     crags: host + '/crags',
     sectors: host + '/sectors',
     follows: host + '/follows',
+    calendar: host + '/calendar'
 };
 
 export default endpoints;
