@@ -14,8 +14,8 @@ function Add() {
     const [user] = useContext(UserContext);
 
     const onFinish = async (values) => {
-        values.leaving = values.times[0]._d;
-        values.returning = values.times[1]._d;
+        values.leaving = values.times[0].utc().format();
+        values.returning = values.times[1].utc().format();
         values.times = undefined;
 
         if(!values.withCar){

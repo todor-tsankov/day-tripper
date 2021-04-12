@@ -30,7 +30,6 @@ function App() {
                             <Row>
                                 <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
                                     <Route exact path="/" />
-                                    <Route exact path="/home" />
                                     <Route exact path="/calendar" component={Calendar} />
                                     <Route exact path="/login" component={Login} />
                                     <Route exact path="/register" component={Register} />
