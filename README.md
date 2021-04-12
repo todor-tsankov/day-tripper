@@ -23,7 +23,7 @@
 | /add             | add new trip                                                        |
 | /edit/:tripId    | edit an existing trip or delete it                                  |
 | /details/:tripId | see the full information about the trip, join or follow the creator |
->>>>>>> Stashed changes
+
 
 
 ## :waxing_crescent_moon: Back-End ( Server)
