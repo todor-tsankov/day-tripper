@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import { Form, Button, Row, Col, Space } from 'antd';
+import { Form, Button, Row, Col, Space, message } from 'antd';
 
 import EmailInput from '../FormItems/EmailInput/EmailInput.js';
 import FirstNameInput from '../FormItems/FirstNameInput/FirstNameInput.js';
@@ -13,9 +13,19 @@ import NotificationsInput from '../FormItems/NotificationsInput/NotificationsInp
 import { register } from '../../services/registerService.js';
 
 function Register({ history }) {
+    const [sending, setSending] = useState(false);
+
     const onFinish = async (data) => {
-        console.log(data);
-        await register(data);
+        setSending(true);
+        const response = await register(data);
+        setSending(false);
+
+        if (response.code !== 200) {
+            message.error(response.message);
+            return;
+        }
+
+        message.info(response.message);
         history.push('/login');
     };
 
@@ -41,7 +51,7 @@ function Register({ history }) {
                     <NotificationsInput />
                     <Form.Item>
                         <Space size={'small'}>
-                            <Button type="primary" htmlType="submit" className="login-form-button">Register</Button>
+                            <Button type="primary" htmlType="submit" loading={sending}>Register</Button>
                             Already have an account? <Link to="/login">Log in</Link>
                         </Space>
                     </Form.Item>
