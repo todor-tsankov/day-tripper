@@ -7,6 +7,7 @@ using DayTripper.Common;
 using DayTripper.Data.Models;
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels.Areas;
+using DayTripper.Web.ViewModels.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +29,12 @@ namespace DayTripper.Web.Controllers
         {
             Expression<Func<Area, bool>> filter = areaId != null ? filter = x => x.Id == areaId : null;
 
-            return this.Ok(this.areasService.GetMany<AreaViewModel>(filter));
+            var response = new Response()
+            {
+                Data = this.areasService.GetMany<AreaViewModel>(filter),
+            };
+
+            return this.Ok(response);
         }
 
         [HttpPost]
@@ -37,51 +43,64 @@ namespace DayTripper.Web.Controllers
         {
             var existsByName = this.areasService.Exists(x => x.Name == areaInput.Name);
 
+            var response = new Response()
+            {
+                Message = "Successfully added area!",
+            };
+
             if (!this.ModelState.IsValid || existsByName)
             {
-                return this.Forbid("Invalid input!");
+                response.Message = "Area with that name already exists..";
+                return this.BadRequest(response);
             }
 
             await this.areasService.AddAsync(areaInput);
-            return this.Ok("Successfully added area!");
+            return this.Ok(response);
         }
 
         [HttpPut]
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Put(AreaEditModel areaEdit)
         {
+            var response = new Response();
             var exists = this.areasService.Exists(x => x.Id == areaEdit.AreaId);
             var existsByName = this.areasService.Exists(x => x.Id != areaEdit.AreaId && x.Name == areaEdit.Name);
 
-            if (!this.ModelState.IsValid || existsByName)
-            {
-                return this.Forbid("Invalid input!");
-            }
-
             if (!exists)
             {
-                return this.NotFound("No such area!");
+                response.Message = "No such area!";
+                return this.NotFound(response);
+            }
+
+            if (!this.ModelState.IsValid || existsByName)
+            {
+                response.Message = "Invalid input!";
+                return this.BadRequest(response);
             }
 
             await this.areasService.EditAsync(areaEdit);
+            response.Message = "Successfully edited area!";
 
-            return this.Ok("Successfully edited area!");
+            return this.Ok(response);
         }
 
         [HttpDelete]
         [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Delete(int areaId)
         {
+            var response = new Response();
             var exists = this.areasService.Exists(x => x.Id == areaId);
 
             if (!exists)
             {
-                return this.NotFound("No such area!");
+                response.Message = "No such area!";
+                return this.NotFound(response);
             }
 
             await this.areasService.DeleteAsync(x => x.Id == areaId);
+            response.Message = "Successfully deleted area!";
 
-            return this.Ok("Successfully deleted area!");
+            return this.Ok(response);
         }
     }
 }

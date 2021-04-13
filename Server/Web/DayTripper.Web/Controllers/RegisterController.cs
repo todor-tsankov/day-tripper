@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,10 +34,13 @@ namespace DayTripper.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(RegisterInputModel registerInput)
         {
+            var response = new Response();
             var userExists = await this.userManager.FindByEmailAsync(registerInput.Email);
+
             if (userExists != null)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
+                response.Message = "User with that email already exists!";
+                return this.BadRequest(response);
             }
 
             var user = new ApplicationUser()
@@ -53,27 +57,19 @@ namespace DayTripper.Web.Controllers
             };
 
             var result = await this.userManager.CreateAsync(user, registerInput.Password);
+
             if (!result.Succeeded)
             {
-                var sb = new StringBuilder();
-                var enumerator = result.Errors.GetEnumerator();
+                var errorMessage = string.Join(", ", result.Errors
+                    .ToArray()
+                    .Select(x => x.Description));
 
-                var hasNext = true;
-
-                while (hasNext)
-                {
-                    if (enumerator.Current != null)
-                    {
-                        sb.AppendLine(enumerator.Current.Description);
-                    }
-
-                    hasNext = enumerator.MoveNext();
-                }
-
-                return this.StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = sb.ToString() });
+                response.Message = errorMessage;
+                return this.BadRequest(response);
             }
 
-            return this.Ok(new Response { Status = "Success", Message = "User created successfully!" });
+            response.Message = "User created successfully!";
+            return this.Ok(response);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using DayTripper.Data.Models;
 using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.Helpers;
 using DayTripper.Web.ViewModels.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -26,24 +27,33 @@ namespace DayTripper.Web.Controllers
         public IActionResult Get()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userViewModel = this.usersService.GetSingle<UserViewModel>(x => x.Id == userId);
 
-            return this.Ok(userViewModel);
+            var response = new Response()
+            {
+                Data = this.usersService.GetSingle<UserViewModel>(x => x.Id == userId),
+            };
+
+            return this.Ok(response);
         }
 
         [HttpPut]
         [Authorize]
         public async Task<IActionResult> Put(EditInputModel editInput)
         {
+            var response = new Response();
+
             if (!this.ModelState.IsValid)
             {
-                return this.BadRequest("Invalid input!");
+                response.Message = "Invalid input!";
+                return this.BadRequest(response);
             }
 
             editInput.Id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.usersService.EditAsync(editInput);
 
-            return this.Ok("Successfully edited profile");
+            await this.usersService.EditAsync(editInput);
+            response.Message = "Successfully edited profile";
+
+            return this.Ok(response);
         }
     }
 }

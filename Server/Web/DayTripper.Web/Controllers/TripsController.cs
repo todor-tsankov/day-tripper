@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 
 using DayTripper.Data.Models;
 using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.Helpers;
 using DayTripper.Web.ViewModels.Trips;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,9 +27,12 @@ namespace DayTripper.Web.Controllers
             var filters = this.GetFilters(search.CityId, search.CragId, search.Date, search.Seats);
             var orderBy = this.GetOrderBy(search.OrderBy);
 
-            var result = this.tripsService.GetManyExtended<TripViewModel>(filters, orderBy, search.Ascending, search.Skip, search.Take);
+            var response = new Response()
+            {
+                Data = this.tripsService.GetManyExtended<TripViewModel>(filters, orderBy, search.Ascending, search.Skip, search.Take),
+            };
 
-            return this.Ok(result);
+            return this.Ok(response);
         }
 
         private Expression<Func<Trip, bool>>[] GetFilters(int? cityId, int? cragId, DateTime? date, int? seats)

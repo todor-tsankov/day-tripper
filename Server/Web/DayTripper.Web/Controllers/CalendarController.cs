@@ -1,6 +1,7 @@
 ﻿using System;
 
 using DayTripper.Services.Data;
+using DayTripper.Web.ViewModels.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DayTripper.Web.Controllers
@@ -19,8 +20,12 @@ namespace DayTripper.Web.Controllers
         [HttpGet]
         public IActionResult Get(int year, int month)
         {
-            var tripsPerDay = this.tripsService.GetMonthlyTripsPerDay(year, month);
-            return this.Ok(tripsPerDay);
+            var response = new Response()
+            {
+                Data = this.tripsService.GetMonthlyTripsPerDay(year, month),
+            };
+
+            return this.Ok(response);
         }
     }
 }

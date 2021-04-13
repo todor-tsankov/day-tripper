@@ -5,6 +5,7 @@ using DayTripper.Data.Models;
 using DayTripper.Services.Data;
 using DayTripper.Web.ViewModels;
 using DayTripper.Web.ViewModels.Follows;
+using DayTripper.Web.ViewModels.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -41,34 +42,42 @@ namespace DayTripper.Web.Controllers
         [Authorize]
         public async Task<IActionResult> Post(FollowInputModel followInput)
         {
+            var response = new Response();
             var user = await this.userManager.FindByIdAsync(followInput.FollowedId);
 
             if (user == null)
             {
-                return this.NotFound("No such user!");
+                response.Message = "No such user!";
+                return this.NotFound(response);
             }
 
             followInput.FollowerId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.followsService.AddAsync(followInput);
 
-            return this.Ok("Successfully added follow.");
+            await this.followsService.AddAsync(followInput);
+            response.Message = "Successfully added follow.";
+
+            return this.Ok(response);
         }
 
         [HttpDelete]
         [Authorize]
         public async Task<IActionResult> Delete(FollowDeleteModel followInput)
         {
+            var response = new Response();
             var user = await this.userManager.FindByIdAsync(followInput.UserId);
 
             if (user == null)
             {
-                return this.NotFound("No such user!");
+                response.Message = "No such user!";
+                return this.NotFound(response);
             }
 
             var currentId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await this.followsService.DeleteAsync(x => x.FollowedId == followInput.UserId && x.FollowerId == currentId);
 
-            return this.Ok("Successfully deleted follow!");
+            await this.followsService.DeleteAsync(x => x.FollowedId == followInput.UserId && x.FollowerId == currentId);
+            response.Message = "Successfully deleted follow!";
+
+            return this.Ok(response);
         }
     }
 }
