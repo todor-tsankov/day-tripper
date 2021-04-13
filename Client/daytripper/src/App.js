@@ -15,6 +15,7 @@ import Edit from './components/Edit/Edit.js';
 import Search from './components/Search/Search.js';
 import Details from './components/Details/Details.js';
 import Profile from './components/Profile/Profile.js';
+import NotFound from './components/ErrorPages/NotFound/NotFound.js';
 
 import UserContext from './context/UserContext.js';
 
@@ -27,9 +28,9 @@ function App() {
                 <UserContext.Provider value={[user, setUser]}>
                     <PageHeader />
                     <Layout.Content>
-                        <Switch>
-                            <Row>
-                                <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
+                        <Row>
+                            <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
+                                <Switch>
                                     <Route exact path="/" component={Home} />
                                     <Route exact path="/calendar" component={Calendar} />
                                     <Route exact path="/login" component={Login} />
@@ -40,9 +41,10 @@ function App() {
                                     <Route exact path="/add" component={Add} />
                                     <Route exact path="/edit/:tripId" component={Edit} />
                                     <Route exact path="/details/:tripId" component={Details} />
-                                </Col>
-                            </Row>
-                        </Switch>
+                                    <Route component={NotFound} />
+                                </Switch>
+                            </Col>
+                        </Row>
                     </Layout.Content>
                     <PageFooter />
                 </UserContext.Provider>
