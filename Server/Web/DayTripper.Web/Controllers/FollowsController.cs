@@ -32,9 +32,9 @@ namespace DayTripper.Web.Controllers
             var currentId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isFollower = this.followsService.Exists(x => x.FollowedId == userId && x.FollowerId == currentId);
 
-            return this.Ok(new FollowViewModel
+            return this.Ok(new Response
             {
-                IsFollower = isFollower,
+                Data = isFollower,
             });
         }
 

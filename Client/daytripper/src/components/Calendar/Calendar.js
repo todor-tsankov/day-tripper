@@ -20,7 +20,7 @@ function Calendar({ history }) {
     const [monthInfo, setMonthInfo] = useState();
 
     const getInfo = (moment) => {
-        const utc = moment.utc();
+        const utc = moment;
         const newMonth = utc.month() + 1;
 
         setMonth(newMonth);

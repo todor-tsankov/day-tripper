@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form, Select } from 'antd';
+import { Form, Select, message } from 'antd';
 
 import { getAreas } from '../../../services/areasService.js';
 import { getCrags } from '../../../services/cragsService.js';
@@ -15,7 +15,14 @@ function AreasCragsSectors({ areaId, cragId }) {
     const [disabledSectors, setDsiabledSectors] = useState(true);
 
     useEffect(() => {
-        getAreas().then(x => setAreas(x));
+        getAreas().then(x => {
+            if(x.code !== 200){
+                message.error(x.message);
+                return;
+            }
+
+            setAreas(x.data);
+        });
     }, []);
 
     useEffect(() => {
@@ -25,12 +32,26 @@ function AreasCragsSectors({ areaId, cragId }) {
     }, [areaId, cragId]);
 
     const onAreasSelected = async (value) => {
-        setCrags(await getCrags(value));
+        const response = await getCrags(value);
+
+        if(response.code !== 200){
+            message.error(response.message);
+            return;
+        }
+
+        setCrags(response.data);
         setDsiabledCrags(false);
     };
 
     const onCragsSelected = async (value) => {
-        setSectors(await getSectors(value));
+        const response = await getSectors(value);
+
+        if(response.code !== 200){
+            message.error(response.message);
+            return;
+        }
+
+        setSectors(response.data);
         setDsiabledSectors(false);
     };
 
@@ -55,7 +76,7 @@ function AreasCragsSectors({ areaId, cragId }) {
                     }
                     onSelect={onAreasSelected}
                 >
-                    {areas.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
+                    {areas?.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
                 </Select>
             </Form.Item>
             <Form.Item
@@ -78,7 +99,7 @@ function AreasCragsSectors({ areaId, cragId }) {
                     }
                     onSelect={onCragsSelected}
                 >
-                    {crags.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
+                    {crags?.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
                 </Select>
             </Form.Item>
             <Form.Item
@@ -94,7 +115,7 @@ function AreasCragsSectors({ areaId, cragId }) {
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
                 >
-                    {sectors.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
+                    {sectors?.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
                 </Select>
             </Form.Item>
         </>

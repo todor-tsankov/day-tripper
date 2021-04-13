@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form, Select } from 'antd';
+import { Form, Select, message } from 'antd';
 
 import { getCities } from '../../../services/citiesService.js';
 
@@ -7,7 +7,14 @@ function CitiesSelect() {
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
-        getCities().then(x => setCities(x));
+        getCities().then(x => {
+            if(x.code !== 200){
+                message.error(x.message);
+                return;
+            }
+
+            setCities(x.data);
+        });
     }, []);
 
     return (

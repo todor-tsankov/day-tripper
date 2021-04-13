@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import UserContext from '../../context/UserContext.js';
 
-import { Row, Col, Button, Space } from 'antd';
+import { Row, Col, Button, Space, message } from 'antd';
 
 import { getTripDetails } from '../../services/detailsService.js';
 import { getUserTrips, joinTrip, leaveTrip } from '../../services/userTripsService.js';
@@ -23,27 +23,60 @@ function Details({ history, match }) {
     const [refreshInfo, setRefreshInfo] = useState(true);
     const [refreshUsers, setRefreshUsers] = useState(false);
 
+    if(!user){
+        history.push('/login');
+    }
+
     useEffect(() => {
         getTripDetails(tripId).then(x => {
-            setTripInfo(x);
-            getIsFollower(x.applicationUserId, user.token).then(x => setIsFollower(x.isFollower));
+            if (x.code !== 200) {
+                message.error(x.message);
+                return;
+            }
+
+            setTripInfo(x.data);
+            getIsFollower(x.data.applicationUserId, user.token).then(x => {
+                if (x.code !== 200) {
+                    message.error(x.message);
+                    return;
+                }
+
+                setIsFollower(x.data);
+            });
         });
     }, [tripId, user.token, refreshInfo]);
 
     useEffect(() => {
         getUserTrips(tripId).then(y => {
-            setUsers(y);
-            setIsInTrip(y.some(z => z.ApplicationUserId === user.Id));
+            if (y.code !== 200) {
+                message.error(y.data.message);
+                return;
+            }
+
+            setUsers(y.data);
+            setIsInTrip(y.data.some(z => z.ApplicationUserId === user.Id));
         });
     }, [tripId, user.Id, refreshUsers]);
 
     const onJoinLeaveTripClick = async () => {
         if (isInTrip === true) {
             setIsInTrip();
-            await leaveTrip(tripId, user.token);
+            const response = await leaveTrip(tripId, user.token);
+
+            if (response.code !== 200) {
+                message.error(response.message);
+            } else {
+                message.info(response.message);
+            }
         } else if (isInTrip === false) {
             setIsInTrip();
-            await joinTrip(tripId, user.token);
+            const response = await joinTrip(tripId, user.token);
+
+            if (response.code !== 200) {
+                message.error(response.message);
+            } else {
+                message.info(response.message);
+            }
         }
 
         setRefreshUsers(x => !x);
@@ -52,16 +85,28 @@ function Details({ history, match }) {
     const onFollowUnfollowClick = async () => {
         if (isFollower === true) {
             setIsFollower();
-            await deleteFollow(tripInfo.applicationUserId, user.token);
+            const response = await deleteFollow(tripInfo.applicationUserId, user.token);
+
+            if (response.code !== 200) {
+                message.error(response.message);
+            } else {
+                message.info(response.message);
+            }
         } else if (isFollower === false) {
             setIsFollower();
-            await postFollow(tripInfo.applicationUserId, user.token);
+            const response = await postFollow(tripInfo.applicationUserId, user.token);
+
+            if (response.code !== 200) {
+                message.error(response.message);
+            } else {
+                message.info(response.message);
+            }
         }
 
         setRefreshInfo(x => !x);
     };
 
-    const onEidtTripClick = (e) => {
+    const onEditTripClick = (e) => {
         history.push('/edit/' + tripId);
     };
 
@@ -70,7 +115,7 @@ function Details({ history, match }) {
             <Row style={{ paddingTop: 30 }} justify="center">
                 <Space>
                     {user?.userId === tripInfo?.applicationUserId
-                        ? (<Button type="primary" onClick={onEidtTripClick}>Edit Trip</Button>)
+                        ? (<Button type="primary" onClick={onEditTripClick}>Edit Trip</Button>)
                         : (
                             <>
                                 <Button onClick={onJoinLeaveTripClick} loading={isInTrip === undefined} type="primary">{isInTrip ? 'Leave Trip' : 'Join Trip'}</Button>

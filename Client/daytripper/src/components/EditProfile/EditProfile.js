@@ -1,4 +1,4 @@
-import { Row, Col, Form, Button, Spin } from 'antd';
+import { Row, Col, Form, Button, Spin, message } from 'antd';
 import { useState, useEffect, useContext } from 'react';
 
 import UserContext from '../../context/UserContext.js';
@@ -9,13 +9,25 @@ import NotificationsInput from '../FormItems/NotificationsInput/NotificationsInp
 
 import { getUserDetails, updateProfile } from '../../services/profileService.js';
 
-function EditProfile() {
+function EditProfile({ history }) {
     const [user] = useContext(UserContext);
+
+    if (!user) {
+        history.push('/login');
+    }
+    
     const [sending, setSending] = useState(false);
     const [userDetails, setUserDetails] = useState();
 
     useEffect(() => {
-        getUserDetails(user.token).then(x => setUserDetails(x));
+        getUserDetails(user.token).then(x => {
+            if (x.code !== 200) {
+                message.error(x.message);
+                return;
+            }
+
+            setUserDetails(x.data);
+        });
     }, [user.token]);
 
     if (!userDetails) {
@@ -28,8 +40,15 @@ function EditProfile() {
 
     const onFinish = async (values) => {
         setSending(true);
-        await updateProfile(values, user.token);
+        const response = await updateProfile(values, user.token);
         setSending(false);
+
+        if (response.code !== 200) {
+            message.error(response.message);
+            return;
+        }
+
+        message.info(response.message);
     };
 
     return (

@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { Form, Button } from 'antd';
+import { useContext, useState } from 'react';
+import { Form, Button, message } from 'antd';
 
 import CitiesSelect from '../FormItems/CitiesSelect/CitiesSelect.js';
 import AreasCragsSectors from '../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
@@ -10,20 +10,30 @@ import CommentInput from '../FormItems/CommentInput/CommentInput.js';
 import UserContext from '../../context/UserContext.js';
 import { postTrip } from '../../services/detailsService.js';
 
-function Add() {
+function Add({ history }) {
     const [user] = useContext(UserContext);
+    const [sending, setSending] = useState(false);
 
     const onFinish = async (values) => {
         values.leaving = values.times[0].utc().format();
         values.returning = values.times[1].utc().format();
         values.times = undefined;
 
-        if(!values.withCar){
+        if (!values.withCar) {
             values.seats = undefined;
         }
 
-        console.log(values);
-        await postTrip(values, user.token);
+        setSending(true);
+        const response = await postTrip(values, user.token);
+        setSending(false);
+
+        if (response.code !== 200) {
+            message.error(response.message);
+            return;
+        }
+
+        message.info(response.message);
+        history.push('/');
     };
 
     const layout = {
@@ -48,11 +58,11 @@ function Add() {
             <CitiesSelect />
             <AreasCragsSectors />
             <SeatsWithCarInput />
-            <FromToInput/>
+            <FromToInput />
             <CommentInput />
-            
+
             <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit" className="login-form-button">Add Trip</Button>
+                <Button type="primary" htmlType="submit" loading={sending}>Add Trip</Button>
             </Form.Item>
         </Form>
     );

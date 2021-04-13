@@ -16,6 +16,7 @@ import Search from './components/Search/Search.js';
 import Details from './components/Details/Details.js';
 import Profile from './components/Profile/Profile.js';
 import NotFound from './components/ErrorPages/NotFound/NotFound.js';
+import Unauthorized from './components/ErrorPages/Unauthorized/Unauthorized.js';
 
 import UserContext from './context/UserContext.js';
 import NotificationContext from './context/NotificationContext.js';
@@ -44,6 +45,7 @@ function App() {
                                         <Route exact path="/add" component={Add} />
                                         <Route exact path="/edit/:tripId" component={Edit} />
                                         <Route exact path="/details/:tripId" component={Details} />
+                                        <Route exact path="/unauthorized" component={Unauthorized}/>
                                         <Route component={NotFound} />
                                     </Switch>
                                 </Col>

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Form, Button, Spin, Row, Space } from 'antd';
+import { Form, Button, Spin, Row, Space, message } from 'antd';
 import { useState, useEffect, useContext } from 'react';
 
 import UserContext from '../../context/UserContext.js';
@@ -20,8 +20,25 @@ function Edit({ history, match }) {
     const [sending, setSending] = useState(false);
     const [deleting, setDeleting] = useState(false);
 
+    if (!user) {
+        history.push('/login');
+    }
+
+    console.log(user);
+    console.log(tripDetails);
+    if (tripDetails && user?.userId !== tripDetails?.applicationUserId) {
+        history.push('/unauthorized');
+    }
+
     useEffect(() => {
-        getTripDetails(tripId).then(x => setTripDetails(x));
+        getTripDetails(tripId).then(x => {
+            if (x.code !== 200) {
+                message.error(x.message);
+                return;
+            }
+
+            setTripDetails(x.data);
+        });
     }, [tripId]);
 
     const layout = {
@@ -42,17 +59,32 @@ function Edit({ history, match }) {
             values.seats = undefined;
         }
 
-        values.leaving = values.times[0].uct().format();
-        values.returning = values.times[1].uct().format();
+        values.leaving = values.times[0].utc().format();
+        values.returning = values.times[1].utc().format();
         values.times = undefined;
 
-        await putTrip(values, user.token);
+        const response = await putTrip(values, user.token);
         setSending(false);
+
+        if (response.code !== 200) {
+            message.error(response.message);
+            return;
+        }
+
+        message.info(response.message);
+        history.push('/details/' + tripId);
     };
 
     const onDelete = async () => {
         setDeleting(true);
-        await deleteTrip(tripId, user.token);
+        const response = await deleteTrip(tripId, user.token);
+
+        if (response.code !== 200) {
+            message.error(response.message);
+            return;
+        }
+
+        message.info(response.message);
         history.push('/');
     };
 
