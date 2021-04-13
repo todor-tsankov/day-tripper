@@ -18,35 +18,39 @@ import Profile from './components/Profile/Profile.js';
 import NotFound from './components/ErrorPages/NotFound/NotFound.js';
 
 import UserContext from './context/UserContext.js';
+import NotificationContext from './context/NotificationContext.js';
 
 function App() {
     const [user, setUser] = useState();
+    const [notification, setNotification] = useState();
 
     return (
         <Router>
             <Layout style={{ minHeight: '100vh' }}>
                 <UserContext.Provider value={[user, setUser]}>
-                    <PageHeader />
-                    <Layout.Content>
-                        <Row>
-                            <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
-                                <Switch>
-                                    <Route exact path="/" component={Home} />
-                                    <Route exact path="/calendar" component={Calendar} />
-                                    <Route exact path="/login" component={Login} />
-                                    <Route exact path="/register" component={Register} />
-                                    <Route exact path="/search" component={Search} />
-                                    <Route exact path="/search/:date" component={Search} />
-                                    <Route exact path="/profile" component={Profile} />
-                                    <Route exact path="/add" component={Add} />
-                                    <Route exact path="/edit/:tripId" component={Edit} />
-                                    <Route exact path="/details/:tripId" component={Details} />
-                                    <Route component={NotFound} />
-                                </Switch>
-                            </Col>
-                        </Row>
-                    </Layout.Content>
-                    <PageFooter />
+                    <NotificationContext.Provider value={[notification, setNotification]}>
+                        <PageHeader />
+                        <Layout.Content>
+                            <Row>
+                                <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
+                                    <Switch>
+                                        <Route exact path="/" component={Home} />
+                                        <Route exact path="/calendar" component={Calendar} />
+                                        <Route exact path="/login" component={Login} />
+                                        <Route exact path="/register" component={Register} />
+                                        <Route exact path="/search" component={Search} />
+                                        <Route exact path="/search/:date" component={Search} />
+                                        <Route exact path="/profile" component={Profile} />
+                                        <Route exact path="/add" component={Add} />
+                                        <Route exact path="/edit/:tripId" component={Edit} />
+                                        <Route exact path="/details/:tripId" component={Details} />
+                                        <Route component={NotFound} />
+                                    </Switch>
+                                </Col>
+                            </Row>
+                        </Layout.Content>
+                        <PageFooter />
+                    </NotificationContext.Provider>
                 </UserContext.Provider>
             </Layout>
         </Router>

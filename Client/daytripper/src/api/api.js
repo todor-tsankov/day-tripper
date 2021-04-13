@@ -1,21 +1,20 @@
 async function request(url, options) {
+    const result = {};
+
     try {
         const response = await fetch(url, options);
-
-        if (response.ok === false) {
-            const error = await response.json();
-            throw new Error(error.message);
-        }
+        result.code = response.statusCode;
 
         try {
-            const data = await response.json();
-            return data;
-        } catch (err) {
-            return response;
+            const resultObj = await response.json();
+
+            result.data = resultObj.data;
+            result.message = resultObj.message;
+        } catch (e) {
+            result.message = await response.text();
         }
     } catch (err) {
-        alert(err.message);
-        throw err;
+        result.message = 'Error connecting to the server, please check your connection and try again...';
     }
 }
 
@@ -30,8 +29,8 @@ function getOptions(method = 'get', body, token) {
         options.body = JSON.stringify(body);
     }
 
-    if(token){
-        options.headers['Authorization'] = 'Bearer ' +  token;
+    if (token) {
+        options.headers['Authorization'] = 'Bearer ' + token;
     }
 
     return options;
