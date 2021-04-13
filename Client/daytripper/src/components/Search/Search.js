@@ -7,8 +7,9 @@ import LoadMoreTripList from '../LoadMoreTripList/LoadMoreTripList.js';
 import { getTrips } from '../../services/tripsService.js';
 
 function Search({match}) {
-    const dateString = decodeURIComponent(match.params.date);
-    const date = dateString ? moment(dateString) : undefined;
+    const dateString = match.params.date;
+    const decodedDateString = dateString ? decodeURIComponent(dateString) : undefined;
+    const date = dateString ? moment(decodedDateString) : undefined;
 
     const take = 10;
     const [skip, setSkip] = useState(0);
@@ -18,7 +19,7 @@ function Search({match}) {
 
     const [loading, setLoading] = useState(false);
     const [initLoading, setInitLoading] = useState(true);
-    const [filters, setFilters] = useState({ take: take, date: dateString });
+    const [filters, setFilters] = useState({ take: take, date: decodedDateString });
 
     const [end, setEnd] = useState(false);
 
@@ -74,10 +75,10 @@ function Search({match}) {
     };
 
     return (
-        <>
+        <div style={{marginBottom: 30}}>
             <SearchForm onFormFieldsChange={onFormFieldsChange} date={date}/>
             <LoadMoreTripList list={list} loading={loading} initLoading={initLoading} onLoadMore={onLoadMore} end={end} />
-        </>
+        </div>
     );
 }
 

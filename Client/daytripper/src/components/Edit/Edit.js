@@ -42,8 +42,8 @@ function Edit({ history, match }) {
             values.seats = undefined;
         }
 
-        values.leaving = values.times[0]._d;
-        values.returning = values.times[1]._d;
+        values.leaving = values.times[0].uct().format();
+        values.returning = values.times[1].uct().format();
         values.times = undefined;
 
         await putTrip(values, user.token);

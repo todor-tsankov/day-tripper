@@ -6,6 +6,7 @@ import { Layout, Row, Col } from 'antd';
 import PageHeader from './components/PageHeader/PageHeader';
 import PageFooter from './components/PageFooter/PageFooter.js';
 
+import Home from './components/Home/Home.js'
 import Calendar from './components/Calendar/Calendar.js';
 import Login from './components/Login/Login.js';
 import Register from './components/Register/Register.js';
@@ -22,14 +23,14 @@ function App() {
 
     return (
         <Router>
-            <Layout style={{minHeight:'100vh'}}>
+            <Layout style={{ minHeight: '100vh' }}>
                 <UserContext.Provider value={[user, setUser]}>
                     <PageHeader />
                     <Layout.Content>
                         <Switch>
                             <Row>
                                 <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
-                                    <Route exact path="/" />
+                                    <Route exact path="/" component={Home} />
                                     <Route exact path="/calendar" component={Calendar} />
                                     <Route exact path="/login" component={Login} />
                                     <Route exact path="/register" component={Register} />
