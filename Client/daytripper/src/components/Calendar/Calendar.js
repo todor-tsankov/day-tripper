@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import { cyan } from '@ant-design/colors';
 import { CarOutlined } from '@ant-design/icons';
-import { Calendar as AntCalendar, Card, Space, Row, Col, Spin } from 'antd';
+import { Calendar as AntCalendar, Card, Space, Row, Col, Spin, message } from 'antd';
 
 import { getMonthlyTrips } from '../../services/calendarService.js';
 
@@ -19,9 +19,22 @@ function Calendar({ history }) {
     const [month, setMonth] = useState(momentJs().month() + 1);
     const [monthInfo, setMonthInfo] = useState();
 
+    const getInfo = (moment) => {
+        const utc = moment.utc();
+        const newMonth = utc.month() + 1;
+
+        setMonth(newMonth);
+        getMonthlyTrips(utc.year(), newMonth).then(x => {
+            if (x.code !== 200) {
+                message.error(x.message);
+            }
+
+            setMonthInfo(x.data);
+        });
+    };
+
     useEffect(() => {
-        setMonth(momentJs().month() + 1);
-        getMonthlyTrips(momentJs().year(), momentJs().month() + 1).then(x => setMonthInfo(x));
+        getInfo(momentJs());
     }, []);
 
     const dateCellRender = (moment) => {
@@ -45,11 +58,8 @@ function Calendar({ history }) {
             return;
         }
 
-        const utc = moment.utc();
-
         setMonthInfo();
-        setMonth(utc.month() + 1);
-        getMonthlyTrips(utc.year(), utc.month() + 1).then(x => setMonthInfo(x));
+        getInfo(moment);
     };
 
     const onSelect = (moment) => {
