@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { message } from 'antd';
 import { useState, useEffect } from 'react';
 
 import SearchForm from '../SearchForm/SearchForm.js';
@@ -6,7 +7,7 @@ import LoadMoreTripList from '../LoadMoreTripList/LoadMoreTripList.js';
 
 import { getTrips } from '../../services/tripsService.js';
 
-function Search({match}) {
+function Search({ match }) {
     const dateString = match.params.date;
     const decodedDateString = dateString ? decodeURIComponent(dateString) : undefined;
     const date = dateString ? moment(decodedDateString) : undefined;
@@ -27,11 +28,16 @@ function Search({match}) {
         setInitLoading(true);
 
         getTrips(filters).then(x => {
-            if(x.length !== take){
+            if (x.code !== 200) {
+                message.error(x.message);
+                return;
+            }
+
+            if (x.length !== take) {
                 setEnd(true);
             }
-            setTrips(x);
-            setList(x);
+            setTrips(x.data);
+            setList(x.data);
             setInitLoading(false);
         });
     }, [filters]);
@@ -39,7 +45,7 @@ function Search({match}) {
     const onFormFieldsChange = async (changed, all) => {
         setSkip(0);
         setEnd(false);
-        
+
         const data = all.reduce((a, c) => {
             a[c.name] = c.value;
             return a;
@@ -61,7 +67,14 @@ function Search({match}) {
         newFilters.skip = skip + take;
         newFilters.take = take;
 
-        const newTrips = await getTrips(newFilters);
+        const result = await getTrips(newFilters);
+
+        if (result.code !== 200) {
+            message.error(result.message);
+            return;
+        }
+
+        const newTrips = result.data;
 
         setList(trips.concat(newTrips));
         setTrips(prev => prev.concat(newTrips));
@@ -69,14 +82,14 @@ function Search({match}) {
         setLoading(false);
         setSkip(x => x + take);
 
-        if(newTrips.length !== take){
+        if (newTrips.length !== take) {
             setEnd(true);
         }
     };
 
     return (
-        <div style={{marginBottom: 30}}>
-            <SearchForm onFormFieldsChange={onFormFieldsChange} date={date}/>
+        <div style={{ marginBottom: 30 }}>
+            <SearchForm onFormFieldsChange={onFormFieldsChange} date={date} />
             <LoadMoreTripList list={list} loading={loading} initLoading={initLoading} onLoadMore={onLoadMore} end={end} />
         </div>
     );

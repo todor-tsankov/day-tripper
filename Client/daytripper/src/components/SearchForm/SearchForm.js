@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form, Select, InputNumber, Switch, DatePicker } from 'antd';
+import { Form, Select, InputNumber, Switch, DatePicker, message } from 'antd';
 
 import { getCrags } from '../../services/cragsService.js';
 import { getCities } from '../../services/citiesService.js';
@@ -9,8 +9,22 @@ function SearchForm({ onFormFieldsChange, date }) {
     const [crags, setCrags] = useState([]);
 
     useEffect(() => {
-        getCities().then(x => setCities(x));
-        getCrags().then(x => setCrags(x));
+        getCities().then(x => {
+            if(x.code !== 200){
+                message.error(x.message);
+                return;
+            }
+
+            setCities(x.data);
+        });
+        getCrags().then(x => {
+            if(x.code !== 200){
+                message.error(x.message);
+                return;
+            }
+
+            setCrags(x.data);
+        });
     }, []);
 
     const layout = {
@@ -39,7 +53,7 @@ function SearchForm({ onFormFieldsChange, date }) {
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
                 >
-                    {cities.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
+                    {cities?.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
                 </Select>
             </Form.Item>
             <Form.Item name='cragId' label='To Crag'>
@@ -52,7 +66,7 @@ function SearchForm({ onFormFieldsChange, date }) {
                         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                     }
                 >
-                    {crags.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
+                    {crags?.map(x => (<Select.Option key={x.id} value={x.id}>{x.name}</Select.Option>))}
                 </Select>
             </Form.Item>
             <Form.Item name="date" label="Date">
