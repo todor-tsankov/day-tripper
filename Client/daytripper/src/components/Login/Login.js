@@ -1,8 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Form, Input, Button, Checkbox, Row, Col, Space } from 'antd';
+import { Form, Button,  Row, Col, Space, message } from 'antd';
 
 import EmailInput from '../FormItems/EmailInput/EmailInput.js';
 import PasswordInput from '../FormItems/PasswordInput/PasswordInput.js';
@@ -12,17 +11,26 @@ import UserContext from '../../context/UserContext.js';
 import { login } from '../../services/loginService.js';
 
 function Login({ history }) {
-    const [user, setUser] = useContext(UserContext);
+    const [sending, setSending] = useState(false);
+    const [,setUser] = useContext(UserContext);
 
     const onFinish = async (values) => {
+        setSending(true);
         const result = await login(values.email, values.password, values.rememberMe);
+        setSending(false);
 
         console.log(result);
+        if(result.code !== 200){
+            message.error(result.message);
+            return;
+        }
+
+        const data = result.data;
 
         setUser({
-            userId: result.userId,
-            token: result.token,
-            expiration: result.expiration,
+            userId: data.userId,
+            token: data.token,
+            expiration: data.expiration,
         });
 
         history.push('/');
@@ -46,7 +54,7 @@ function Login({ history }) {
 
                     <Form.Item>
                         <Space size={'small'}>
-                            <Button type="primary" htmlType="submit" className="login-form-button">Log in</Button>
+                            <Button type="primary" htmlType="submit" loading={sending}>Log in</Button>
                             or <Link to="/register">Register now!</Link>
                         </Space>
                     </Form.Item>

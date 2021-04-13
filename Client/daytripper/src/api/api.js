@@ -3,7 +3,7 @@ async function request(url, options) {
 
     try {
         const response = await fetch(url, options);
-        result.code = response.statusCode;
+        result.code = response.status;;
 
         try {
             const resultObj = await response.json();
@@ -16,6 +16,8 @@ async function request(url, options) {
     } catch (err) {
         result.message = 'Error connecting to the server, please check your connection and try again...';
     }
+
+    return result;
 }
 
 function getOptions(method = 'get', body, token) {
