@@ -94,6 +94,8 @@ function Edit({ history, match }) {
         );
     }
 
+    console.log(tripDetails.withCar);
+
     return (
         <Form {...layout}
             style={{ padding: 50 }}

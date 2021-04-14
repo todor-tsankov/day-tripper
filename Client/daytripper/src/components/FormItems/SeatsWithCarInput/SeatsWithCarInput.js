@@ -11,11 +11,11 @@ function SeatsWithCarInput({withCar}) {
                 name="withCar"
                 label="I have a car"
             >
-                <Switch onChange={onWithCarChange} />
+                <Switch checked={withCar} onChange={onWithCarChange} />
             </Form.Item>
             <Form.Item
                 name="seats"
-                label="Seats avaible:"
+                label="Seats available:"
                 rules={[{
                     required: !seatsDisabled,
                     message: 'Number of avaible seats is required!'

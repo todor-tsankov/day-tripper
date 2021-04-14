@@ -131,7 +131,7 @@ function Details({ history, match }) {
                         ? (<Button type="primary"><Link to={'/edit/' + tripId}>Edit Trip</Link></Button>)
                         : (
                             <>
-                                <Button onClick={onJoinLeaveTripClick} loading={isInTrip === undefined} type="primary">{isInTrip ? 'Leave Trip' : 'Join Trip'}</Button>
+                                <Button onClick={onJoinLeaveTripClick} disabled={users?.length >= tripInfo?.seats || !tripInfo?.withCar} loading={isInTrip === undefined} type="primary">{isInTrip ? 'Leave Trip' : 'Join Trip'}</Button>
                                 <Button onClick={onFollowUnfollowClick} loading={isFollower === undefined}>{isFollower ? 'Unfollow User' : 'Follow User'}</Button>
                             </>
                         )
