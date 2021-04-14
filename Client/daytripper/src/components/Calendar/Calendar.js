@@ -16,11 +16,11 @@ function Calendar({ history }) {
         return cyan[num - 1];
     };
 
-    const [month, setMonth] = useState(momentJs().month() + 1);
+    const [month, setMonth] = useState(momentJs().utc().month() + 1);
     const [monthInfo, setMonthInfo] = useState();
 
     const getInfo = (moment) => {
-        const utc = moment;
+        const utc = moment.utc();
         const newMonth = utc.month() + 1;
 
         setMonth(newMonth);
@@ -38,7 +38,7 @@ function Calendar({ history }) {
     }, []);
 
     const dateCellRender = (moment) => {
-        const trips = monthInfo ? monthInfo[moment.date()] : undefined;
+        const trips = monthInfo ? monthInfo[moment.utc().date()] : undefined;
 
         if (!trips || moment.month() + 1 !== month) {
             return null;

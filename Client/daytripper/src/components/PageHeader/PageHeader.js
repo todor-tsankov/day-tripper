@@ -10,7 +10,7 @@ import UserContext from '../../context/UserContext.js';
 const { Header } = Layout;
 
 function PageHeader(props) {
-    const location = useLocation();
+    const location = '/' + useLocation().pathname.split('/')[1];
     const [user] = useContext(UserContext);
 
     const userNav = (
@@ -29,7 +29,7 @@ function PageHeader(props) {
 
     return (
         <Header>
-            <Menu theme="dark" mode="horizontal" selectedKeys={[location.pathname]}>
+            <Menu theme="dark" mode="horizontal" selectedKeys={[location]}>
                 <Menu.Item key="/"><Link to="/"><HomeOutlined />Home</Link></Menu.Item>
                 <Menu.Item key="/calendar"><Link to="/calendar"><CalendarOutlined />Calendar</Link></Menu.Item>
                 <Menu.Item key="/search"><Link to="/search"><SearchOutlined />Search</Link></Menu.Item>

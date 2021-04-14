@@ -1,6 +1,6 @@
 import moment from 'moment';
-import { Form, Button, Spin, Row, Space, message } from 'antd';
 import { useState, useEffect, useContext } from 'react';
+import { Form, Button, Spin, Row, Space, Popconfirm, message } from 'antd';
 
 import UserContext from '../../context/UserContext.js';
 import CitiesSelect from '../FormItems/CitiesSelect/CitiesSelect.js';
@@ -24,8 +24,6 @@ function Edit({ history, match }) {
         history.push('/login');
     }
 
-    console.log(user);
-    console.log(tripDetails);
     if (tripDetails && user?.userId !== tripDetails?.applicationUserId) {
         history.push('/unauthorized');
     }
@@ -108,8 +106,8 @@ function Edit({ history, match }) {
                 withCar: tripDetails.withCar,
                 seats: tripDetails.seats,
                 times: [
-                    moment(tripDetails?.leaving),
-                    moment(tripDetails?.returning)
+                    moment.utc(tripDetails?.leaving).local(),
+                    moment.utc(tripDetails?.returning).local(),
                 ]
             }}
         >
@@ -122,7 +120,14 @@ function Edit({ history, match }) {
             <Form.Item {...tailLayout}>
                 <Space>
                     <Button loading={sending} type="primary" htmlType="submit">Save</Button>
-                    <Button danger loading={deleting} onClick={onDelete}>Delete</Button>
+                    <Popconfirm
+                        title="Are you sure to delete this trip?"
+                        onConfirm={onDelete}
+                        okText="Yes"
+                        cancelText="No"
+                    >
+                        <Button danger loading={deleting}>Delete</Button>
+                    </Popconfirm>
                 </Space>
             </Form.Item>
         </Form>

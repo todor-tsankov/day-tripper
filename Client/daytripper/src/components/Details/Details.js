@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import UserContext from '../../context/UserContext.js';
 
@@ -23,11 +24,15 @@ function Details({ history, match }) {
     const [refreshInfo, setRefreshInfo] = useState(true);
     const [refreshUsers, setRefreshUsers] = useState(false);
 
-    if(!user){
+    if (!user) {
         history.push('/login');
     }
 
     useEffect(() => {
+        if (!user?.token) {
+            return;
+        }
+
         getTripDetails(tripId).then(x => {
             if (x.code !== 200) {
                 message.error(x.message);
@@ -35,7 +40,7 @@ function Details({ history, match }) {
             }
 
             setTripInfo(x.data);
-            getIsFollower(x.data.applicationUserId, user.token).then(x => {
+            getIsFollower(x.data.applicationUserId, user?.token).then(x => {
                 if (x.code !== 200) {
                     message.error(x.message);
                     return;
@@ -44,9 +49,13 @@ function Details({ history, match }) {
                 setIsFollower(x.data);
             });
         });
-    }, [tripId, user.token, refreshInfo]);
+    }, [tripId, user?.token, refreshInfo]);
 
     useEffect(() => {
+        if (!user?.userId) {
+            return;
+        }
+
         getUserTrips(tripId).then(y => {
             if (y.code !== 200) {
                 message.error(y.data.message);
@@ -54,11 +63,15 @@ function Details({ history, match }) {
             }
 
             setUsers(y.data);
-            setIsInTrip(y.data.some(z => z.ApplicationUserId === user.Id));
+            setIsInTrip(y.data.some(z => z.applicationUserId === user.userId));
         });
-    }, [tripId, user.Id, refreshUsers]);
+    }, [tripId, user?.userId, refreshUsers]);
 
     const onJoinLeaveTripClick = async () => {
+        if (!user) {
+            return;
+        }
+
         if (isInTrip === true) {
             setIsInTrip();
             const response = await leaveTrip(tripId, user.token);
@@ -83,9 +96,13 @@ function Details({ history, match }) {
     };
 
     const onFollowUnfollowClick = async () => {
+        if (!user) {
+            return;
+        }
+
         if (isFollower === true) {
             setIsFollower();
-            const response = await deleteFollow(tripInfo.applicationUserId, user.token);
+            const response = await deleteFollow(tripInfo.applicationUserId, user?.token);
 
             if (response.code !== 200) {
                 message.error(response.message);
@@ -94,7 +111,7 @@ function Details({ history, match }) {
             }
         } else if (isFollower === false) {
             setIsFollower();
-            const response = await postFollow(tripInfo.applicationUserId, user.token);
+            const response = await postFollow(tripInfo.applicationUserId, user?.token);
 
             if (response.code !== 200) {
                 message.error(response.message);
@@ -106,16 +123,12 @@ function Details({ history, match }) {
         setRefreshInfo(x => !x);
     };
 
-    const onEditTripClick = (e) => {
-        history.push('/edit/' + tripId);
-    };
-
     return (
         <>
             <Row style={{ paddingTop: 30 }} justify="center">
                 <Space>
                     {user?.userId === tripInfo?.applicationUserId
-                        ? (<Button type="primary" onClick={onEditTripClick}>Edit Trip</Button>)
+                        ? (<Button type="primary"><Link to={'/edit/' + tripId}>Edit Trip</Link></Button>)
                         : (
                             <>
                                 <Button onClick={onJoinLeaveTripClick} loading={isInTrip === undefined} type="primary">{isInTrip ? 'Leave Trip' : 'Join Trip'}</Button>

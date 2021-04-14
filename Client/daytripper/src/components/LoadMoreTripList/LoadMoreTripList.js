@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { List, Avatar, Space, Button, Skeleton } from 'antd';
 import { UserOutlined, ArrowRightOutlined, HomeOutlined, FieldTimeOutlined } from '@ant-design/icons';
@@ -37,10 +38,10 @@ function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
                             title={item.applicationUserFirstName + ' ' + item.applicationUserLastName}
                             description={
                                 <Space wrap>
-                                    <div><FieldTimeOutlined /> {item.leaving?.replace('T', ' ').slice(0, 16)}</div>
-                                    <div><FieldTimeOutlined /> {item.returning?.replace('T', ' ').slice(0, 16)}</div>
+                                    <div><FieldTimeOutlined /> {item?.leaving ? moment.utc(item.leaving).local().format('hh:mm DD/MM/yyyy') : ''}</div>
+                                    <div><FieldTimeOutlined /> {item?.returning ? moment.utc(item.returning).local().format('hh:mm DD/MM/yyyy') : ''}</div>
                                     <div><HomeOutlined /> {item.cityName}</div>
-                                    <ArrowRightOutlined />{item.cragAreaName}|{item.cragName}|{item.sectorName}
+                                    <ArrowRightOutlined />{item.cragName}
                                 </Space>
                             }
                         />
