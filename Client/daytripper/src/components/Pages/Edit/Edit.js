@@ -2,14 +2,14 @@ import moment from 'moment';
 import { useState, useEffect, useContext } from 'react';
 import { Form, Button, Spin, Row, Space, Popconfirm, message } from 'antd';
 
-import UserContext from '../../context/UserContext.js';
-import CitiesSelect from '../FormItems/CitiesSelect/CitiesSelect.js';
-import AreasCragsSectors from '../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
-import SeatsWithCarInput from '../FormItems/SeatsWithCarInput/SeatsWithCarInput.js';
-import FromToInput from '../FormItems/FromToInput/FromToInput.js';
-import CommentInput from '../FormItems/CommentInput/CommentInput.js';
+import UserContext from '../../../context/UserContext.js';
+import CitiesSelect from '../../FormItems/CitiesSelect/CitiesSelect.js';
+import AreasCragsSectors from '../../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
+import SeatsWithCarInput from '../../FormItems/SeatsWithCarInput/SeatsWithCarInput.js';
+import FromToInput from '../../FormItems/FromToInput/FromToInput.js';
+import CommentInput from '../../FormItems/CommentInput/CommentInput.js';
 
-import { getTripDetails, putTrip, deleteTrip } from '../../services/detailsService.js';
+import { getTripDetails, putTrip, deleteTrip } from '../../../services/detailsService.js';
 
 function Edit({ history, match }) {
     const [user] = useContext(UserContext);

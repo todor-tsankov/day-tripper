@@ -3,18 +3,18 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Layout, Row, Col } from 'antd';
 
-import PageHeader from './components/PageHeader/PageHeader';
-import PageFooter from './components/PageFooter/PageFooter.js';
+import PageHeader from './components/Layout/PageHeader/PageHeader';
+import PageFooter from './components/Layout/PageFooter/PageFooter.js';
 
-import Home from './components/Home/Home.js'
-import Calendar from './components/Calendar/Calendar.js';
-import Login from './components/Login/Login.js';
-import Register from './components/Register/Register.js';
-import Add from './components/Add/Add.js';
-import Edit from './components/Edit/Edit.js';
-import Search from './components/Search/Search.js';
-import Details from './components/Details/Details.js';
-import Profile from './components/Profile/Profile.js';
+import Home from './components/Pages/Home/Home.js';
+import Calendar from './components/Pages/Calendar/Calendar.js';
+import Login from './components/Pages/Login/Login.js';
+import Register from './components/Pages/Register/Register.js';
+import Add from './components/Pages/Add/Add.js';
+import Edit from './components/Pages/Edit/Edit.js';
+import Search from './components/Pages/Search/Search.js';
+import Details from './components/Pages/Details/Details.js';
+import Profile from './components/Pages/Profile/Profile.js';
 import NotFound from './components/ErrorPages/NotFound/NotFound.js';
 import Unauthorized from './components/ErrorPages/Unauthorized/Unauthorized.js';
 

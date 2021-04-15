@@ -4,7 +4,7 @@ import { ArrowRightOutlined, HomeOutlined, FieldTimeOutlined, CarOutlined } from
 
 function TripInfo({ info, numberUsers }) {
     return (
-        <Card loading={info === undefined} title={`${info?.applicationUserFirstName} ${info?.applicationUserLastName}`}>
+        <Card loading={info === undefined} title={info ? `${ info?.applicationUserFirstName} ${info?.applicationUserLastName}` : 'loading..'}>
                 <p><Space wrap>Start:<FieldTimeOutlined />{info?.leaving ? moment.utc(info.leaving).local().format('hh:mm DD/MM/yyyy') : ''}</Space></p>
                 <p><Space wrap>End:<FieldTimeOutlined />{info?.returning ? moment.utc(info.returning).local().format('hh:mm DD/MM/yyyy') : ''}</Space></p>
                 <p><Space wrap>From: <HomeOutlined />{info?.cityName}</Space></p>

@@ -2,10 +2,10 @@ import moment from 'moment';
 import { message } from 'antd';
 import { useState, useEffect } from 'react';
 
-import SearchForm from '../SearchForm/SearchForm.js';
-import LoadMoreTripList from '../LoadMoreTripList/LoadMoreTripList.js';
+import SearchForm from '../../Other/SearchForm/SearchForm.js';
+import LoadMoreTripList from '../../Other/LoadMoreTripList/LoadMoreTripList.js';
 
-import { getTrips } from '../../services/tripsService.js';
+import { getTrips } from '../../../services/tripsService.js';
 
 function Search({ match }) {
     const dateString = match.params.date;

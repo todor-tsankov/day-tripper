@@ -3,20 +3,29 @@ import { Link, useLocation } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
-import { SearchOutlined, UserOutlined, CalendarOutlined, HomeOutlined, PlusOutlined } from '@ant-design/icons';
+import { SearchOutlined, UserOutlined, CalendarOutlined, HomeOutlined, PlusOutlined, LogoutOutlined } from '@ant-design/icons';
 
-import UserContext from '../../context/UserContext.js';
+import UserContext from '../../../context/UserContext.js';
 
 const { Header } = Layout;
 
-function PageHeader(props) {
+function PageHeader({ history }) {
     const location = '/' + useLocation().pathname.split('/')[1];
-    const [user] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
+
+    const onLogout = () => {
+        setUser();
+
+        if (location !== '/') {
+            history.push('/');
+        }
+    };
 
     const userNav = (
         <>
-            <Menu.Item key="/profile"><Link to="/profile"><UserOutlined />Profile</Link></Menu.Item>
             <Menu.Item key="/add"><Link to="/add"><PlusOutlined />Add</Link></Menu.Item>
+            <Menu.Item key="/profile"><Link to="/profile"><UserOutlined />Profile</Link></Menu.Item>
+            <Menu.Item key="logout" onClick={onLogout}><LogoutOutlined />Logout</Menu.Item>
         </>
     );
 

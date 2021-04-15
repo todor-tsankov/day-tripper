@@ -5,7 +5,7 @@ import { cyan } from '@ant-design/colors';
 import { CarOutlined } from '@ant-design/icons';
 import { Calendar as AntCalendar, Card, Space, Row, Col, Spin, message } from 'antd';
 
-import { getMonthlyTrips } from '../../services/calendarService.js';
+import { getMonthlyTrips } from '../../../services/calendarService.js';
 
 function Calendar({ history }) {
     const color = (num) => {

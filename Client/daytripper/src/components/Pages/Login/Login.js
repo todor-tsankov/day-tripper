@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { Form, Button,  Row, Col, Space, message } from 'antd';
 
-import EmailInput from '../FormItems/EmailInput/EmailInput.js';
-import PasswordInput from '../FormItems/PasswordInput/PasswordInput.js';
-import RememberMeCheckbox from '../FormItems/RememberMeCheckbox/RememberMeCheckbox.js';
+import EmailInput from '../../FormItems/EmailInput/EmailInput.js';
+import PasswordInput from '../../FormItems/PasswordInput/PasswordInput.js';
+import RememberMeCheckbox from '../../FormItems/RememberMeCheckbox/RememberMeCheckbox.js';
 
-import UserContext from '../../context/UserContext.js';
-import { login } from '../../services/loginService.js';
+import UserContext from '../../../context/UserContext.js';
+import { login } from '../../../services/loginService.js';
 
 function Login({ history }) {
     const [sending, setSending] = useState(false);

@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
-import UserContext from '../../context/UserContext.js';
+import UserContext from '../../../context/UserContext.js';
 
 import { Row, Col, Button, Space, message } from 'antd';
 
-import { getTripDetails } from '../../services/detailsService.js';
-import { getUserTrips, joinTrip, leaveTrip } from '../../services/userTripsService.js';
-import { getIsFollower, postFollow, deleteFollow } from '../../services/followsService.js';
+import { getTripDetails } from '../../../services/detailsService.js';
+import { getUserTrips, joinTrip, leaveTrip } from '../../../services/userTripsService.js';
+import { getIsFollower, postFollow, deleteFollow } from '../../../services/followsService.js';
 
-import TripInfo from '../TripInfo/TripInfo.js';
-import CommentCard from '../CommentCard/CommentCard.js';
-import UsersInTripTable from '../UsersInTripTable/UsersInTripTable.js';
+import TripInfo from '../../Other/TripInfo/TripInfo.js';
+import CommentCard from '../../Other/CommentCard/CommentCard.js';
+import UsersInTripTable from '../../Other/UsersInTripTable/UsersInTripTable.js';
 
 function Details({ history, match }) {
     const tripId = match.params.tripId;

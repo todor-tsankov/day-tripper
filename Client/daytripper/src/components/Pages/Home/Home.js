@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Row, Col, Typography, Space, Button } from 'antd';
 
-import Decline from '../Decline/Decline.js';
+import Decline from '../../Other/Decline/Decline.js';
 
 const { Title } = Typography;
 

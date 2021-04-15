@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col, Space, message } from 'antd';
 
-import EmailInput from '../FormItems/EmailInput/EmailInput.js';
-import FirstNameInput from '../FormItems/FirstNameInput/FirstNameInput.js';
-import LastNameInput from '../FormItems/LastNameInput/LastNameInput.js';
-import PhoneNumberInput from '../FormItems/PhoneNumberInput/PhoneNumberInput.js';
-import PasswordInput from '../FormItems/PasswordInput/PasswordInput.js';
-import ConfirmPassword from '../FormItems/ConfirmPasswordInput/ConfirmPasswordInput.js';
-import NotificationsInput from '../FormItems/NotificationsInput/NotificationsInput.js';
+import EmailInput from '../../FormItems/EmailInput/EmailInput.js';
+import FirstNameInput from '../../FormItems/FirstNameInput/FirstNameInput.js';
+import LastNameInput from '../../FormItems/LastNameInput/LastNameInput.js';
+import PhoneNumberInput from '../../FormItems/PhoneNumberInput/PhoneNumberInput.js';
+import PasswordInput from '../../FormItems/PasswordInput/PasswordInput.js';
+import ConfirmPassword from '../../FormItems/ConfirmPasswordInput/ConfirmPasswordInput.js';
+import NotificationsInput from '../../FormItems/NotificationsInput/NotificationsInput.js';
 
-import { register } from '../../services/registerService.js';
+import { register } from '../../../services/registerService.js';
 
 function Register({ history }) {
     const [sending, setSending] = useState(false);

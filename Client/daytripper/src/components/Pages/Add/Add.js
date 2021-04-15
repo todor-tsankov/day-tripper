@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
 import { Form, Button, message } from 'antd';
 
-import CitiesSelect from '../FormItems/CitiesSelect/CitiesSelect.js';
-import AreasCragsSectors from '../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
-import SeatsWithCarInput from '../FormItems/SeatsWithCarInput/SeatsWithCarInput.js';
-import FromToInput from '../FormItems/FromToInput/FromToInput.js';
-import CommentInput from '../FormItems/CommentInput/CommentInput.js';
+import CitiesSelect from '../../FormItems/CitiesSelect/CitiesSelect.js';
+import AreasCragsSectors from '../../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
+import SeatsWithCarInput from '../../FormItems/SeatsWithCarInput/SeatsWithCarInput.js';
+import FromToInput from '../../FormItems/FromToInput/FromToInput.js';
+import CommentInput from '../../FormItems/CommentInput/CommentInput.js';
 
-import UserContext from '../../context/UserContext.js';
-import { postTrip } from '../../services/detailsService.js';
+import UserContext from '../../../context/UserContext.js';
+import { postTrip } from '../../../services/detailsService.js';
 
 function Add({ history }) {
     const [user] = useContext(UserContext);

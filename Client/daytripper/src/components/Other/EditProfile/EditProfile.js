@@ -1,13 +1,13 @@
 import { Row, Col, Form, Button, Spin, message } from 'antd';
 import { useState, useEffect, useContext } from 'react';
 
-import UserContext from '../../context/UserContext.js';
+import UserContext from '../../../context/UserContext.js';
 
-import FirstNameInput from '../FormItems/FirstNameInput/FirstNameInput.js';
-import LastNameInput from '../FormItems/LastNameInput/LastNameInput.js';
-import NotificationsInput from '../FormItems/NotificationsInput/NotificationsInput.js';
+import FirstNameInput from '../../FormItems/FirstNameInput/FirstNameInput.js';
+import LastNameInput from '../../FormItems/LastNameInput/LastNameInput.js';
+import NotificationsInput from '../../FormItems/NotificationsInput/NotificationsInput.js';
 
-import { getUserDetails, updateProfile } from '../../services/profileService.js';
+import { getUserDetails, updateProfile } from '../../../services/profileService.js';
 
 function EditProfile({ history }) {
     const [user] = useContext(UserContext);

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Form, Select, InputNumber, Switch, DatePicker, message } from 'antd';
 
-import { getCrags } from '../../services/cragsService.js';
-import { getCities } from '../../services/citiesService.js';
+import { getCrags } from '../../../services/cragsService.js';
+import { getCities } from '../../../services/citiesService.js';
 
 function SearchForm({ onFormFieldsChange, date }) {
     const [cities, setCities] = useState([]);
