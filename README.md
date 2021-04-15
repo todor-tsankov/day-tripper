@@ -23,6 +23,10 @@ npm install
 npm start
 ```
 
+* you might neede to go to 'Client\src\api\api.js' and change the host according to
+  the server
+
+
 **Pages:**
 
 | Route            | Description                                                         |
