@@ -10,8 +10,19 @@
  
 **How to start:**
 
- You need to have NodeJs installed
- Go to inside the
+ - you need to have NodeJs installed
+ - go to inside the 'Client' folder
+
+- run the following to install all dependencies
+```
+npm install
+```
+
+- and to start the application run
+```
+npm start
+```
+
 **Pages:**
 
 | Route            | Description                                                         |
@@ -34,6 +45,16 @@
 - ASP.NET Core
 - MSSQL Server
 - Entity Framework Core
+
+**How to start:**
+
+- you need to have .NET 5.0 and SQL Server installed
+- go to inside the 'Server/Web/DayTripper.Web' folder
+
+- run the following to start the application
+```
+dotnet run
+```
 
 
 **Endpoints:**
