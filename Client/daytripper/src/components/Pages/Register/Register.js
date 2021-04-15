@@ -50,7 +50,7 @@ function Register({ history }) {
                     <ConfirmPassword />
                     <NotificationsInput />
                     <Form.Item>
-                        <Space size={'small'}>
+                        <Space wrap size={'small'}>
                             <Button type="primary" htmlType="submit" loading={sending}>Register</Button>
                             Already have an account? <Link to="/login">Log in</Link>
                         </Space>

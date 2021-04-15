@@ -15,26 +15,42 @@ function AreasCragsSectors({ areaId, cragId }) {
     const [disabledSectors, setDsiabledSectors] = useState(true);
 
     useEffect(() => {
+        let mounted = true;
+
         getAreas().then(x => {
-            if(x.code !== 200){
+            if (!mounted) {
+                return;
+            }
+
+            if (x.code !== 200) {
                 message.error(x.message);
                 return;
             }
 
             setAreas(x.data);
         });
+
+        return () => mounted = false;
     }, []);
 
     useEffect(() => {
+        let mounted = true;
         if (areaId && cragId) {
-            onAreasSelected(areaId).then(x => onCragsSelected(cragId));
+            onAreasSelected(areaId).then(x => {
+                if (!mounted) {
+                    return;
+                }
+                
+                onCragsSelected(cragId);
+            });
         }
+        return () => mounted = false;
     }, [areaId, cragId]);
 
     const onAreasSelected = async (value) => {
         const response = await getCrags(value);
 
-        if(response.code !== 200){
+        if (response.code !== 200) {
             message.error(response.message);
             return;
         }
@@ -46,7 +62,7 @@ function AreasCragsSectors({ areaId, cragId }) {
     const onCragsSelected = async (value) => {
         const response = await getSectors(value);
 
-        if(response.code !== 200){
+        if (response.code !== 200) {
             message.error(response.message);
             return;
         }

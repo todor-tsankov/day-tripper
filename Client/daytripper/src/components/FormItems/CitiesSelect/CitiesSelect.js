@@ -7,7 +7,12 @@ function CitiesSelect() {
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
+        let mounted = true;
         getCities().then(x => {
+            if(!mounted){
+                return;
+            }
+            
             if(x.code !== 200){
                 message.error(x.message);
                 return;
@@ -15,6 +20,8 @@ function CitiesSelect() {
 
             setCities(x.data);
         });
+
+        return () => mounted = false;
     }, []);
 
     return (

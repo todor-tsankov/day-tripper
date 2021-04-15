@@ -1,13 +1,17 @@
-import { usecontext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 
 import EditProfile from '../../Other/EditProfile/EditProfile.js';
-import ChangePassword from '../../Other/ChangePassword/ChangePassword.js';
-import ConfirmEmail from '../../Other/ConfirmEmail/ConfirmEmail.js';
-import ConfirmPhone from '../../Other/ConfirmPhone/ConfirmPhone.js';
+import UserContext from '../../../context/UserContext.js';
 
-function Profile() {
+function Profile({ history, location }) {
+    const [user] = useContext(UserContext);
+
+    if (!user) {
+        history.push({ pathname: '/login', state: { back: location.pathname } });
+    }
+
     return (
-        <EditProfile/>
+        <EditProfile />
     );
 }
 

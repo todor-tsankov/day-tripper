@@ -25,9 +25,14 @@ function Search({ match }) {
     const [end, setEnd] = useState(false);
 
     useEffect(() => {
+        let mounted = true;
         setInitLoading(true);
 
         getTrips(filters).then(x => {
+            if(!mounted){
+                return;
+            }
+
             if (x.code !== 200) {
                 message.error(x.message);
                 return;
@@ -40,6 +45,8 @@ function Search({ match }) {
             setList(x.data);
             setInitLoading(false);
         });
+
+        return () => mounted = false;
     }, [filters]);
 
     const onFormFieldsChange = async (changed, all) => {

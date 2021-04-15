@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Space, Button, Skeleton } from 'antd';
+import { List, Space, Button, Skeleton } from 'antd';
 import { UserOutlined, ArrowRightOutlined, HomeOutlined, FieldTimeOutlined } from '@ant-design/icons';
 
 function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
@@ -33,7 +33,6 @@ function LoadMoreTripList({ list, loading, initLoading, onLoadMore, end }) {
                         <List.Item.Meta
                             avatar={
                                 <UserOutlined />
-                                //<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                             }
                             title={item.applicationUserFirstName + ' ' + item.applicationUserLastName}
                             description={

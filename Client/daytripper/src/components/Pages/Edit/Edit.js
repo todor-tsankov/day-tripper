@@ -11,7 +11,7 @@ import CommentInput from '../../FormItems/CommentInput/CommentInput.js';
 
 import { getTripDetails, putTrip, deleteTrip } from '../../../services/detailsService.js';
 
-function Edit({ history, match }) {
+function Edit({ history, location, match }) {
     const [user] = useContext(UserContext);
 
     const tripId = match.params.tripId;
@@ -21,7 +21,7 @@ function Edit({ history, match }) {
     const [deleting, setDeleting] = useState(false);
 
     if (!user) {
-        history.push('/login');
+        history.push({ pathname: '/login', state: { back: location.pathname } });
     }
 
     if (tripDetails && user?.userId !== tripDetails?.applicationUserId) {
@@ -29,7 +29,13 @@ function Edit({ history, match }) {
     }
 
     useEffect(() => {
+        let mounted = true;
+
         getTripDetails(tripId).then(x => {
+            if(!mounted){
+                return;
+            }
+
             if (x.code !== 200) {
                 message.error(x.message);
                 return;
@@ -37,6 +43,8 @@ function Edit({ history, match }) {
 
             setTripDetails(x.data);
         });
+
+        return () => mounted = false;
     }, [tripId]);
 
     const layout = {
@@ -93,8 +101,6 @@ function Edit({ history, match }) {
             </Row>
         );
     }
-
-    console.log(tripDetails.withCar);
 
     return (
         <Form {...layout}

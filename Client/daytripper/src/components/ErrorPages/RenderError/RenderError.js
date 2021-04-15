@@ -6,8 +6,8 @@ function ServerError() {
         <Result
             status="500"
             title="500"
-            subTitle="Sorry, something went wrong with the server."
-            extra={<Button type="primary"><Link to="/">Back Home</Link> </Button>}
+            subTitle="Sorry, something went wrong with the website :("
+            extra={<Button type="primary"><Link to="/">Back Home</Link></Button>}
         />
     );
 }

@@ -1,4 +1,4 @@
-import {Form, Input} from 'antd';
+import { Form, Input } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
 
 function ConfirmPasswordInput() {

@@ -16,31 +16,32 @@ function Calendar({ history }) {
         return cyan[num - 1];
     };
 
-    const [month, setMonth] = useState(momentJs().utc().month() + 1);
     const [monthInfo, setMonthInfo] = useState();
+    const [currentMoment, setCurrentMoment] = useState(momentJs().utc());
 
-    const getInfo = (moment) => {
-        const utc = moment.utc();
-        const newMonth = utc.month() + 1;
+    useEffect(() => {
+        let mounted = true;
+        const newMonth = currentMoment.month() + 1;
 
-        setMonth(newMonth);
-        getMonthlyTrips(utc.year(), newMonth).then(x => {
+        getMonthlyTrips(currentMoment.year(), newMonth).then(x => {
+            if(!mounted){
+                return;
+            }
+
             if (x.code !== 200) {
                 message.error(x.message);
             }
 
             setMonthInfo(x.data);
         });
-    };
 
-    useEffect(() => {
-        getInfo(momentJs());
-    }, []);
+        return () => mounted = false;
+    }, [currentMoment]);
 
     const dateCellRender = (moment) => {
         const trips = monthInfo ? monthInfo[moment.utc().date()] : undefined;
 
-        if (!trips || moment.month() + 1 !== month) {
+        if (!trips || moment.month() + 1 !== currentMoment.month() + 1) {
             return null;
         }
 
@@ -59,13 +60,13 @@ function Calendar({ history }) {
         }
 
         setMonthInfo();
-        getInfo(moment);
+        setCurrentMoment(moment);
     };
 
     const onSelect = (moment) => {
         const utc = moment.utc();
 
-        if (utc.month() + 1 !== month) {
+        if (utc.month() + 1 !== currentMoment.month() + 1) {
             return;
         }
 

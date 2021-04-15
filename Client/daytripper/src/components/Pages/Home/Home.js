@@ -5,7 +5,7 @@ import Decline from '../../Other/Decline/Decline.js';
 
 const { Title } = Typography;
 
-function Home() {
+function Home(props) {
     return (
         <Row align={'center'} justify={'center'} style={{ padding: 50, textAlign: 'center' }}>
             <Col span={24} style={{ paddingTop: 100, paddingBottom: 50 }}>

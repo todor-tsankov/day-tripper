@@ -1,20 +1,18 @@
-import { Form, Row, Checkbox } from 'antd';
+import { Form, Space, Checkbox } from 'antd';
 
 function NotificationsInput() {
     return (
-        <Row>
-            <Form.Item label={'Notifications:'}>
-                <Form.Item name="facebookNotifications" valuePropName="checked" noStyle>
-                    <Checkbox>Facebook</Checkbox>
-                </Form.Item>
-                <Form.Item name="emailNotifications" valuePropName="checked" noStyle>
-                    <Checkbox>Email</Checkbox>
-                </Form.Item>
-                <Form.Item name="smsNotifications" valuePropName="checked" noStyle>
-                    <Checkbox>Sms</Checkbox>
-                </Form.Item>
+        <Space wrap style={{ marginBottom: 15}}>
+            <Form.Item name="facebookNotifications" valuePropName="checked" noStyle>
+                <Checkbox>Post to Facebook Page</Checkbox>
             </Form.Item>
-        </Row>
+            <Form.Item name="emailNotifications" valuePropName="checked" noStyle>
+                <Checkbox>Send me SMS Notifications</Checkbox>
+            </Form.Item>
+            <Form.Item name="smsNotifications" valuePropName="checked" noStyle>
+                <Checkbox>Send me Email Notifications</Checkbox>
+            </Form.Item>
+        </Space>
     );
 }
 

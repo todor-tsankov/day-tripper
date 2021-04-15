@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
@@ -9,7 +9,8 @@ import UserContext from '../../../context/UserContext.js';
 
 const { Header } = Layout;
 
-function PageHeader({ history }) {
+function PageHeader() {
+    const history = useHistory();
     const location = '/' + useLocation().pathname.split('/')[1];
     const [user, setUser] = useContext(UserContext);
 

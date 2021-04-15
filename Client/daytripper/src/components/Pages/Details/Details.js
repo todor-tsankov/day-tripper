@@ -12,7 +12,7 @@ import TripInfo from '../../Other/TripInfo/TripInfo.js';
 import CommentCard from '../../Other/CommentCard/CommentCard.js';
 import UsersInTripTable from '../../Other/UsersInTripTable/UsersInTripTable.js';
 
-function Details({ history, match }) {
+function Details({ history, location, match }) {
     const tripId = match.params.tripId;
 
     const [user] = useContext(UserContext);
@@ -25,15 +25,25 @@ function Details({ history, match }) {
     const [refreshUsers, setRefreshUsers] = useState(false);
 
     if (!user) {
-        history.push('/login');
+        history.push({ pathname: '/login', state: { back: location.pathname } });
     }
 
     useEffect(() => {
+        let mounted = true;
+
         if (!user?.token) {
             return;
         }
 
         getTripDetails(tripId).then(x => {
+            if(!mounted){
+                return;
+            }
+
+            if(x.code === 404){
+                history.push('/notfound');
+            }
+
             if (x.code !== 200) {
                 message.error(x.message);
                 return;
@@ -41,6 +51,10 @@ function Details({ history, match }) {
 
             setTripInfo(x.data);
             getIsFollower(x.data.applicationUserId, user?.token).then(x => {
+                if(!mounted){
+                    return;
+                }
+
                 if (x.code !== 200) {
                     message.error(x.message);
                     return;
@@ -49,14 +63,22 @@ function Details({ history, match }) {
                 setIsFollower(x.data);
             });
         });
-    }, [tripId, user?.token, refreshInfo]);
+
+        return () => mounted = false;
+    }, [tripId, user?.token, refreshInfo, history]);
 
     useEffect(() => {
+        let mounted = true;
+
         if (!user?.userId) {
             return;
         }
 
         getUserTrips(tripId).then(y => {
+            if(!mounted){
+                return;
+            }
+
             if (y.code !== 200) {
                 message.error(y.data.message);
                 return;
@@ -65,6 +87,8 @@ function Details({ history, match }) {
             setUsers(y.data);
             setIsInTrip(y.data.some(z => z.applicationUserId === user.userId));
         });
+
+        return () => mounted = false;
     }, [tripId, user?.userId, refreshUsers]);
 
     const onJoinLeaveTripClick = async () => {

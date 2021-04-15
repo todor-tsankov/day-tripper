@@ -9,18 +9,19 @@ import NotificationsInput from '../../FormItems/NotificationsInput/Notifications
 
 import { getUserDetails, updateProfile } from '../../../services/profileService.js';
 
-function EditProfile({ history }) {
+function EditProfile() {
     const [user] = useContext(UserContext);
-
-    if (!user) {
-        history.push('/login');
-    }
-    
     const [sending, setSending] = useState(false);
     const [userDetails, setUserDetails] = useState();
 
     useEffect(() => {
+        let mounted = true;
+
         getUserDetails(user.token).then(x => {
+            if(!mounted){
+                return;
+            }
+
             if (x.code !== 200) {
                 message.error(x.message);
                 return;
@@ -28,6 +29,8 @@ function EditProfile({ history }) {
 
             setUserDetails(x.data);
         });
+
+        return () => mounted = false;
     }, [user.token]);
 
     if (!userDetails) {

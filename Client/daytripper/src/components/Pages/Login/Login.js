@@ -10,7 +10,9 @@ import RememberMeCheckbox from '../../FormItems/RememberMeCheckbox/RememberMeChe
 import UserContext from '../../../context/UserContext.js';
 import { login } from '../../../services/loginService.js';
 
-function Login({ history }) {
+function Login({ history, location }) {
+    console.log(history);
+
     const [sending, setSending] = useState(false);
     const [,setUser] = useContext(UserContext);
 
@@ -19,7 +21,6 @@ function Login({ history }) {
         const result = await login(values.email, values.password, values.rememberMe);
         setSending(false);
 
-        console.log(result);
         if(result.code !== 200){
             message.error(result.message);
             return;
@@ -33,7 +34,13 @@ function Login({ history }) {
             expiration: data.expiration,
         });
 
-        history.push('/');
+        const back =location.state?.back;
+
+        if(back){
+            history.push(back);
+        } else {
+            history.push('/');
+        }
     };
 
     return (

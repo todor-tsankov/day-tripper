@@ -10,9 +10,13 @@ import CommentInput from '../../FormItems/CommentInput/CommentInput.js';
 import UserContext from '../../../context/UserContext.js';
 import { postTrip } from '../../../services/detailsService.js';
 
-function Add({ history }) {
+function Add({ history, location }) {
     const [user] = useContext(UserContext);
     const [sending, setSending] = useState(false);
+
+    if (!user) {
+        history.push({ pathname: '/login', state: { back: location.pathname } });
+    }
 
     const onFinish = async (values) => {
         values.leaving = values.times[0].utc().format();

@@ -18,6 +18,7 @@ import Profile from './components/Pages/Profile/Profile.js';
 import NotFound from './components/ErrorPages/NotFound/NotFound.js';
 import Unauthorized from './components/ErrorPages/Unauthorized/Unauthorized.js';
 
+import GlobalBoundry from './components/Boundaries/GlobalBoundary.js';
 import UserContext from './context/UserContext.js';
 import NotificationContext from './context/NotificationContext.js';
 
@@ -32,24 +33,26 @@ function App() {
                     <NotificationContext.Provider value={[notification, setNotification]}>
                         <PageHeader />
                         <Layout.Content>
-                            <Row>
-                                <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
-                                    <Switch>
-                                        <Route exact path="/" component={Home} />
-                                        <Route exact path="/calendar" component={Calendar} />
-                                        <Route exact path="/login" component={Login} />
-                                        <Route exact path="/register" component={Register} />
-                                        <Route exact path="/search" component={Search} />
-                                        <Route exact path="/search/:date" component={Search} />
-                                        <Route exact path="/profile" component={Profile} />
-                                        <Route exact path="/add" component={Add} />
-                                        <Route exact path="/edit/:tripId" component={Edit} />
-                                        <Route exact path="/details/:tripId" component={Details} />
-                                        <Route exact path="/unauthorized" component={Unauthorized}/>
-                                        <Route component={NotFound} />
-                                    </Switch>
-                                </Col>
-                            </Row>
+                            <GlobalBoundry>
+                                <Row>
+                                    <Col xs={{ span: 22, offset: 1 }} lg={{ span: 20, offset: 2 }}>
+                                        <Switch>
+                                            <Route exact path="/" component={Home} />
+                                            <Route exact path="/calendar" component={Calendar} />
+                                            <Route exact path="/login" component={Login} />
+                                            <Route exact path="/register" component={Register} />
+                                            <Route exact path="/search" component={Search} />
+                                            <Route exact path="/search/:date" component={Search} />
+                                            <Route exact path="/profile" component={Profile} />
+                                            <Route exact path="/add" component={Add} />
+                                            <Route exact path="/edit/:tripId" component={Edit} />
+                                            <Route exact path="/details/:tripId" component={Details} />
+                                            <Route exact path="/unauthorized" component={Unauthorized} />
+                                            <Route component={NotFound} />
+                                        </Switch>
+                                    </Col>
+                                </Row>
+                            </GlobalBoundry>
                         </Layout.Content>
                         <PageFooter />
                     </NotificationContext.Provider>
