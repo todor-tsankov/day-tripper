@@ -8,7 +8,10 @@
 - ReactJS
 - Ant Design
  
- 
+**How to start:**
+
+ You need to have NodeJs installed
+ Go to inside the
 **Pages:**
 
 | Route            | Description                                                         |
@@ -23,7 +26,8 @@
 | /add             | add new trip                                                        |
 | /edit/:tripId    | edit an existing trip or delete it                                  |
 | /details/:tripId | see the full information about the trip, join or follow the creator |
-
+| /notfound        | not found page                                                      |
+| /unauthorized    | when the user doesn't have the rights to visit the page             |
 
 ## :waxing_crescent_moon: Back-End ( Server)
 
