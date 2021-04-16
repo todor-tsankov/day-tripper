@@ -39,7 +39,8 @@ function SearchForm({ onFormFieldsChange, date }) {
             className="add-form"
             onFieldsChange={onFormFieldsChange}
             initialValues={{
-                date: date
+                date: date,
+                ascending: false,
             }}
         >
             <Form.Item name='cityId' label='From City'>
@@ -86,7 +87,7 @@ function SearchForm({ onFormFieldsChange, date }) {
                 </Select>
             </Form.Item>
             <Form.Item name="ascending" label="Ascending">
-                <Switch defaultChecked={false} />
+                <Switch/>
             </Form.Item>
         </Form>
     );
