@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import ServerError from '../ErrorPages/RenderError/RenderError.js';
+import RenderError from '../ErrorPages/RenderError/RenderError.js';
 
 class GlobalBoundry extends Component {
     constructor(props) {
@@ -11,12 +11,14 @@ class GlobalBoundry extends Component {
         return { hasError: true };
     }
 
-    componentDidCatch() {
+    componentDidCatch(error, errorInfo) {
+        console.log(error);
+        console.log(errorInfo);
     }
 
     render() {
         if (this.state.hasError) {
-            return <ServerError></ServerError>;
+            return <RenderError></RenderError>;
         }
 
         return this.props.children;

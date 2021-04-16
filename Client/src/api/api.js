@@ -1,9 +1,9 @@
-async function request(url, options) {
+export async function request(url, options) {
     const result = {};
 
     try {
         const response = await fetch(url, options);
-        result.code = response.status;;
+        result.code = response.status;
 
         try {
             const resultObj = await response.json();
@@ -20,7 +20,7 @@ async function request(url, options) {
     return result;
 }
 
-function getOptions(method = 'get', body, token) {
+export function getOptions(method = 'get', body, token) {
     const options = {
         method,
         headers: {}

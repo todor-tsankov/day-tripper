@@ -1,3 +1,4 @@
 
 Server/Web/DayTripper.Web/appsettings.json
 Server/Web/DayTripper.Web/appsettings.Development.json
+node_modules
