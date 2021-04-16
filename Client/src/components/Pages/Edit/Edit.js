@@ -2,6 +2,9 @@ import moment from 'moment';
 import { useState, useEffect, useContext } from 'react';
 import { Form, Button, Spin, Row, Space, Popconfirm, message } from 'antd';
 
+import authenticated from '../../../hocs/authenticated.js';
+import authorized from '../../../hocs/authorized.js';
+
 import UserContext from '../../../context/UserContext.js';
 import CitiesSelect from '../../FormItems/CitiesSelect/CitiesSelect.js';
 import AreasCragsSectors from '../../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
@@ -11,7 +14,7 @@ import CommentInput from '../../FormItems/CommentInput/CommentInput.js';
 
 import { getTripDetails, putTrip, deleteTrip } from '../../../services/detailsService.js';
 
-function Edit({ history, location, match }) {
+function Edit({ history, match, unauthorized }) {
     const [user] = useContext(UserContext);
 
     const tripId = match.params.tripId;
@@ -20,12 +23,8 @@ function Edit({ history, location, match }) {
     const [sending, setSending] = useState(false);
     const [deleting, setDeleting] = useState(false);
 
-    if (!user) {
-        history.push({ pathname: '/login', state: { back: location.pathname } });
-    }
-
     if (tripDetails && user?.userId !== tripDetails?.applicationUserId) {
-        history.push('/unauthorized');
+        unauthorized();
     }
 
     useEffect(() => {
@@ -94,7 +93,7 @@ function Edit({ history, location, match }) {
         history.push('/');
     };
 
-    if (!tripDetails) {
+    if (!tripDetails || (tripDetails && user?.userId !== tripDetails?.applicationUserId)) {
         return (
             <Row style={{ padding: 50 }} align="center">
                 <Spin></Spin>
@@ -142,4 +141,4 @@ function Edit({ history, location, match }) {
     );
 }
 
-export default Edit;
+export default authorized(authenticated(Edit));

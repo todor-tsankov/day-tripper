@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { Form, Button, message } from 'antd';
 
+import authenticated from '../../../hocs/authenticated.js';
+
 import CitiesSelect from '../../FormItems/CitiesSelect/CitiesSelect.js';
 import AreasCragsSectors from '../../FormItems/AreasCragsSectorsSelect/AreasCragsSectorsSelect.js';
 import SeatsWithCarInput from '../../FormItems/SeatsWithCarInput/SeatsWithCarInput.js';
@@ -10,13 +12,9 @@ import CommentInput from '../../FormItems/CommentInput/CommentInput.js';
 import UserContext from '../../../context/UserContext.js';
 import { postTrip } from '../../../services/detailsService.js';
 
-function Add({ history, location }) {
+function Add({ history }) {
     const [user] = useContext(UserContext);
     const [sending, setSending] = useState(false);
-
-    if (!user) {
-        history.push({ pathname: '/login', state: { back: location.pathname } });
-    }
 
     const onFinish = async (values) => {
         values.leaving = values.times[0].utc().format();
@@ -72,4 +70,4 @@ function Add({ history, location }) {
     );
 }
 
-export default Add;
+export default authenticated(Add);

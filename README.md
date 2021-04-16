@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-* you might neede to go to 'Client\src\api\api.js' and change the host according to
+* you might need to go to 'Client\src\api\api.js' and change the host according to
   the server
 
 
@@ -34,8 +34,8 @@ npm start
 | /                | home page                                                           |
 | /calendar        | see the dates with trips in a calendar form                         |
 | /login           | login for existing users                                            |
-| /register        |  register for new users                                             |
-| /search          | search the avaible trips and sort them by different criteria        |
+| /register        | register for new users                                             |
+| /search          | search the available trips and sort them by different criteria        |
 | /search/:date    | the same as the prevoius but with pre-defined date                  |
 | /profile         | change names or notification preferences                            |
 | /add             | add new trip                                                        |

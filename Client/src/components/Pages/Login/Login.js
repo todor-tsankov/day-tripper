@@ -11,8 +11,6 @@ import UserContext from '../../../context/UserContext.js';
 import { login } from '../../../services/loginService.js';
 
 function Login({ history, location }) {
-    console.log(history);
-
     const [sending, setSending] = useState(false);
     const [,setUser] = useContext(UserContext);
 

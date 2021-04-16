@@ -4,6 +4,8 @@ import UserContext from '../../../context/UserContext.js';
 
 import { Row, Col, Button, Space, message } from 'antd';
 
+import authenticated from '../../../hocs/authenticated.js';
+
 import { getTripDetails } from '../../../services/detailsService.js';
 import { getUserTrips, joinTrip, leaveTrip } from '../../../services/userTripsService.js';
 import { getIsFollower, postFollow, deleteFollow } from '../../../services/followsService.js';
@@ -23,10 +25,6 @@ function Details({ history, location, match }) {
 
     const [refreshInfo, setRefreshInfo] = useState(true);
     const [refreshUsers, setRefreshUsers] = useState(false);
-
-    if (!user) {
-        history.push({ pathname: '/login', state: { back: location.pathname } });
-    }
 
     useEffect(() => {
         let mounted = true;
@@ -178,4 +176,4 @@ function Details({ history, location, match }) {
     );
 }
 
-export default Details;
+export default authenticated(Details);
