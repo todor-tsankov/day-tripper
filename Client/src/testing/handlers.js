@@ -24,84 +24,87 @@ const apiHandlers = [
 
 const citiesHandlers = [
     rest.get(endpoints.cities, async (req, res, ctx) => {
-        return res(ctx.json({ message: 'citest get', data: { num: 1 } }));
+        return res(ctx.json({ message: 'city get', data: { num: 1 } }));
     }),
 
     rest.post(endpoints.cities, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.name += '(valid)';
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'citest post', data: { ...data } }));
+        return res(ctx.json({ message: 'city post', data: data }));
     }),
 
     rest.put(endpoints.cities, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.cityId++;
+        data.name += '(valid)';
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'citest put', data: { ...data } }));
+        return res(ctx.json({ message: 'city put', data: data }));
     }),
 
     rest.delete(endpoints.cities, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.cityId++;
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'citest delete', data: { ...data } }));
+        return res(ctx.json({ message: 'city delete', data: data }));
     }),
 ];
+
 const areasHandlers = [
     rest.get(endpoints.areas, async (req, res, ctx) => {
         return res(ctx.json({ message: 'area get', data: { num: 1 } }));
     }),
 
     rest.post(endpoints.areas, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
         data.name += '(valid)';
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'area post', data: { ...data } }));
+        return res(ctx.json({ message: 'area post', data: data }));
     }),
 
     rest.put(endpoints.areas, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.areaId++;
+        data.name += '(valid)';
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'area put', data: { ...data } }));
+        return res(ctx.json({ message: 'area put', data: data }));
     }),
 
     rest.delete(endpoints.areas, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.areaId++;
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'area delete', data: { ...data } }));
+        return res(ctx.json({ message: 'area delete', data: data }));
     }),
 ];
 
@@ -111,39 +114,42 @@ const cragsHandlers = [
     }),
 
     rest.post(endpoints.crags, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.name += '(valid)';
+        data.areaId++;
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'crag post', data: { ...data } }));
+        return res(ctx.json({ message: 'crag post', data: data }));
     }),
 
     rest.put(endpoints.crags, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.cragId++;
+        data.areaId++;
+        data.name += '(valid)';
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'crag put', data: { ...data } }));
+        return res(ctx.json({ message: 'crag put', data: data }));
     }),
 
     rest.delete(endpoints.crags, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.cragId++;
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'crag delete', data: { ...data } }));
+        return res(ctx.json({ message: 'crag delete', data: data }));
     }),
 ];
 
@@ -153,39 +159,43 @@ const sectorsHandlers = [
     }),
 
     rest.post(endpoints.sectors, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
 
-        if (bearer !== 'Bearer token') {
+        data.name += '(valid)';
+        data.cragId++;
+
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'sector post', data: { ...data } }));
+        return res(ctx.json({ message: 'sector post', data: data }));
     }),
 
     rest.put(endpoints.sectors, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.cragId++;
+        data.sectorId++;
+        data.name += '(valid)';
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'sector put', data: { ...data } }));
+        return res(ctx.json({ message: 'sector put', data: data }));
     }),
 
     rest.delete(endpoints.sectors, async (req, res, ctx) => {
-        const bearer = req.headers['Authorization'];
-        const data = req.data;
-        data.num++;
+        const bearer = req.headers._headers.authorization;
+        const data = req.body;
+        data.sectorId++;
 
-        if (bearer !== 'Bearer token') {
+        if (bearer.trim() !== 'Bearer token') {
             return res(ctx.status(403));
         }
 
-        return res(ctx.json({ message: 'sector delete', data: { ...data } }));
+        return res(ctx.json({ message: 'sector delete', data: data }));
     }),
 ];
 

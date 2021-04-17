@@ -54,7 +54,7 @@ function Add({ history }) {
             className="add-form"
             onFinish={onFinish}
             initialValues={{
-                withCar: true,
+                withCar: false,
             }}
         >
             <CitiesSelect />

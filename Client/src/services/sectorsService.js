@@ -6,11 +6,11 @@ export async function getSectors(cragId) {
 }
 
 export async function postSector(name, cragId, token) {
-    return await post(endpoints.crags, { name, cragId }, token);
+    return await post(endpoints.sectors, { name, cragId }, token);
 }
 
 export async function putSector(sectorId, name, cragId, token) {
-    return await put(endpoints.crags, { sectorId, name, cragId }, token);
+    return await put(endpoints.sectors, { sectorId, name, cragId }, token);
 }
 
 export async function deleteSector(sectorId, token) {

@@ -12,7 +12,7 @@ function Search({ match }) {
     const decodedDateString = dateString ? decodeURIComponent(dateString) : undefined;
     const date = dateString ? moment(decodedDateString) : undefined;
 
-    const take = 10;
+    const take = 5;
     const [skip, setSkip] = useState(0);
 
     const [trips, setTrips] = useState([]);
@@ -38,9 +38,10 @@ function Search({ match }) {
                 return;
             }
 
-            if (x.length !== take) {
+            if (x.data.length !== take) {
                 setEnd(true);
             }
+
             setTrips(x.data);
             setList(x.data);
             setInitLoading(false);

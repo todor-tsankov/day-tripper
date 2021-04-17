@@ -13,6 +13,6 @@ export async function putCity(cityId, name, token) {
     return await put(endpoints.cities, { cityId, name }, token);
 }
 
-export async function deleteCity(areaId, token) {
-    return await del(endpoints.cities, { areaId }, token);
+export async function deleteCity(cityId, token) {
+    return await del(endpoints.cities, { cityId }, token);
 }

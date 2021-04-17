@@ -11,7 +11,7 @@ function SeatsWithCarInput({withCar}) {
                 name="withCar"
                 label="I have a car"
             >
-                <Switch checked={withCar} onChange={onWithCarChange} />
+                <Switch defaultChecked={withCar} onChange={onWithCarChange} />
             </Form.Item>
             <Form.Item
                 name="seats"
