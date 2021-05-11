@@ -14,6 +14,7 @@ namespace DayTripper.Services.Data
     {
         private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
         private readonly IMapper mapper;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public ApplicationUsersService(
             IDeletableEntityRepository<ApplicationUser> usersRepository,
@@ -24,6 +25,7 @@ namespace DayTripper.Services.Data
         {
             this.usersRepository = usersRepository;
             this.mapper = mapper;
+            this.userManager = userManager;
         }
 
         public async Task EditAsync(EditInputModel editInput)
@@ -39,6 +41,14 @@ namespace DayTripper.Services.Data
             user.FacebookNotifications = editInput.FacebookNotifications;
 
             await this.usersRepository.SaveChangesAsync();
+        }
+
+        public async Task<bool> ChangePasswordAsync(string userId, string oldPassword, string newPassword)
+        {
+            var user = await this.userManager.FindByIdAsync(userId);
+            var result = await this.userManager.ChangePasswordAsync(user, oldPassword, newPassword);
+
+            return result.Succeeded;
         }
     }
 }

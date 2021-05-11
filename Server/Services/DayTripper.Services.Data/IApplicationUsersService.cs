@@ -9,5 +9,7 @@ namespace DayTripper.Services.Data
     public interface IApplicationUsersService : IBaseService<ApplicationUser>
     {
         Task EditAsync(EditInputModel editInput);
+
+        Task<bool> ChangePasswordAsync(string userId, string oldPassword, string newPassword);
     }
 }

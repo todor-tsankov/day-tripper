@@ -18,7 +18,7 @@ function EditProfile() {
         let mounted = true;
 
         getUserDetails(user.token).then(x => {
-            if(!mounted){
+            if (!mounted) {
                 return;
             }
 
@@ -55,21 +55,19 @@ function EditProfile() {
     };
 
     return (
-        <Row style={{ padding: '50px' }}>
-            <Col xs={{ span: 24 }} md={{ span: 16, offset: 4 }}>
-                <Form
-                    initialValues={{ ...userDetails }}
-                    onFinish={onFinish}
-                >
-                    <FirstNameInput />
-                    <LastNameInput />
-                    <NotificationsInput />
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" loading={sending}>Save</Button>
-                    </Form.Item>
-                </Form>
-            </Col>
-        </Row >
+        <Col xs={{ span: 24 }} md={{ span: 12 }} style={{padding: 10}}>
+            <Form
+                initialValues={{ ...userDetails }}
+                onFinish={onFinish}
+            >
+                <FirstNameInput />
+                <LastNameInput />
+                <NotificationsInput />
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" loading={sending}>Save</Button>
+                </Form.Item>
+            </Form>
+        </Col>
     );
 }
 

@@ -3,6 +3,7 @@ export async function request(url, options) {
 
     try {
         const response = await fetch(url, options);
+        console.log(response);
         result.code = response.status;
 
         try {

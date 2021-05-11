@@ -32,7 +32,7 @@ function Login({ history, location }) {
             expiration: data.expiration,
         });
 
-        const back =location.state?.back;
+        const back = location.state?.back;
 
         if(back){
             history.push(back);

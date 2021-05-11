@@ -1,10 +1,10 @@
-import {Form, Input} from 'antd';
-import {LockOutlined} from '@ant-design/icons';
+import { Form, Input } from 'antd';
+import { LockOutlined } from '@ant-design/icons';
 
-function PasswordInput() {
+function PasswordInput({ name, placeholder }) {
     return (
         <Form.Item
-            name="password"
+            name={name ? name : 'password'}
             rules={[
                 {
                     required: true,
@@ -19,7 +19,7 @@ function PasswordInput() {
             <Input
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
-                placeholder="Password"
+                placeholder={placeholder ? placeholder : 'Password'}
             />
         </Form.Item>
     );
