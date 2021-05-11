@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-* you might need to go to 'Client\src\api\api.js' and change the host according to
+* you might need to go to 'Client\src\api\endpoints.js' and change the host according to
   the server
 
 
